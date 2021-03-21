@@ -1,0 +1,232 @@
+@import "./settings";
+
+/**
+//////////////////////////////////////
+HEADER
+//////////////////////////////////////
+*/
+
+
+.header {
+    background-color: var(--primary-color);
+    height: 120px;
+    border-radius: 0 0 95px 0;
+}
+
+.header-title-em {
+    color: var(--secondary-color);
+    font-size: 1.8em;
+    font-weight: 100;
+    letter-spacing: .2em;
+}
+
+.header-title {
+    color: var(--secondary-color);
+    font-weight: 100 !important;
+    text-align: center;
+    margin-bottom: 0 !important;
+}
+
+.flex-header {
+    display: flex;
+    align-items: center;
+}
+
+.flex-header .left {
+    width: 30%;
+}
+
+.flex-header .right {
+    width: 70%;
+}
+
+.nav {
+    display: flex;
+    justify-content: space-around;
+    font-size: 1.5em;
+}
+
+.subtitle {
+    padding-top: 1em;
+}
+
+/*
+***********************************
+LOGIN / REGISTER
+***********************************
+*/
+
+.login-div {
+    width: 70%;
+    margin: 10% auto;
+}
+
+.login-form {
+    display: flex;
+    flex-direction: column;
+    justify-self: center;
+}
+
+.table-user {
+    margin: auto;
+}
+
+
+/**
+//////////////////////////////////////
+SECTION white-background
+//////////////////////////////////////
+*/
+.white-background {
+    background-color: var(--secondary-color);
+    color: var(--font-color-dark);
+}
+
+.white-background h2 {
+    color: var(--primary-color);
+}
+
+/**
+//////////////////////////////////////
+SECTION black-background
+//////////////////////////////////////
+*/
+.black-background {
+    background-color: var(--primary-color);
+    border-radius: 95px 0;
+    color: var(--font-color-white);
+}
+
+.black-background h2 {
+    color: var(--secondary-color);
+}
+
+/**
+//////////////////////////////////////
+TEAM SECTION
+//////////////////////////////////////
+*/
+
+
+.flex-team {
+    display: flex;
+    flex-direction: column;
+}
+
+.team-img {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+}
+
+/**
+//////////////////////////////////////
+SUR MESURE
+//////////////////////////////////////
+*/
+
+.collapse-mesure {
+    height: 0;
+    opacity: 0;
+    visibility: hidden;
+    justify-content: space-between;
+}
+
+.active-mesure {
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: center;
+    margin-top: 2em;
+    height: auto;
+    opacity: 1;
+    transition: ease-in-out 0.3s;
+    &:focus {
+        outline: none;
+    }
+}
+
+/**
+//////////////////////////////////////
+NOS REALISATIONS
+//////////////////////////////////////
+*/
+
+// Flexbox wrapper
+.flexbox {
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-direction: column;
+    flex-direction: column;
+    -webkit-flex-wrap: wrap;
+    flex-wrap: wrap;
+    height: 100vw;
+
+    &:hover {
+        img {
+            opacity: 0.28;
+        }
+    }
+
+    // Each flex item
+    .item {
+        position: relative;
+        width: 33.33%; // 3 column
+        img {
+            width: 100%;
+            display: block;
+            transition: all 0.8s;
+        }
+        .title {
+            position: absolute;
+            top: 48%;
+            left: 0;
+            width: 100%;
+            padding: 0 3%;
+            font-size: 30px;
+            text-shadow: 0 0 8px rgba(0, 0, 0, 0.42);
+        }
+        &:hover {
+            img {
+                opacity: 1;
+            }
+        }
+    }
+}
+
+// Mediaqueries
+@media (max-width: 860px) {
+    // set to 2 column
+    .flexbox {
+        height: 220vw;
+        .item {
+            width: 50%;
+        }
+    }
+}
+@media (max-width: 667px) {
+    // set to 1 column
+    .flexbox {
+        height: auto;
+        .item {
+            width: 100%;
+        }
+    }
+}
+
+/**
+//////////////////////////////////////
+FORM
+//////////////////////////////////////
+*/
+
+.main-contact-form div div label {
+    text-align: left;
+}
+
+form label{
+    color: var(--span-color);
+}
+
+#contact_form_Envoyer {
+    color: var(--link-color);
+}

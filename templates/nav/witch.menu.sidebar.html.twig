@@ -1,0 +1,71 @@
+<nav role="navigation" class="witch-nav">
+    <div id="menuToggle">
+        <input type="checkbox" />
+
+        <span></span>
+        <span></span>
+        <span></span>
+
+        <ul id="menu">
+            <a href="{{ path('witch_home') }}">
+                <li>Accueil</li>
+            </a>
+            <a href="{{ path('witch_shop') }}">
+                <li>
+                    Boutique
+                </li>
+            </a>
+
+            {% if app.user %}
+            <a href="{{ path('user_profile') }}">
+                <li>
+                    Mon compte
+                </li>
+            </a>
+            <a href="{{ path('witch_archive_order') }}">
+                <li>
+                    Mes commandes
+                </li>
+            </a>
+            <a href="{{ path('app_logout') }}" onclick="return confirm('Souhaitez-vous vous déconnecter ?')">
+                <li>
+                    Déconnexion
+                </li>
+            </a>
+            {% else %}
+            <a href="{{ path('app_login') }}" class="no-color-link">
+                <li>
+                    Connexion
+                </li>
+            </a>
+            {% endif %}
+        </ul>
+    </div>
+</nav>
+<div class="witch-search">
+    {{ render(controller('App\\Controller\\SearchController::searchBarAction')) }}
+</div>
+
+<div class="witch-cart-header-container">
+    <a href="{{ path('witch_cart') }}" class="ti-shopping-cart no-color-link">
+    </a>
+</div>
+{% if app.user.carts is defined  %}
+    
+{% set articleQuantity = 0 %}
+{% for cart in app.user.carts %}
+{% for quantity in cart.articles %}
+{% set articleQuantity = quantity|length %}
+{% endfor %}
+{% endfor %}
+
+{% endif %}
+
+{% if app.user and app.user.carts != null and articleQuantity > 0 %}
+
+<div class="user-witch-cart-quantity" data-quantity="{{ articleQuantity}}">
+    <span class="witch-pastille-quantity"></span>
+</div>
+{% endif %}
+
+<div class="invisible-separator-header"></div>

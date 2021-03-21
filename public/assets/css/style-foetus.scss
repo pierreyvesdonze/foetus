@@ -1,0 +1,37 @@
+.main-title-logo {
+  position: absolute !important;
+  color: #e940de;
+  padding: 1em;
+}
+
+.home-foetus-container {
+  display: flex;
+  justify-content: center;
+  overflow: hidden;
+  position: relative;
+}
+
+.home-foetus-container img {
+  height: 100vh;
+  box-shadow: 1px 1px 9px 4px rgba(0, 0, 0, 0.75);
+  -webkit-box-shadow: 1px 1px 9px 4px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 0px -2px 9px 4px rgba(0, 0, 0, 0.75);
+}
+
+.enter-foetus {
+  position: absolute;
+  top: 50;
+  font-size: 2em;
+  padding: .5em;
+  top: 70%;
+  left: 55%;
+  background-color: white;
+  border-radius: 20px;
+    box-shadow: 1px 1px 9px 4px rgba(0, 0, 0, 0.75) inset;
+  -webkit-box-shadow: 1px 1px 9px 4px rgba(0, 0, 0, 0.75) inset;
+  -moz-box-shadow: 0px -2px 9px 4px rgba(0, 0, 0, 0.75) inset;
+}
+
+.enter-foetus a {
+    color: black !important;
+}
