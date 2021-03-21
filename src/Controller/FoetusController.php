@@ -15,4 +15,12 @@ class FoetusController extends AbstractController
     {
         return $this->render('foetus/index.html.twig');
     }
+
+    /**
+     * @Route("/galerie", name="foetus_galerie")
+     */
+    public function galerie(): Response
+    {
+        return $this->render('galerie/galerie.html.twig');
+    }
 }

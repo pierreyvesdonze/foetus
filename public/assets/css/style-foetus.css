@@ -15,7 +15,7 @@
   color: #e940de;
   padding: 1%;
   font-size: 5rem !important;
-  text-shadow: 4px 4px 2px #72046b8c;
+  text-shadow: 4px 4px 3px #72046b8c;
 }
 
 .home-foetus-container {
@@ -51,7 +51,8 @@
 }
 
 .enter-foetus a {
-  color: black !important;
+  color: #380234 !important;
+  text-shadow: 4px 4px 4px #72046b8c;
 }
 
 .menu {
@@ -102,5 +103,48 @@
 
 .social a img {
   width: 30px;
+}
+
+.flexboxx {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  height: 100vw;
+}
+
+.flexboxx:hover img {
+  opacity: 0.28;
+}
+
+.flexboxx .item {
+  position: relative;
+  width: 33.33%;
+}
+
+.flexboxx .item img {
+  width: 100%;
+  display: block;
+  -webkit-transition: all 0.8s;
+  transition: all 0.8s;
+}
+
+.flexboxx .item .title {
+  position: absolute;
+  top: 48%;
+  left: 0;
+  width: 100%;
+  padding: 0 3%;
+  font-size: 30px;
+  text-shadow: 0 0 8px rgba(0, 0, 0, 0.42);
+}
+
+.flexboxx .item:hover img {
+  opacity: 1;
 }
 /*# sourceMappingURL=style-foetus.css.map */

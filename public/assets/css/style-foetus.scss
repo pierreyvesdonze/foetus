@@ -1,5 +1,3 @@
-
-
 .main-right {
   display: flex;
   flex-direction: column;
@@ -11,7 +9,7 @@
   color: #e940de;
   padding: 1%;
   font-size: 5rem !important;
-  text-shadow: 4px 4px 2px #72046b8c;
+  text-shadow: 4px 4px 3px #72046b8c;
 }
 
 .home-foetus-container {
@@ -43,7 +41,8 @@
 }
 
 .enter-foetus a {
-  color: black !important;
+  color: #380234 !important;
+  text-shadow: 4px 4px 4px #72046b8c;
 }
 
 //MENU
@@ -86,4 +85,46 @@
 
 .social a img {
   width: 30px;
+}
+
+// Flexbox wrapper
+.flexboxx {
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-direction: column;
+  flex-direction: column;
+  -webkit-flex-wrap: wrap;
+  flex-wrap: wrap;
+  height: 100vw;
+
+  &:hover {
+    img {
+      opacity: 0.28;
+    }
+  }
+
+  // Each flex item
+  .item {
+    position: relative;
+    width: 33.33%; // 3 column
+    img {
+      width: 100%;
+      display: block;
+      transition: all 0.8s;
+    }
+    .title {
+      position: absolute;
+      top: 48%;
+      left: 0;
+      width: 100%;
+      padding: 0 3%;
+      font-size: 30px;
+      text-shadow: 0 0 8px rgba(0, 0, 0, 0.42);
+    }
+    &:hover {
+      img {
+        opacity: 1;
+      }
+    }
+  }
 }
