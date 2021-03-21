@@ -12,12 +12,17 @@ var appFoetus = {
        * *****************************
        */
         $('.foetus-enter-link').on('click', appFoetus.enterFoetus);
+        $('.main-title-logo').on('click', appFoetus.reload);
 
     },
 
-    enterFoetus: function (params) {
-        console.log('enter foetus');
+    reload: function () {
+        location.reload()
+    },
+
+    enterFoetus: function () {
         $('.foetus-home-img').fadeOut('slow');
+        $('.social').css('top', '2%')
     }
 }
 
