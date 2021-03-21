@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %} {% block title %}Foetus{% endblock %} {% block
+body %}
+
+    <h1 class="main-title-logo">Foetus</h1>
+    <div class="social">
+      <a href="#"
+        ><img src="{{ 'assets/images/instagram.png' }}" alt="Instagram"
+      /></a>
+      <a href="#"
+        ><img src="{{ 'assets/images/facebook.png' }}" alt="Facebook"
+      /></a>
+    </div>
+  </div>
+
+
+    <section class="main-right">
+      <div class="home-foetus-container">
+        <img
+          src="{{ asset('assets/images/foetus-home.jpg') }}"
+          alt=""
+          class="foetus-home-img"
+        />
+        <div class="enter-foetus">
+          <a href="#" class="foetus-enter-link">Visiter</a>
+        </div>
+      </div>
+
+      <div class="menu">
+        <a href="#">Flashs</a>
+        <a href="#">Galerie</a>
+        <a href="#">Tarifs</a>
+        <a href="#">Actu</a>
+        <a href="#">Contact</a>
+      </div>
+    </section>
+
+{% endblock %}
