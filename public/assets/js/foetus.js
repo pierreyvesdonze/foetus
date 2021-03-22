@@ -22,7 +22,9 @@ var appFoetus = {
 
     enterFoetus: function () {
         $('.foetus-home-img').fadeOut('slow');
+        $('.home-foetus-container').fadeOut('slow');
         $('.social').css('top', '2%')
+        $('.main-title-logo').css('top', '2%')
     }
 }
 

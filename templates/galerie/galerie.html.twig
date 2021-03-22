@@ -29,7 +29,17 @@ body %}
     <img src="https://unsplash.it/500/680?random" />
     <p class="title">10th item</p>
   </div>
-</div>
 
+  {% set i = 0 %} {% for i in 0..21 %}
+  <div class="item">
+    <img
+      src="{{ asset('assets/images/galerie/foetus-galerie-' ~ i ~ '.png') }}"
+      alt=""
+      class="foetus-home-img"
+    />
+    <p class="title">10th item</p>
+  </div>
+  {% endfor %}
+</div>
 
 {% endblock %}
