@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Repository\ImageEntityRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -19,8 +20,12 @@ class FoetusController extends AbstractController
     /**
      * @Route("/galerie", name="foetus_galerie")
      */
-    public function galerie(): Response
+    public function galerie(ImageEntityRepository $imageEntityRepository): Response
     {
-        return $this->render('galerie/galerie.html.twig');
+        $images = $imageEntityRepository->findAll();
+
+        return $this->render('galerie/galerie.html.twig', [
+            'images' => $images
+        ]);
     }
 }
