@@ -22,6 +22,11 @@ class ImageEntity
      */
     private $pathName;
 
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $thumbPathName;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -35,6 +40,18 @@ class ImageEntity
     public function setPathName(string $pathName): self
     {
         $this->pathName = $pathName;
+
+        return $this;
+    }
+
+    public function getThumbPathName(): ?string
+    {
+        return $this->thumbPathName;
+    }
+
+    public function setThumbPathName(string $thumbPathName): self
+    {
+        $this->thumbPathName = $thumbPathName;
 
         return $this;
     }

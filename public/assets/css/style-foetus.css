@@ -107,38 +107,26 @@
   width: 30px;
 }
 
-.flexboxx {
+.flexboxxx {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
-  width: 100%;
-  height: 100vw;
-  overflow: auto;
 }
 
-.flexboxx:hover img {
+.flexboxxx:hover img {
   opacity: 0.28;
 }
 
-.flexboxx .item {
-  position: relative;
-  width: 250px;
-}
-
-.flexboxx .item img {
+.flexboxxx .itemx img {
   width: 100%;
   display: block;
   -webkit-transition: all 0.8s;
   transition: all 0.8s;
 }
 
-.flexboxx .item .title {
+.flexboxxx .itemx .title {
   position: absolute;
   top: 48%;
   left: 0;
@@ -148,7 +136,7 @@
   text-shadow: 0 0 8px rgba(0, 0, 0, 0.42);
 }
 
-.flexboxx .item:hover img {
+.flexboxxx .itemx:hover img {
   opacity: 1;
 }
 /*# sourceMappingURL=style-foetus.css.map */

@@ -1,4 +1,10 @@
 {% extends 'base.html.twig' %} {% block title %}Foetus{% endblock %} {% block
 body %}
-coucou
+      <div class="menu">
+        <a href="{{ path('foetus_bio') }}">Modifier ma Bio</a>
+        <a href="{{ path('foetus_galerie') }}">Ajouter des photos</a>
+        <a href="#">Modifier mes tarifs</a>
+        <a href="#">Ajouter une actu</a>
+        <a href="#">Modifier mes infos de contact</a>
+      </div>
 {% endblock %}

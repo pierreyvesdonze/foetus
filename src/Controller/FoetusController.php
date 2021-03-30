@@ -28,4 +28,12 @@ class FoetusController extends AbstractController
             'images' => $images
         ]);
     }
+
+    /**
+     * @Route("/bio", name="foetus_bio")
+     */
+    public function bio(): Response
+    {
+        return $this->render('bio/bio.html.twig');
+    }
 }

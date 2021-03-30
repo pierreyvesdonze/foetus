@@ -95,16 +95,14 @@
 }
 
 // Flexbox wrapper
-.flexboxx {
+.flexboxxx {
   display: -webkit-flex;
   display: flex;
-  -webkit-flex-direction: column;
-  flex-direction: column;
   -webkit-flex-wrap: wrap;
   flex-wrap: wrap;
-  width: 100%;
-  height: 100vw;
-  overflow: auto;
+  // width: 100%;
+  // height: 100vw;
+  // overflow: auto;
 
   &:hover {
     img {
@@ -113,9 +111,9 @@
   }
 
   // Each flex item
-  .item {
-    position: relative;
-    width: 250px;
+  .itemx {
+    // position: relative;
+    // width: 250px;
     img {
       width: 100%;
       display: block;
@@ -135,5 +133,5 @@
         opacity: 1;
       }
     }
-  }
+ }
 }
