@@ -111,6 +111,10 @@
   width: 30px;
 }
 
+.foetus-portrait img {
+  width: 400px !important;
+}
+
 .flexboxxx {
   display: -webkit-box;
   display: -ms-flexbox;
