@@ -11,6 +11,10 @@
   width: 240px;
 }
 
+.big-title {
+  position: relative;
+}
+
 .home-foetus-container {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -79,13 +83,13 @@
 }
 
 .menu a {
-  font-size: 4em !important;
+  font-size: 3em !important;
   -webkit-transition: ease-in 0.3s;
   transition: ease-in 0.3s;
 }
 
 .menu a:hover {
-  font-size: 5em !important;
+  font-size: 4em !important;
 }
 
 .social {

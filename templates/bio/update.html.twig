@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %} {% block title %}Foetus{% endblock %} {% block
+body %}
+
+<h1>Modifier ma bio</h1>
+
+<div class="flexbox flexbox-column">
+  {{ form_start(form, {'attr': {'novalidate': 'novalidate'}}) }}
+  <div class="form-errors">
+    {{ form_errors(form) }}
+  </div>
+  {{ form_row(form.title) }}
+  {{ form_row(form.text) }}
+  {{ form_row(form.save) }}
+  {{ form_end(form) }}
+</div>
+
+{% endblock %}

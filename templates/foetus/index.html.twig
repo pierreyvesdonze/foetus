@@ -24,9 +24,6 @@ body %}
           class="foetus-home-img"
         />
         </a>
-        {# <div class="enter-foetus">
-          <a href="#" class="foetus-enter-link">Visiter</a>
-        </div> #}
       </div>
 
       <div class="menu">
@@ -36,7 +33,14 @@ body %}
         <a href="#">Tarifs</a>
         <a href="#">Actu</a>
         <a href="#">Contact</a>
-        <a href="{{ path('login') }}">Se connecter</a>
+        {% if app.user %}
+        <a href="{{ path('foetus_admin') }}">Admin</a>
+        <a href="{{ path('logout') }}">Se déconnecter</a>
+        {% else %}
+        <a href="{{ path('login') }}">
+          <span class="ti-lock"></span>
+        </a>
+        {% endif %}
       </div>
     </section>
 
