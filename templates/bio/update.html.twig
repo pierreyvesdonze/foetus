@@ -1,6 +1,8 @@
 {% extends 'base.html.twig' %} {% block title %}Foetus{% endblock %} {% block
 body %}
 
+{% include 'nav/previous.nav.html.twig' %}
+
 <h1>Modifier ma bio</h1>
 
 <div class="flexbox flexbox-column">
@@ -10,6 +12,7 @@ body %}
   </div>
   {{ form_row(form.title) }}
   {{ form_row(form.text) }}
+  {{ form_row(form.photoPath) }}
   {{ form_row(form.save) }}
   {{ form_end(form) }}
 </div>

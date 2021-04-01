@@ -1,19 +1,20 @@
 {% extends 'base.html.twig' %} {% block title %}Foetus{% endblock %} {% block
 body %}
-<h1>Mais qui est petit foetus ?</h1>
+
+{% include 'nav/previous.nav.html.twig' %}
+
+<h1>{{ bio.title }}</h1>
 
 <div class="bio">
-    Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt hic magnam sit amet blanditiis at reiciendis asperiores vel tempora, quae praesentium quia! Cumque aliquam omnis voluptatum nisi, illo eveniet minima?
-    Dicta eos nam animi architecto numquam, minima aperiam similique vero dolorem neque totam sint porro veritatis modi voluptatibus, nisi temporibus hic provident, soluta quod? Tempore possimus minima ab mollitia cumque.
-    Aspernatur ab architecto illum debitis provident et temporibus earum, esse doloribus deserunt sint, beatae nesciunt praesentium at harum dolore alias cumque. Deserunt voluptatibus numquam, ab mollitia ex doloremque voluptatem. Neque.
+   {{ bio.text }}
 </div>
 
-{# <div class="foetus-portrait">
+<div class="foetus-portrait">
        <img
-      src="{{ asset( image.pathName ) }}"
+      src="{{ asset( bio.photoPath ) }}"
       alt=""
       class="foetus-home-img"
     />
-</div> #}
+</div>
 
 {% endblock %}

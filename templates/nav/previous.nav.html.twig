@@ -1,0 +1,10 @@
+{% extends 'base.html.twig' %} {% block title %}Foetus{% endblock %} {% block
+body %}
+
+<ul class="nav">
+  <li class="nav-item">
+    <a class="nav-link active" aria-current="page" href="{{ relative_path(previousPage|trans) }}"><span class="ti-hand-point-left"></span></a>
+  </li>
+</ul>
+
+{% endblock %}

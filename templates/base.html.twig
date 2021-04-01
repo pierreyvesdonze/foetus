@@ -33,6 +33,7 @@
   </head>
 
   <body>
+
     {# Flash messages #}
     <div class="flash-container">
       {% for label, messages in app.flashes %} {% for message in messages %} {#
@@ -43,10 +44,14 @@
       {% endfor %} {% endfor %}
     </div>
 
-    {% block body %} {% endblock %} {% block footer %}
+    {% block body %} {% endblock %} 
     <!--***************************NAV FOOTER****************************-->
+    {% block footer %}
 
-    {% endblock %} {% block javascripts %}
+    {% endblock %} 
+    
+    
+    {% block javascripts %}
 
     <script
       src="https://code.jquery.com/jquery-3.5.1.js"

@@ -4,11 +4,13 @@ namespace App\Form;
 
 use App\Entity\Bio;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Validator\Constraints\File;
 
 class BioType extends AbstractType
 {
@@ -27,6 +29,22 @@ class BioType extends AbstractType
                     'class' => 'textarea',
                 ],
             ]);
+
+        $builder->add('photoPath', FileType::class, [
+            'label'    => 'Photo de la bio',
+            'multiple' => false,
+            'mapped'   => false,
+            'required' => false,
+            'attr'     => [
+                'class' => 'img-bio'
+            ],
+            'constraints' => [
+                new File([
+                    //    'maxSize' => '8000000',
+                ])
+            ],
+
+        ]);
 
         $builder->add(
             'save',
