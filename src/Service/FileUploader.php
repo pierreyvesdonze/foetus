@@ -11,28 +11,49 @@ use Imagine\Image\Box;
 
 class FileUploader
 {
-    private $targetDirectory;
+    private $imageDirectory;
+    private $galleryDirectory;
     private $slugger;
     private $imagine;
 
     private const MAX_WIDTH = 1024;
     private const MAX_HEIGHT = 768;
 
-    public function __construct($targetDirectory, SluggerInterface $slugger)
-    {
-        $this->targetDirectory = $targetDirectory;
+    public function __construct(
+        $imageDirectory,
+        $galleryDirectory,
+        SluggerInterface $slugger
+    ) {
+        $this->imageDirectory = $imageDirectory;
+        $this->galleryDirectory = $galleryDirectory;
         $this->slugger = $slugger;
         $this->imagine = new Imagine();
     }
 
-    public function upload(UploadedFile $file)
+    public function upload(UploadedFile $file, $type)
     {
-        // $originalFilename = pathinfo($file->getClientOriginalName(), PATHINFO_FILENAME);
-        // $safeFilename = $this->slugger->slug($originalFilename);
-        // $fileName = $safeFilename . '-' . uniqid() . '.' . $file->guessExtension();
-        $fileName = 'assets/images/foetus.jpg';
+        // Répertoire de destination des images
+        $imageDirectory = null;
+
+        if ($type === "bio") {
+            
+            $fileName = 'assets/images/foetus.'.$file->guessExtension();
+            $imageDirectory = $this->getImageDirectory();
+
+        } elseif ($type === 'gallery') {
+
+            $fileName =
+            'assets/images/galerie/' . uniqid() . '.' . $file->guessExtension();
+            $imageDirectory = $this->getGalleryDirectory();
+        } else {
+
+            $fileName =
+                'assets/images/flashes/' . uniqid() . '.' . $file->guessExtension();
+            $imageDirectory = $this->getFlashDirectory();
+        }
+
         try {
-            $file->move($this->getTargetDirectory(), $fileName);
+            $file->move($imageDirectory, $fileName);
         } catch (FileException $e) {
             // ... handle exception if something happens during file upload
         }
@@ -40,9 +61,19 @@ class FileUploader
         return $fileName;
     }
 
-    public function getTargetDirectory()
+    public function getImageDirectory()
     {
-        return $this->targetDirectory;
+        return $this->imageDirectory;
+    }
+
+    public function getGalleryDirectory()
+    {
+        return $this->galleryDirectory;
+    }
+
+    public function getFlashDirectory()
+    {
+        return $this->flashDirectory;
     }
 
     public function resize(string $filename): void

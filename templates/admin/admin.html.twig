@@ -15,7 +15,7 @@ body %}
     >
     <ul class="dropdown-menu">
       <li>
-        <a class="dropdown-item" href="{{ path('update_bio') }}">Ma bio</a>
+        <a class="dropdown-item" href="{{ path('update_bio', {'type' : 'bio'} ) }}">Ma bio</a>
       </li>
       <li><a class="dropdown-item" href="#">Mes tarifs</a></li>
       <li><a class="dropdown-item" href="#">Une actu</a></li>
@@ -32,8 +32,8 @@ body %}
       >Ajouter</a
     >
     <ul class="dropdown-menu">
-      <li><a class="dropdown-item" href="#">Une photo dans ma galerie</a></li>
-      <li><a class="dropdown-item" href="#">Une photo dans mes flashs</a></li>
+      <li><a class="dropdown-item" href="{{ path('add_gallery', {'type' : 'gallery'}) }}">Des images dans ma galerie</a></li>
+      <li><a class="dropdown-item" href="#">Des images dans mes flashs</a></li>
       <li><a class="dropdown-item" href="#">Une actu</a></li>
     </ul>
   </li>

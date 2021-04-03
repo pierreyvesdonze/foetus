@@ -23,9 +23,10 @@ class ImageEntity
     private $pathName;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\ManyToOne(targetEntity=Gallery::class, inversedBy="Files")
+     * @ORM\JoinColumn(nullable=false)
      */
-    private $thumbPathName;
+    private $gallery;
 
     public function getId(): ?int
     {
@@ -44,14 +45,14 @@ class ImageEntity
         return $this;
     }
 
-    public function getThumbPathName(): ?string
+    public function getGallery(): ?Gallery
     {
-        return $this->thumbPathName;
+        return $this->gallery;
     }
 
-    public function setThumbPathName(string $thumbPathName): self
+    public function setGallery(?Gallery $gallery): self
     {
-        $this->thumbPathName = $thumbPathName;
+        $this->gallery = $gallery;
 
         return $this;
     }

@@ -2,11 +2,9 @@
 
 namespace App\Controller;
 
-use App\Form\BioType;
+use App\Form\Type\BioType as TypeBioType;
 use App\Repository\BioRepository;
 use App\Service\FileUploader;
-use App\Service\ImageOptimizer;
-use App\Service\NavSession;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\RequestStack;
@@ -20,7 +18,7 @@ class BioController extends AbstractController
 
     public function __construct(RequestStack $requestStack, SessionInterface $session)
     {
-        
+
         $this->session = $session;
     }
 
@@ -45,10 +43,14 @@ class BioController extends AbstractController
     }
 
     /**
-     * @Route("/bio/update", name="update_bio")
+     * @Route("/bio/update/{type}", name="update_bio")
      */
-    public function updateBio(Request $request, BioRepository $bioRepository, FileUploader $fileUploader, ImageOptimizer $imageOptimizer)
-    {
+    public function updateBio(
+        Request $request,
+        BioRepository $bioRepository,
+        FileUploader $fileUploader,
+        $type
+    ) {
         // On récupère la précédente page visitée
         $previousPage = $request->headers->get('referer');
 
@@ -56,19 +58,19 @@ class BioController extends AbstractController
             'id' => 1
         ]);
 
-        $form = $this->createForm(BioType::class, $bio);
+        $form = $this->createForm(TypeBioType::class, $bio);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
 
             $photo = $form->get('photoPath')->getData();
             if ($photo) {
-                $photoFileName = $fileUploader->upload($photo);
+                $photoFileName = $fileUploader->upload($photo, $type);
                 $fileUploader->resize($photoFileName);
 
                 $bio->setPhotoPath($photoFileName);
             }
-        
+
             $manager = $this->getDoctrine()->getManager();
             $manager->flush();
         }

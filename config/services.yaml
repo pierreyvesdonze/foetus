@@ -33,4 +33,5 @@ services:
 
     App\Service\FileUploader:
         arguments:
-            $targetDirectory: '%kernel.project_dir%/public/assets/images'
+            $imageDirectory: '%kernel.project_dir%/public/assets/images'
+            $galleryDirectory: '%kernel.project_dir%/public/assets/images/galerie'

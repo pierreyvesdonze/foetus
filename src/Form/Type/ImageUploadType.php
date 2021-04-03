@@ -1,49 +1,36 @@
 <?php
 
-namespace App\Form;
+namespace App\Form\Type;
 
-use App\Entity\Bio;
+use App\Entity\ImageEntity;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
-use Symfony\Component\Form\Extension\Core\Type\TextareaType;
-use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Validator\Constraints\File;
 
-class BioType extends AbstractType
+class ImageUploadType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder
-            ->add('title', TextType::class, [
-                'label' => 'Titre de la bio',
-                'attr' => [
-                    'class' => 'input-title',
-                ],
-            ])
-            ->add('text', TextareaType::class, [
-                'label' => 'Texte de la bio',
-                'attr' => [
-                    'class' => 'textarea',
-                ],
-            ]);
-
-        $builder->add('photoPath', FileType::class, [
-            'label'    => 'Photo de la bio',
+        $builder->add('image', FileType::class, [
+            'label'    => 'Ajouter des images',
             'multiple' => false,
             'mapped'   => false,
             'required' => false,
             'attr'     => [
-                'class' => 'img-bio'
+                'class' => 'img-gallery'
             ],
             'constraints' => [
                 new File([
-                    //    'maxSize' => '8000000',
+                    'mimeTypes' => [
+                        'image/jpeg',
+                        'image/jpg',
+                        'image/png'
+                    ],
                 ])
             ],
-
         ]);
 
         $builder->add(
@@ -61,7 +48,7 @@ class BioType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-            'data_class' => Bio::class,
+            'data_class' => ImageEntity::class,
         ]);
     }
 }
