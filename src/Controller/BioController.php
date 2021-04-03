@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Form\BioType;
 use App\Repository\BioRepository;
 use App\Service\FileUploader;
+use App\Service\ImageOptimizer;
 use App\Service\NavSession;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -46,7 +47,7 @@ class BioController extends AbstractController
     /**
      * @Route("/bio/update", name="update_bio")
      */
-    public function updateBio(Request $request, BioRepository $bioRepository, FileUploader $fileUploader)
+    public function updateBio(Request $request, BioRepository $bioRepository, FileUploader $fileUploader, ImageOptimizer $imageOptimizer)
     {
         // On récupère la précédente page visitée
         $previousPage = $request->headers->get('referer');
@@ -63,6 +64,8 @@ class BioController extends AbstractController
             $photo = $form->get('photoPath')->getData();
             if ($photo) {
                 $photoFileName = $fileUploader->upload($photo);
+                $fileUploader->resize($photoFileName);
+
                 $bio->setPhotoPath($photoFileName);
             }
         

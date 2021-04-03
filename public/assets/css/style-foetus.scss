@@ -107,10 +107,13 @@
 
 // Flexbox wrapper
 .flexboxxx {
-  display: -webkit-flex;
-  display: flex;
-  -webkit-flex-wrap: wrap;
-  flex-wrap: wrap;
+  // display: -webkit-flex;
+  // display: flex;
+  // -webkit-flex-wrap: wrap;
+  // flex-wrap: wrap;
+  
+    column-count: 3;
+  column-gap: 1em;
   // width: 100%;
   // height: 100vw;
   // overflow: auto;
@@ -123,8 +126,8 @@
 
   // Each flex item
   .itemx {
-    // position: relative;
-    // width: 250px;
+    position: relative;
+    // width: 120px;
     img {
       width: 100%;
       display: block;
