@@ -11,6 +11,7 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use App\Form\Type\ImageUploadType;
 use App\Repository\GalleryRepository;
+use Symfony\Component\Form\Util\ServerParams;
 
 class AdminController extends AbstractController
 {
@@ -47,6 +48,11 @@ class AdminController extends AbstractController
         $type
     ): Response {
 
+        // // Utile pour vérifier la config dans php.ini
+        // $a = new ServerParams();
+        // echo ini_get('post_max_size') . "\n";
+        // echo $a->getPostMaxSize() . "\n";
+
         $manager = $this->getDoctrine()->getManager();
 
         $gallery = $galleryRepository->findOneBy([
@@ -65,21 +71,23 @@ class AdminController extends AbstractController
 
                 $fileUploader->resize($photoFileName);
                 $fileUploader->createThumb($photoFileName);
-                
+
                 $newImage = new ImageEntity;
                 $newImage->setPathName($photoFileName);
 
                 // Miniature
-                $thumbName = str_replace("/galerie/", "/thumbs/" , $photoFileName);
+                $thumbName = str_replace("/galerie/", "/thumbs/", $photoFileName);
 
                 $newImage->setThumbPathName($thumbName);
 
                 $manager->persist($newImage);
-                
+
                 $gallery->addFile($newImage);
             }
 
             $manager->flush();
+
+            $this->addFlash('success', 'Image uploadée !');
         }
 
         return $this->render(
