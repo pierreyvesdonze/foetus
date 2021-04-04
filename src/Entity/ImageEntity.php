@@ -28,6 +28,11 @@ class ImageEntity
      */
     private $gallery;
 
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $thumbPathName;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -53,6 +58,18 @@ class ImageEntity
     public function setGallery(?Gallery $gallery): self
     {
         $this->gallery = $gallery;
+
+        return $this;
+    }
+
+    public function getThumbPathName(): ?string
+    {
+        return $this->thumbPathName;
+    }
+
+    public function setThumbPathName(string $thumbPathName): self
+    {
+        $this->thumbPathName = $thumbPathName;
 
         return $this;
     }

@@ -62,10 +62,17 @@ class AdminController extends AbstractController
 
             if ($photo) {
                 $photoFileName = $fileUploader->upload($photo, $type);
+
                 $fileUploader->resize($photoFileName);
+                $fileUploader->createThumb($photoFileName);
                 
                 $newImage = new ImageEntity;
                 $newImage->setPathName($photoFileName);
+
+                // Miniature
+                $thumbName = str_replace("/galerie/", "/thumbs/" , $photoFileName);
+
+                $newImage->setThumbPathName($thumbName);
 
                 $manager->persist($newImage);
                 
