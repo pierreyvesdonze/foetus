@@ -326,6 +326,13 @@ MEDIA QUERIES
   transition: ease-in-out 0.5s;
 }
 
+.nav {
+  background: var(--background-color);
+  width: 100%;
+  position: fixed;
+  z-index: 200;
+}
+
 .main-title-logo img {
   width: 240px;
 }
@@ -428,19 +435,12 @@ MEDIA QUERIES
   width: 30px;
 }
 
-.foetus-portrait img {
-  width: 400px !important;
-}
-
 .flexboxxx {
-  margin: 5% 15%;
+  padding: 10%;
   -webkit-column-count: 5;
           column-count: 5;
   -webkit-column-gap: 1em;
           column-gap: 1em;
-  box-shadow: 0px 1px 7px 5px rgba(0, 0, 0, 0.75);
-  -webkit-box-shadow: 0px 1px 7px 5px rgba(0, 0, 0, 0.75);
-  -moz-box-shadow: 0px 1px 7px 5px rgba(0, 0, 0, 0.75);
 }
 
 .flexboxxx:hover img {
@@ -507,5 +507,26 @@ MEDIA QUERIES
     -webkit-column-gap: 2em;
             column-gap: 2em;
   }
+}
+
+.bio-container {
+  padding-top: 100px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+}
+
+.bio-text {
+  width: 30%;
+}
+
+.bio-text p {
+  font-size: 1.5em;
+}
+
+.foetus-portrait img {
+  width: 400px !important;
 }
 /*# sourceMappingURL=style-foetus.css.map */

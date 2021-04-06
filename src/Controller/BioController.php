@@ -4,7 +4,7 @@ namespace App\Controller;
 
 use App\Form\Type\BioType as TypeBioType;
 use App\Repository\BioRepository;
-use App\Service\FileUploader;
+use App\Service\ImageManager;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\RequestStack;
@@ -48,7 +48,7 @@ class BioController extends AbstractController
     public function updateBio(
         Request $request,
         BioRepository $bioRepository,
-        FileUploader $fileUploader,
+        ImageManager $imageManager,
         $type
     ) {
         // On récupère la précédente page visitée
@@ -65,8 +65,8 @@ class BioController extends AbstractController
 
             $photo = $form->get('photoPath')->getData();
             if ($photo) {
-                $photoFileName = $fileUploader->upload($photo, $type);
-                $fileUploader->resize($photoFileName);
+                $photoFileName = $imageManager->upload($photo, $type);
+                $imageManager->resize($photoFileName);
 
                 $bio->setPhotoPath($photoFileName);
             }

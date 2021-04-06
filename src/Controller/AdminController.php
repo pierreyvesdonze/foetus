@@ -3,7 +3,6 @@
 namespace App\Controller;
 
 use App\Entity\ImageEntity;
-use App\Service\FileUploader;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -11,6 +10,7 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use App\Form\Type\ImageUploadType;
 use App\Repository\GalleryRepository;
+use App\Service\ImageManager;
 use Symfony\Component\Form\Util\ServerParams;
 
 class AdminController extends AbstractController
@@ -41,10 +41,10 @@ class AdminController extends AbstractController
      * 
      * @Route("/admin/flash/add/{type}", name="add_flash")
      */
-    public function addToGallery(
+    public function addToGaleries(
         Request $request,
         GalleryRepository $galleryRepository,
-        FileUploader $fileUploader,
+        ImageManager $imageManager,
         $type
     ): Response {
 
@@ -67,16 +67,20 @@ class AdminController extends AbstractController
             $photo = $form->get('image')->getData();
 
             if ($photo) {
-                $photoFileName = $fileUploader->upload($photo, $type);
+                $photoFileName = $imageManager->upload($photo, $type);
 
-                $fileUploader->resize($photoFileName);
-                $fileUploader->createThumb($photoFileName);
+                $imageManager->resize($photoFileName);
+                $imageManager->createThumb($photoFileName, $type);
 
                 $newImage = new ImageEntity;
                 $newImage->setPathName($photoFileName);
 
-                // Miniature
-                $thumbName = str_replace("/galerie/", "/thumbs/", $photoFileName);
+                // Miniatures
+                if ('gallery' === $type) {
+                    $thumbName = str_replace("/galerie/", "/thumbs/", $photoFileName);
+                } else {
+                    $thumbName = str_replace("/flashes/", "/thumbs/", $photoFileName);
+                }
 
                 $newImage->setThumbPathName($thumbName);
 

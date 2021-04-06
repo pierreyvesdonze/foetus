@@ -3,6 +3,7 @@
 namespace App\Form\Type;
 
 use App\Entity\Bio;
+use FOS\CKEditorBundle\Form\Type\CKEditorType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
@@ -23,11 +24,8 @@ class BioType extends AbstractType
                     'class' => 'input-title',
                 ],
             ])
-            ->add('text', TextareaType::class, [
-                'label' => 'Texte de la bio',
-                'attr' => [
-                    'class' => 'textarea',
-                ],
+            ->add('text', CKEditorType::class, [
+                'config' => ['uiColor' => '#fffffff']
             ]);
 
         $builder->add('photoPath', FileType::class, [

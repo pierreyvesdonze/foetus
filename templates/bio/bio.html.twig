@@ -1,20 +1,17 @@
 {% extends 'base.html.twig' %} {% block title %}Foetus{% endblock %} {% block
-body %}
+body %} {% include 'nav/previous.nav.html.twig' %}
 
-{% include 'nav/previous.nav.html.twig' %}
+<div class="bio-container">
+   <div class="bio-text">
+      <h1>{{ bio.title }}</h1>
+      <hr class="hr">
+      {{ bio.text|raw }}
+   </div>
 
-<h1>{{ bio.title }}</h1>
-
-<div class="bio">
-   {{ bio.text }}
-</div>
-
-<div class="foetus-portrait">
-       <img
-      src="{{ asset( bio.photoPath ) }}"
-      alt=""
-      class="foetus-home-img"
-    />
+  <div class="foetus-portrait">
+    <img src="{{ asset(bio.photoPath) }}" alt="" class="foetus-home-img" />
+  </div>
 </div>
 
 {% endblock %}
+

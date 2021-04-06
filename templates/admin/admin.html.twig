@@ -3,7 +3,7 @@ body %}
 <h1 class="big-title">Admin</h1>
 
 <ul class="nav nav-tabs">
-	<!-- <img src="{{ 'assets/images/foetus-logo.png' }}" alt="" /> -->
+  <!-- <img src="{{ 'assets/images/foetus-logo.png' }}" alt="" /> -->
   <li class="nav-item dropdown">
     <a
       class="nav-link dropdown-toggle"
@@ -15,7 +15,11 @@ body %}
     >
     <ul class="dropdown-menu">
       <li>
-        <a class="dropdown-item" href="{{ path('update_bio', {'type' : 'bio'} ) }}">Ma bio</a>
+        <a
+          class="dropdown-item"
+          href="{{ path('update_bio', { type: 'bio' }) }}"
+          >Ma bio</a
+        >
       </li>
       <li><a class="dropdown-item" href="#">Mes tarifs</a></li>
       <li><a class="dropdown-item" href="#">Une actu</a></li>
@@ -32,9 +36,22 @@ body %}
       >Ajouter</a
     >
     <ul class="dropdown-menu">
-      <li><a class="dropdown-item" href="{{ path('add_gallery', {'type' : 'gallery'}) }}">Des images dans ma galerie</a></li>
-      <li><a class="dropdown-item" href="#">Des images dans mes flashs</a></li>
+      <li>
+        <a
+          class="dropdown-item"
+          href="{{ path('add_gallery', { type: 'gallery' }) }}"
+          >Des images dans ma galerie</a
+        >
+      </li>
+      <li>
+        <a
+          class="dropdown-item"
+          href="{{ path('add_flash', { type: 'flash' }) }}"
+          >Des images dans mes flashs</a
+        >
+      </li>
       <li><a class="dropdown-item" href="#">Une actu</a></li>
+      <li><a class="dropdown-item" href="#">Mes autres projets</a></li>
     </ul>
   </li>
   <li class="nav-item"></li>

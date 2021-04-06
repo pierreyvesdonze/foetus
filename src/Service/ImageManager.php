@@ -1,6 +1,5 @@
 <?php
 
-// src/Service/FileUploader.php
 namespace App\Service;
 
 use Symfony\Component\HttpFoundation\File\Exception\FileException;
@@ -9,7 +8,7 @@ use Symfony\Component\String\Slugger\SluggerInterface;
 use Imagine\Gd\Imagine;
 use Imagine\Image\Box;
 
-class FileUploader
+class ImageManager
 {
     private $imageDirectory;
     private $galleryDirectory;
@@ -37,6 +36,7 @@ class FileUploader
 
     public function upload(UploadedFile $file, $type)
     {
+
         // Répertoire de destination des images
         $imageDirectory = null;
 
@@ -50,7 +50,8 @@ class FileUploader
             $fileName =
             'assets/images/galerie/' . uniqid() . '.' . $file->guessExtension();
             $imageDirectory = $this->getGalleryDirectory();
-        } else {
+
+        } elseif ($type === 'flash') {
 
             $fileName =
                 'assets/images/flashes/' . uniqid() . '.' . $file->guessExtension();
@@ -97,11 +98,16 @@ class FileUploader
         $photo->resize(new Box($width, $height))->save($filename);
     }
 
-    public function createThumb(string $fileName): void
+    public function createThumb(string $fileName, string $type): void
     {
         // Copie le fichier, le renomme avec la bonne extension et le colle dans le répertoire des miniatures
         $thumbSplit = explode('.', $fileName);
-        $thumbName = str_replace("/galerie/", "/thumbs/", $thumbSplit[0]) . '.' . $thumbSplit[1];
+
+        if ('gallery' === $type) {
+            $thumbName = str_replace("/galerie/", "/thumbs/", $thumbSplit[0]) . '.' . $thumbSplit[1];
+        } else {
+            $thumbName = str_replace("/flashes/", "/thumbs/", $thumbSplit[0]) . '.' . $thumbSplit[1];
+        }
         copy($fileName, $thumbName);
 
         // Redimensionne les images en miniatures

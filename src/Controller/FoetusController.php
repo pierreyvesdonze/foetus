@@ -5,27 +5,43 @@ namespace App\Controller;
 use App\Repository\ImageEntityRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Component\Routing\Annotation\Route;
 
 class FoetusController extends AbstractController
 {
+    private $session;
+
+    public function __construct(SessionInterface $session)
+    {
+        $this->session = $session;
+    }
+
     /**
      * @Route("/", name="foetus_home")
      */
     public function index(): Response
     {
+        $this->session->set('route-name', '/');
+
         return $this->render('foetus/index.html.twig');
     }
 
     /**
-     * @Route("/galerie", name="foetus_galerie")
+     * @Route("/{type}", name="foetus_galeries")
+     * 
      */
-    public function galerie(ImageEntityRepository $imageEntityRepository): Response
+    public function galeries(ImageEntityRepository $imageEntityRepository, $type): Response
     {
-        $images = $imageEntityRepository->findAll();
+        
+        // Récupère la précédente page visitée
+        $previousPage = $this->session->get('route-name');
+
+        $images = $imageEntityRepository->findByType($type);
 
         return $this->render('galerie/galerie.html.twig', [
-            'images' => $images
+            'images' => $images,
+            'previousPage' => $previousPage
         ]);
     }
 }
