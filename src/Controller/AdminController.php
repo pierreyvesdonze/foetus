@@ -10,6 +10,8 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use App\Form\Type\ImageUploadType;
 use App\Repository\GalleryRepository;
+use App\Repository\ImageEntityRepository;
+use App\Repository\RateRepository;
 use App\Service\ImageManager;
 use Symfony\Component\Form\Util\ServerParams;
 
@@ -76,7 +78,7 @@ class AdminController extends AbstractController
                 $newImage->setPathName($photoFileName);
 
                 // Miniatures
-                if ('gallery' === $type) {
+                if ('galerie' === $type) {
                     $thumbName = str_replace("/galerie/", "/thumbs/", $photoFileName);
                 } else {
                     $thumbName = str_replace("/flashes/", "/thumbs/", $photoFileName);
@@ -100,5 +102,53 @@ class AdminController extends AbstractController
                 'form' => $form->createView()
             ]
         );
+    }
+
+    /**
+     * @Route("/admin/delete/{type}", name="delete_gallery")
+     * 
+     * @Route("/admin/delete/{type}", name="delete_flash", methods={"GET", "POST"})
+     */
+    public function deleteFromGaleries(
+        ImageEntityRepository $imageEntityRepository,
+        ImageManager $imageManager,
+        string $type
+    ) {
+        // On set la page courante en session
+        $this->session->set('route-name', 'delete_' . $type);
+
+        $images = $imageEntityRepository->findByType($type);
+
+        if (isset($_POST['deleteImg'])) {
+
+            $imgToDelete = $imageEntityRepository->findOneBy(
+                [
+                    'id' => $_POST['deleteImg']
+                ]
+            );
+
+            $manager = $this->getDoctrine()->getManager();
+            $manager->remove($imgToDelete);
+            $manager->flush();
+            $imageManager->deleteImage($imgToDelete->getThumbPathName());
+            $imageManager->deleteImage($imgToDelete->getPathName());
+            $this->addFlash('success', "L'image a bien été supprimée !");
+        }
+
+
+        return $this->render(
+            'admin/delete.gallery.html.twig',
+            [
+                'images' => $images,
+                'type' => $type
+            ]
+        );
+    }
+
+    /**
+     * @Route("/tarifs/update", name="foetus_rates_update")
+     */
+    public function updateRates(RateRepository $rateRepository)
+    {
     }
 }

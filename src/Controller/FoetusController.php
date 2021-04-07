@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Repository\ImageEntityRepository;
+use App\Repository\RateRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
@@ -31,9 +32,10 @@ class FoetusController extends AbstractController
      * @Route("/{type}", name="foetus_galeries")
      * 
      */
-    public function galeries(ImageEntityRepository $imageEntityRepository, $type): Response
+    public function galeries(ImageEntityRepository $imageEntityRepository, string $type): Response
     {
-        
+
+        dump($type);
         // Récupère la précédente page visitée
         $previousPage = $this->session->get('route-name');
 
@@ -42,6 +44,19 @@ class FoetusController extends AbstractController
         return $this->render('galerie/galerie.html.twig', [
             'images' => $images,
             'previousPage' => $previousPage
+        ]);
+    }
+
+
+    /**
+     * @Route("/tarifs", name="foetus_rates")
+     */
+    public function showRate(RateRepository $rateRepository) {
+
+        $rates = $rateRepository->findAll();
+
+        return $this->render('rates/show.rates.html.twig', [
+            'rates' => $rates
         ]);
     }
 }

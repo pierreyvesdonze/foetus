@@ -1,0 +1,19 @@
+{% extends 'base.html.twig' %} {% block title %}Foetus{% endblock %} {% block
+body %}
+<h1 class="big-title">Tarifs</h1>
+
+<hr class="hr">
+
+<ul>
+    {% for rate in rates %}
+    <li>
+        {{ rate.text }}
+    </li>
+    <li>
+        {{ rate.title }} : {{ rate.amount }}
+    </li>
+</ul>
+
+
+
+{% endblock %}

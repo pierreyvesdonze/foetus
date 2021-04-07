@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %} {% block title %}Foetus{% endblock %} {% block
+body %} {# {% include 'nav/previous.nav.html.twig' %} #}
+
+<div class="container-flexboxxx">
+  <div class="flexboxxx">
+    {% for image in images %}
+    <div class="itemx">
+      <form method="POST" action="">
+        <input type="hidden" name="deleteImg" value="{{ image.id }}" />
+        <button class="delete-image"
+        onclick=' return confirm("Supprimer cette image ?")'
+        >X</button>
+      </form>
+
+      <img
+        src="{{ asset(image.thumbPathName) }}"
+        alt=""
+        class="foetus-home-img"
+        data-id="{{ image.id }}"
+      />
+    </div>
+    {% endfor %}
+  </div>
+</div>
+
+{% endblock %}

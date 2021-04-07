@@ -7,6 +7,7 @@ use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\String\Slugger\SluggerInterface;
 use Imagine\Gd\Imagine;
 use Imagine\Image\Box;
+use Symfony\Component\Filesystem\Filesystem;
 
 class ImageManager
 {
@@ -45,13 +46,13 @@ class ImageManager
             $fileName = 'assets/images/foetus.' . $file->guessExtension();
             $imageDirectory = $this->getImageDirectory();
 
-        } elseif ($type === 'gallery') {
+        } elseif ($type === 'galerie') {
 
             $fileName =
             'assets/images/galerie/' . uniqid() . '.' . $file->guessExtension();
             $imageDirectory = $this->getGalleryDirectory();
 
-        } elseif ($type === 'flash') {
+        } elseif ($type === 'flashes') {
 
             $fileName =
                 'assets/images/flashes/' . uniqid() . '.' . $file->guessExtension();
@@ -103,7 +104,7 @@ class ImageManager
         // Copie le fichier, le renomme avec la bonne extension et le colle dans le répertoire des miniatures
         $thumbSplit = explode('.', $fileName);
 
-        if ('gallery' === $type) {
+        if ('galerie' === $type) {
             $thumbName = str_replace("/galerie/", "/thumbs/", $thumbSplit[0]) . '.' . $thumbSplit[1];
         } else {
             $thumbName = str_replace("/flashes/", "/thumbs/", $thumbSplit[0]) . '.' . $thumbSplit[1];
@@ -123,5 +124,13 @@ class ImageManager
 
         $photo = $this->imagine->open($thumbName);
         $photo->resize(new Box($width, $height))->save($thumbName);
+    }
+
+    public function deleteImage(string $fileName): void
+    {
+
+        $fileSystem = new Filesystem();
+        $imgDirectory = $this->imageDirectory;
+        $fileSystem->remove($fileName);
     }
 }

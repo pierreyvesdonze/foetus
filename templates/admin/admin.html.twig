@@ -21,7 +21,7 @@ body %}
           >Ma bio</a
         >
       </li>
-      <li><a class="dropdown-item" href="#">Mes tarifs</a></li>
+      <li><a class="dropdown-item" href="{{ path('foetus_rates_update') }}">Mes tarifs</a></li>
       <li><a class="dropdown-item" href="#">Une actu</a></li>
       <li><a class="dropdown-item" href="#">Mes infos</a></li>
     </ul>
@@ -39,15 +39,44 @@ body %}
       <li>
         <a
           class="dropdown-item"
-          href="{{ path('add_gallery', { type: 'gallery' }) }}"
+          href="{{ path('add_gallery', { type: 'galerie' }) }}"
           >Des images dans ma galerie</a
+        >
+      </li>
+      <li>
+        
+        <a
+          class="dropdown-item"
+          href="{{ path('add_flash', { type: 'flashes' }) }}"
+          >Des images dans mes flashs</a
+        >
+      </li>
+      <li><a class="dropdown-item" href="#">Une actu</a></li>
+      <li><a class="dropdown-item" href="#">Mes autres projets</a></li>
+    </ul>
+  </li>
+  <li class="nav-item dropdown">
+    <a
+      class="nav-link dropdown-toggle"
+      data-bs-toggle="dropdown"
+      href="#"
+      role="button"
+      aria-expanded="false"
+      >Supprimer</a
+    >
+    <ul class="dropdown-menu">
+      <li>
+        <a
+          class="dropdown-item"
+          href="{{ path('delete_gallery', { type: 'galerie' }) }}"
+          >Des images de ma galerie</a
         >
       </li>
       <li>
         <a
           class="dropdown-item"
-          href="{{ path('add_flash', { type: 'flash' }) }}"
-          >Des images dans mes flashs</a
+          href="{{ path('delete_flash', { type: 'flash' }) }}"
+          >Des images de mes flashs</a
         >
       </li>
       <li><a class="dropdown-item" href="#">Une actu</a></li>

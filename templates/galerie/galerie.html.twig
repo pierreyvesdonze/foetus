@@ -8,9 +8,6 @@ body %}
   <div class="flexboxxx">
     {% for image in images %}
     <div class="itemx">
-      {# <img src="{{ asset( image.pathName ) | imagine_filter('my_thumb')}}"
-      alt=""
-      class="foetus-home-img"/> #}
       <a href="{{ asset(image.pathName) }}">
         
         <img src="{{ asset( image.thumbPathName  ) }}"
