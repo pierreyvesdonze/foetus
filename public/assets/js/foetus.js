@@ -1,4 +1,3 @@
-
 var appFoetus = {
 
     initFoetus: function () {
@@ -12,7 +11,7 @@ var appFoetus = {
         */
         $('.foetus-enter-link').on('click', appFoetus.enterFoetus);
         $('.main-title-logo').on('click', appFoetus.reload);
-        $('.delete-img-form').on('click', appFoetus.deleteImage);
+        $('.delete-img-form').on('submit', appFoetus.deleteImage);
 
 
     },
@@ -32,7 +31,7 @@ var appFoetus = {
         route = "delete_gallery";
         $.ajax(
             {
-                url: Routing.generate(route, {'type': 'flash'}),
+                url: Routing.generate(route, {'type': 'pouet'}),
                 method: "POST",
             }).done(function (response) {
                 e.preventDefault();
