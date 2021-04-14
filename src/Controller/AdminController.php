@@ -105,13 +105,14 @@ class AdminController extends AbstractController
     }
 
     /**
-     * @Route("/admin/delete/{type}", name="delete_gallery")
+     * @Route("/admin/delete/{type}", name="delete_gallery", methods={"GET", "POST"}, options={"expose"=true})
      * 
-     * @Route("/admin/delete/{type}", name="delete_flash", methods={"GET", "POST"})
+     * @Route("/admin/delete/{type}", name="delete_flash", methods={"GET", "POST"}, options={"expose"=true})
      */
     public function deleteFromGaleries(
         ImageEntityRepository $imageEntityRepository,
         ImageManager $imageManager,
+        Request $request,
         string $type
     ) {
         // On set la page courante en session
@@ -119,20 +120,28 @@ class AdminController extends AbstractController
 
         $images = $imageEntityRepository->findByType($type);
 
-        if (isset($_POST['deleteImg'])) {
+        $route = $request->get('_route');
+        dump($route);
 
-            $imgToDelete = $imageEntityRepository->findOneBy(
-                [
-                    'id' => $_POST['deleteImg']
-                ]
-            );
+        if ($request->isMethod('POST')) {
 
-            $manager = $this->getDoctrine()->getManager();
-            $manager->remove($imgToDelete);
-            $manager->flush();
-            $imageManager->deleteImage($imgToDelete->getThumbPathName());
-            $imageManager->deleteImage($imgToDelete->getPathName());
-            $this->addFlash('success', "L'image a bien été supprimée !");
+            if (isset($_POST['deleteImg'])) {
+
+                $imgToDelete = $imageEntityRepository->findOneBy(
+                    [
+                        'id' => $_POST['deleteImg']
+                    ]
+                );
+
+                $manager = $this->getDoctrine()->getManager();
+                $manager->remove($imgToDelete);
+                $manager->flush();
+                $imageManager->deleteImage($imgToDelete->getThumbPathName());
+                $imageManager->deleteImage($imgToDelete->getPathName());
+                $this->addFlash('success', "L'image a bien été supprimée !");
+            }
+
+            return $this->json('ok');
         }
 
 

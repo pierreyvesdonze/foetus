@@ -1,16 +1,16 @@
 {% extends 'base.html.twig' %} {% block title %}Foetus{% endblock %} {% block
 body %}
 
-{% include 'nav/previous.nav.html.twig' %}
+{% include 'admin/_nav.admin.html.twig' %}
 
-<h1>Modifier ma bio</h1>
+<h1 class="big-title">Modifier ma bio</h1>
 
 <div class="bio-container">
   {{ form_start(form, {'attr': {'novalidate': 'novalidate'}}) }}
   <div class="form-errors">
     {{ form_errors(form) }}
   </div>
-  <hr class="hr">
+
   {{ form_row(form.title) }}
     <hr class="hr">
   {{ form_row(form.text) }}

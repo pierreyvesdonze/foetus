@@ -8,7 +8,15 @@
   transition: ease-in-out 0.5s;
 }
 
+.logo-small {
+  width: 100px;
+}
+
 //NAV
+.admin-nav {
+  height: 14%;
+}
+
 .nav {
   background: var(--background-color);
   width: 100%;
@@ -22,11 +30,11 @@
 
 // Title big
 .big-title {
+  padding-top: 10%;
   text-align: center;
 }
 
 // Home
-
 .home-foetus-container {
   display: flex;
   justify-content: center;
@@ -163,16 +171,24 @@
   }
 }
 
+.flexboxxx-delete {
+  display: flex;
+  flex-wrap: wrap;
+  padding-top: 6%;
+}
+
 .delete-image {
   cursor: pointer !important;
   position: absolute;
-  left: 90%;
-  top: -6%;
+  font-size: 2em;
+  background: red;
+  color: white;
+  border-radius: 20px;
 }
 
-// // BIO
+// BIO
 .bio-container {
-  padding-top: 100px;
+  // padding-top: 100px;
   display: flex;
   justify-content: space-around;
 }

@@ -1,0 +1,97 @@
+<div class="admin-nav">
+  <ul class="nav nav-tabs">
+    <li>
+      <a href="{{ path('foetus_home') }}">
+        <img
+          src="{{ asset('assets/images/foetus-logo.png') }}"
+          class="logo-small"
+          alt="logo"
+        />
+      </a>
+    </li>
+    <!-- > -->
+    <li class="nav-item dropdown">
+      <a
+        class="nav-link dropdown-toggle"
+        data-bs-toggle="dropdown"
+        href="#"
+        role="button"
+        aria-expanded="false"
+        >Modifier</a
+      >
+      <ul class="dropdown-menu">
+        <li>
+          <a
+            class="dropdown-item"
+            href="{{ path('update_bio', { type: 'bio' }) }}"
+            >Ma bio</a
+          >
+        </li>
+        <li>
+          <a class="dropdown-item" href="{{ path('foetus_rates_update') }}"
+            >Mes tarifs</a
+          >
+        </li>
+        <li><a class="dropdown-item" href="#">Une actu</a></li>
+        <li><a class="dropdown-item" href="#">Mes infos</a></li>
+      </ul>
+    </li>
+    <li class="nav-item dropdown">
+      <a
+        class="nav-link dropdown-toggle"
+        data-bs-toggle="dropdown"
+        href="#"
+        role="button"
+        aria-expanded="false"
+        >Ajouter</a
+      >
+      <ul class="dropdown-menu">
+        <li>
+          <a
+            class="dropdown-item"
+            href="{{ path('add_gallery', { type: 'galerie' }) }}"
+            >Des images dans ma galerie</a
+          >
+        </li>
+        <li>
+          <a
+            class="dropdown-item"
+            href="{{ path('add_flash', { type: 'flashes' }) }}"
+            >Des images dans mes flashs</a
+          >
+        </li>
+        <li><a class="dropdown-item" href="#">Une actu</a></li>
+        <li><a class="dropdown-item" href="#">Mes autres projets</a></li>
+      </ul>
+    </li>
+    <li class="nav-item dropdown">
+      <a
+        class="nav-link dropdown-toggle"
+        data-bs-toggle="dropdown"
+        href="#"
+        role="button"
+        aria-expanded="false"
+        >Supprimer</a
+      >
+      <ul class="dropdown-menu">
+        <li>
+          <a
+            class="dropdown-item"
+            href="{{ path('delete_gallery', { type: 'galerie' }) }}"
+            >Des images de ma galerie</a
+          >
+        </li>
+        <li>
+          <a
+            class="dropdown-item"
+            href="{{ path('delete_flash', { type: 'flash' }) }}"
+            >Des images de mes flashs</a
+          >
+        </li>
+        <li><a class="dropdown-item" href="#">Une actu</a></li>
+        <li><a class="dropdown-item" href="#">Mes autres projets</a></li>
+      </ul>
+    </li>
+    <li class="nav-item"></li>
+  </ul>
+</div>

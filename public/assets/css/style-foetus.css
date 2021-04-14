@@ -238,7 +238,7 @@ FLASH MESSAGES / CUSTOM ALERT
 ***********************************
 */
 .flash-container {
-  top: 4%;
+  padding-top: 10%;
   z-index: 2;
   position: fixed;
   display: -webkit-box;
@@ -326,6 +326,14 @@ MEDIA QUERIES
   transition: ease-in-out 0.5s;
 }
 
+.logo-small {
+  width: 100px;
+}
+
+.admin-nav {
+  height: 14%;
+}
+
 .nav {
   background: var(--background-color);
   width: 100%;
@@ -338,6 +346,7 @@ MEDIA QUERIES
 }
 
 .big-title {
+  padding-top: 10%;
   text-align: center;
 }
 
@@ -509,15 +518,25 @@ MEDIA QUERIES
   }
 }
 
+.flexboxxx-delete {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  padding-top: 6%;
+}
+
 .delete-image {
   cursor: pointer !important;
   position: absolute;
-  left: 90%;
-  top: -6%;
+  font-size: 2em;
+  background: red;
+  color: white;
+  border-radius: 20px;
 }
 
 .bio-container {
-  padding-top: 100px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;

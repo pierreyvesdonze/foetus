@@ -34,8 +34,6 @@ class FoetusController extends AbstractController
      */
     public function galeries(ImageEntityRepository $imageEntityRepository, string $type): Response
     {
-
-        dump($type);
         // Récupère la précédente page visitée
         $previousPage = $this->session->get('route-name');
 

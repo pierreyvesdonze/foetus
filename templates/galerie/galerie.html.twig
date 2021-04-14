@@ -5,18 +5,16 @@ body %}
 
 <div class="container-flexboxxx">
 
-  <div class="flexboxxx">
-    {% for image in images %}
-    <div class="itemx">
-      <a href="{{ asset(image.pathName) }}">
-        
-        <img src="{{ asset( image.thumbPathName  ) }}"
-        alt=""
-        class="foetus-home-img"/>
-      </a>
-    </div>
-    {% endfor %}
-  </div>
+	<div class="flexboxxx">
+		{% for image in images %}
+			<div class="itemx">
+				<a href="{{ asset(image.pathName) }}">
+					<img src="{{ asset( image.thumbPathName  ) }}"
+					alt="" class="foetus-home-img"/>
+				</a>
+			</div>
+		{% endfor %}
+	</div>
 </div>
 
 {% endblock %}
