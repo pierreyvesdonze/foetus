@@ -1,47 +1,17 @@
-{% extends 'base.html.twig' %} {% block title %}Foetus{% endblock %} {% block
-body %}
+{% extends 'base.html.twig' %} {% block title %}Foetus{% endblock %} 
 
-    <div class="main-title-logo">
-        <img src="{{ 'assets/images/foetus-logo.png' }}" alt="">
-    </div>
-    <div class="social">
-      <a href="#"
-        ><img src="{{ 'assets/images/instagram.png' }}" alt="Instagram"
-      /></a>
-      <a href="#"
-        ><img src="{{ 'assets/images/facebook.png' }}" alt="Facebook"
-      /></a>
-    </div>
-  </div>
+{% block body %}
 
+<!--***************************MAIN NAV****************************-->
+{% include 'nav/_main.nav.html.twig' %}
 
-    <section class="main-right">
-      <div class="home-foetus-container">
-        <a href="#" class="foetus-enter-link">
+<main class="main-container">
+    <div class="home-foetus-container">
         <img
           src="{{ asset('assets/images/foetus-logo.png') }}"
           alt=""
           class="foetus-home-img"
         />
-        </a>
-      </div>
-
-      <div class="menu">
-        <a href="{{ path('foetus_bio') }}">Bio</a>
-        <a href="{{ path('foetus_galeries', { type: 'flashes' }) }}">Flashs</a>
-        <a href="{{ path('foetus_galeries', { type: 'galerie' }) }}">Galerie</a>
-        <a href="{{ path('foetus_rates') }}">Tarifs</a>
-        <a href="#">Actu</a>
-        <a href="#">Contact</a>
-        {% if app.user %}
-        <a href="{{ path('foetus_admin') }}">Admin</a>
-        <a href="{{ path('logout') }}">Se déconnecter</a>
-        {% else %}
-        <a href="{{ path('login') }}">
-          <span class="ti-lock"></span>
-        </a>
-        {% endif %}
-      </div>
-    </section>
-
+    </div>
+</main>
 {% endblock %}

@@ -23,25 +23,19 @@ class FoetusController extends AbstractController
      */
     public function index(): Response
     {
-        $this->session->set('route-name', '/');
-
         return $this->render('foetus/index.html.twig');
     }
 
     /**
-     * @Route("/{type}", name="foetus_galeries")
+     * @Route("/galeries/{type}", name="foetus_galeries")
      * 
      */
     public function galeries(ImageEntityRepository $imageEntityRepository, string $type): Response
     {
-        // Récupère la précédente page visitée
-        $previousPage = $this->session->get('route-name');
-
         $images = $imageEntityRepository->findByType($type);
 
         return $this->render('galerie/galerie.html.twig', [
             'images' => $images,
-            'previousPage' => $previousPage
         ]);
     }
 

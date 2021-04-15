@@ -1,0 +1,81 @@
+<div class="main-nav">
+  <button
+    class="btn btn-dark main-burger-button"
+    type="button"
+    data-bs-toggle="offcanvas"
+    data-bs-target="#sideMenu"
+    aria-controls="sideMenu"
+  >
+    ☰
+  </button>
+
+  <div
+    class="offcanvas offcanvas-start"
+    tabindex="-1"
+    id="sideMenu"
+    aria-labelledby="sideMenuLabel"
+  >
+    <div class="offcanvas-header">
+      <h5 class="offcanvas-title" id="sideMenuLabel"></h5>
+      <button
+        type="button"
+        class="btn-close text-reset"
+        data-bs-dismiss="offcanvas"
+        aria-label="Close"
+      ></button>
+    </div>
+    <div class="offcanvas-body">
+      <ul>
+        <li>
+          <a href="{{ path('foetus_home') }}"
+            ><span class="ti-home"></span> - Accueil</a
+          >
+        </li>
+        <li>
+          <a href="{{ path('foetus_bio') }}"
+            ><span class="ti-id-badge"></span> - Bio</a
+          >
+        </li>
+        <li>
+          <a href="{{ path('foetus_galeries', { type: 'flashes' }) }}"
+            ><span class="ti-image"></span> - Flashes</a
+          >
+        </li>
+        <li>
+          <a href="{{ path('foetus_galeries', { type: 'galerie' }) }}"
+            ><span class="ti-image"></span> - Galerie</a
+          >
+        </li>
+        <li>
+          <a href="{{ path('foetus_rates') }}"
+            ><span class="ti-money"></span> - Tarifs</a
+          >
+        </li>
+        <li>
+          <a href="#"><span class="ti-info"></span> - Actu</a>
+        </li>
+        <li>
+          <a href="#"><span class="ti-email"></span> - Contact</a>
+        </li>
+        {% if app.user %}
+        <li>
+          <a href="{{ path('foetus_admin') }}"
+            ><span class="ti-settings"></span> - Admin</a
+          >
+        </li>
+        <li>
+          <a href="{{ path('logout') }}"
+            ><span class="ti-lock"></span> - Déconnexion</a
+          >
+        </li>
+        {% else %}
+        <li>
+          <a href="{{ path('login') }}">
+            <span class="ti-unlock"></span> - Connexion
+          </a>
+        </li>
+        {% endif %}
+      </ul>
+    </div>
+  </div>
+</div>

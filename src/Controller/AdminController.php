@@ -29,12 +29,6 @@ class AdminController extends AbstractController
      */
     public function homeAdmin(): Response
     {
-
-        $this->session->set('route-name', 'foetus_admin');
-
-        // On récupère la précédente page visitée
-        $previousPage = $this->session->get('route-name');
-
         return $this->render('admin/admin.html.twig');
     }
 
@@ -115,13 +109,7 @@ class AdminController extends AbstractController
         Request $request,
         string $type
     ) {
-        // On set la page courante en session
-        $this->session->set('route-name', 'delete_' . $type);
-
         $images = $imageEntityRepository->findByType($type);
-
-        $route = $request->get('_route');
-        dump($route);
 
         if ($request->isMethod('POST')) {
 

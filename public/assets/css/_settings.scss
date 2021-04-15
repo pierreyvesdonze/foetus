@@ -19,18 +19,11 @@ GENERAL
 ***********************************
 */
 
-*:focus {
-  outline: none;
-}
-
-*::selection {
-  text-shadow: 1px 1px 0 #4094f3;
-}
-
 html,
 body {
-  //overflow: hidden;
+  overflow: hidden;
   width: 100%;
+  min-height: 100%;
   height: 100vh;
 }
 
@@ -38,53 +31,11 @@ body {
   background: var(--background-color);
 }
 
-.flex {
-  display: flex;
-}
-
-section * {
-  text-align: center;
-}
-
 .center-div {
   width: 70%;
   margin: auto;
 }
 
-.space-evenly {
-  justify-content: space-evenly;
-}
-
-.main-title {
-  margin-top: 0.5em;
-  text-align: center;
-}
-
-.hidden {
-  visibility: hidden;
-}
-
-.visible {
-  visibility: visible;
-}
-
-.hide-height {
-  transform: scaleY(0);
-  height: 0;
-  transition: 0.3s;
-}
-
-a {
-  margin: 0;
-  text-decoration: none;
-}
-
-.no-color-link {
-  // color: inherit !important;
-  &:hover {
-    color: var(--link-color);
-  }
-}
 
 .logged-in {
   color: green !important;
@@ -92,10 +43,6 @@ a {
 
 label {
   color: var(--primary-color);
-}
-
-.center-element {
-  text-align: center;
 }
 
 .hr {
@@ -107,34 +54,8 @@ label {
   background: radial-gradient(circle, rgb(8, 8, 8) 0%, rgba(219, 219, 219, 0.144) 50%, rgba(209, 209, 209, 0) 100%);
 }
 
-.hr-white {
-  border: 0;
-  height: 1px;
-  width: 90%;
-  background: #333;
-  background-image: linear-gradient(to right, rgb(22, 22, 22), rgb(255, 255, 255), rgb(22, 22, 22));
-}
-
-.scrollable-auto {
-  padding: 1em 2em;
-  height: auto;
-  margin-bottom: 1em;
-}
-
-.margin-none {
-  margin: 0;
-}
-
-/*
-***********************************
-FLEXBOX
-***********************************
-*/
-.flexbox {
-  display: flex;
-  .flexbox-column {
-    flex-direction: column;
-  }
+a {
+  text-decoration: none;
 }
 
 /*
@@ -153,11 +74,6 @@ li {
   letter-spacing: 0.2rem !important;
 }
 
-.market-message ul li {
-  font-weight: 200;
-  font-size: 6em important;
-}
-
 .fa,
 .fas {
   color: var(--link-button-color);
@@ -165,6 +81,16 @@ li {
   &:hover {
     color: var(--orange-icon-color);
   }
+}
+
+/*
+***********************************
+BUTTONS
+***********************************
+*/
+
+.main-burger-button {
+  margin: 2% !important;
 }
 
 /*
@@ -177,37 +103,6 @@ li {
   list-style-type: none !important;
 }
 
-.available {
-  color: var(--available-color);
-}
-
-.unvailable {
-  color: var(--unavailable-color);
-}
-
-.collapse {
-  position: fixed;
-  z-index: 200;
-  flex-wrap: wrap;
-  height: 0;
-  opacity: 0;
-  visibility: hidden;
-  justify-content: space-between;
-  transition: ease-in-out 0.3s;
-}
-
-.active {
-  z-index: 250;
-  position: relative !important;
-  flex-wrap: wrap;
-  justify-content: center;
-  height: auto;
-  opacity: 1;
-  transition: ease-in-out 0.3s;
-  &:focus {
-    outline: none;
-  }
-}
 
 /*
 ***********************************
@@ -215,16 +110,7 @@ FLASH MESSAGES / CUSTOM ALERT
 ***********************************
 */
 
-.flash-container {
-  padding-top: 10%;
-  z-index: 2;
-  position: fixed;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  width: 100%;
-}
-
+// z
 .alert {
   height: auto;
   width: 500px;

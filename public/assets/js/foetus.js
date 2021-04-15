@@ -9,7 +9,7 @@ var appFoetus = {
         * L I S T E N E R S
         * *****************************
         */
-        $('.foetus-enter-link').on('click', appFoetus.enterFoetus);
+        //$('.foetus-enter-link').on('click', appFoetus.enterFoetus);
         $('.main-title-logo').on('click', appFoetus.reload);
         $('.delete-img-form').on('submit', appFoetus.deleteImage);
 

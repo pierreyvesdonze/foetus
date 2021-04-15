@@ -1,20 +1,21 @@
 {% extends 'base.html.twig' %} {% block title %}Foetus{% endblock %} {% block
 body %}
 
-{% include 'nav/previous.nav.html.twig' %}
+{% include 'nav/_main.nav.html.twig' %}
 
-<div class="container-flexboxxx">
-
-	<div class="flexboxxx">
-		{% for image in images %}
+<main class="main-container">
+	<div class="container-flexboxxx">
+		<div class="flexboxxx">
+			{% for image in images %}
 			<div class="itemx">
 				<a href="{{ asset(image.pathName) }}">
 					<img src="{{ asset( image.thumbPathName  ) }}"
 					alt="" class="foetus-home-img"/>
 				</a>
 			</div>
-		{% endfor %}
+			{% endfor %}
+		</div>
 	</div>
-</div>
+</main>
 
 {% endblock %}
