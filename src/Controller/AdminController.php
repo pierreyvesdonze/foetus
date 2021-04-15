@@ -3,12 +3,14 @@
 namespace App\Controller;
 
 use App\Entity\ImageEntity;
+use App\Entity\SocialLink;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use App\Form\Type\ImageUploadType;
+use App\Form\Type\SocialType;
 use App\Repository\GalleryRepository;
 use App\Repository\ImageEntityRepository;
 use App\Repository\RateRepository;
@@ -33,9 +35,9 @@ class AdminController extends AbstractController
     }
 
     /**
-     * @Route("/admin/gallery/add/{type}", name="add_gallery")
+     * @Route("/gallery/add/{type}/admin", name="add_gallery")
      * 
-     * @Route("/admin/flash/add/{type}", name="add_flash")
+     * @Route("/flash/add/{type}/admin", name="add_flash")
      */
     public function addToGaleries(
         Request $request,
@@ -99,9 +101,9 @@ class AdminController extends AbstractController
     }
 
     /**
-     * @Route("/admin/delete/{type}", name="delete_gallery", methods={"GET", "POST"}, options={"expose"=true})
+     * @Route("/delete/{type}/admin", name="delete_gallery", methods={"GET", "POST"}, options={"expose"=true})
      * 
-     * @Route("/admin/delete/{type}", name="delete_flash", methods={"GET", "POST"}, options={"expose"=true})
+     * @Route("/delete/{type}/admin", name="delete_flash", methods={"GET", "POST"}, options={"expose"=true})
      */
     public function deleteFromGaleries(
         ImageEntityRepository $imageEntityRepository,
@@ -143,7 +145,47 @@ class AdminController extends AbstractController
     }
 
     /**
-     * @Route("/tarifs/update", name="foetus_rates_update")
+     * @Route("/social/add/{type}/admin", name="foetus_social_add")
+     */
+    public function socialAdd(
+        Request $request,
+        ImageManager $imageManager,
+        $type
+    ) {
+        $form = $this->createForm(SocialType::class);
+        $form->handleRequest($request);
+        $newLink = new SocialLink;
+
+        if ($form->isSubmitted() && $form->isValid()) {
+
+            $title = $form->get('title')->getData();
+            $icon = $form->get('iconPath')->getData();
+
+            dd($icon);
+            $iconName = $imageManager->upload($icon, $type, $newLink);
+
+            $newLink->setTitle($title);
+            $newLink->setIconPath($iconName);
+
+            $manager = $this->getDoctrine()->getManager();
+            $manager->persist($newLink);
+            $manager->flush();
+  
+            $iconName = $imageManager->upload($icon, $type, $newLink);
+
+
+
+            //$imageManager->resize($photoFileName);
+
+            $this->addFlash('succes', 'Image uploadée');
+        }
+        return $this->render('social/social.add.html.twig', [
+            'form' => $form->createView()
+        ]);
+    }
+
+    /**
+     * @Route("/tarifs/update/admin", name="foetus_rates_update")
      */
     public function updateRates(RateRepository $rateRepository)
     {

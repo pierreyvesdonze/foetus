@@ -20,7 +20,7 @@ class ImageUploadType extends AbstractType
             'mapped'   => false,
             'required' => false,
             'attr'     => [
-                'class' => 'img-gallery'
+                'class' => 'add-img-gallery',
             ],
             'constraints' => [
                 new File([
@@ -37,9 +37,9 @@ class ImageUploadType extends AbstractType
             'save',
             SubmitType::class,
             [
-                "label" => "Enregistrer",
+                "label" => "Envoyer",
                 'attr' => [
-                    'class' => 'button',
+                    'class' => 'custom-button',
                 ],
             ]
         );

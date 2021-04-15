@@ -35,11 +35,17 @@ class ImageManager
         $this->imagine = new Imagine();
     }
 
-    public function upload(UploadedFile $file, $type)
+    public function upload(UploadedFile $file, $type, $entity)
     {
 
         // Répertoire de destination des images
         $imageDirectory = null;
+
+    //    dd($entity);
+        if($type === 'image') {
+            $fileName = $entity->getTitle() . $file->guessExtension();
+            $imageDirectory = $this->getImageDirectory();
+        }
 
         if ($type === "bio") {
             

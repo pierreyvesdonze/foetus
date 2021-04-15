@@ -12,7 +12,15 @@ var appFoetus = {
         //$('.foetus-enter-link').on('click', appFoetus.enterFoetus);
         $('.main-title-logo').on('click', appFoetus.reload);
         $('.delete-img-form').on('submit', appFoetus.deleteImage);
+        //$('.admin-link').on('click', appFoetus.changeBodyColor);
 
+        // Constantes
+        appFoetus.currentTheme = localStorage.getItem('theme') ? localStorage.getItem('theme') : null;
+
+        // Application du thème courant
+        if (appFoetus.currentTheme) {
+            document.documentElement.setAttribute('data-theme', appFoetus.currentTheme);
+        }
 
     },
 
@@ -46,7 +54,20 @@ var appFoetus = {
                 console.log(textStatus);
                 console.log(error);
             });
-    }
+    },
+
+    // changeBodyColor: function (evt) {
+    //     console.log(appFoetus.currentTheme)
+    //     //$('.hiddenCheckbox').triggerHandler("click");
+    //     if (evt.target.checked) {
+    //         document.documentElement.setAttribute('data-theme', 'admin');
+    //         localStorage.setItem('theme', 'admin');
+    //     }
+    //     else {
+    //         document.documentElement.setAttribute('data-theme', 'home');
+    //         localStorage.setItem('theme', 'home');
+    //     }
+    // }
 }
 
 // AppWitch Loading

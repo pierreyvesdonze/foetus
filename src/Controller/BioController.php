@@ -27,10 +27,6 @@ class BioController extends AbstractController
      */
     public function bio(BioRepository $bioRepository, Request $request): Response
     {
-
-        // On récupère la précédente page visitée
-        $previousPage = $request->headers->get('referer');
-
         // Il n'y aura qu'une seule Bio, on la recherche donc simplement par son id : 1
         $bio = $bioRepository->findOneBy([
             'id' => 1
@@ -38,7 +34,6 @@ class BioController extends AbstractController
 
         return $this->render('bio/bio.html.twig', [
             'bio' => $bio,
-            'previousPage' => $previousPage
         ]);
     }
 
@@ -51,9 +46,6 @@ class BioController extends AbstractController
         ImageManager $imageManager,
         $type
     ) {
-        // On récupère la précédente page visitée
-        $previousPage = $request->headers->get('referer');
-
         $bio = $bioRepository->findOneBy([
             'id' => 1
         ]);
@@ -65,7 +57,7 @@ class BioController extends AbstractController
 
             $photo = $form->get('photoPath')->getData();
             if ($photo) {
-                $photoFileName = $imageManager->upload($photo, $type);
+                $photoFileName = $imageManager->upload($photo, $type, null);
                 $imageManager->resize($photoFileName);
 
                 $bio->setPhotoPath($photoFileName);
@@ -73,11 +65,12 @@ class BioController extends AbstractController
 
             $manager = $this->getDoctrine()->getManager();
             $manager->flush();
+
+            $this->addFlash('succes', 'Image uploadée');
         }
 
         return $this->render('bio/update.html.twig', [
-            'form' => $form->createView(),
-            'previousPage' => $previousPage
+            'form' => $form->createView()
         ]);
     }
 }

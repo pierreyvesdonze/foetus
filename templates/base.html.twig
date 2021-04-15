@@ -31,11 +31,12 @@
     <title>{% block title %} Foetus {% endblock %}</title>
   </head>
 
-  <body>
+  <body class="body" data-theme="home">
+
     {# Flash messages #}
     <div class="flash-container">
-      {% for label, messages in app.flashes %} {% for message in messages %} {#
-      <button class="close" data-dismiss="alert">&times;</button> #}
+      {% for label, messages in app.flashes %} {% for message in messages %} 
+     <!-- <button class="close" data-dismiss="alert">&times;</button>  -->
       <div class="alert alert-{{ label }}">
         {{ message }}
       </div>
@@ -44,7 +45,8 @@
 
 
     <!--***************************BODY****************************-->
-    {% block body %} {% endblock %}
+      {% block body %} 
+      {% endblock %}
 
 
     <!--***************************FOOTER****************************-->

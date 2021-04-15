@@ -108,7 +108,6 @@ GALLERY / FLASHES
 
 // Add img form
 #add-file-form {
-
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -212,21 +211,49 @@ GALLERY / FLASHES
 
 // BIO
 .bio-container {
-  // padding-top: 100px;
+  margin-top: 8em;
   display: flex;
   justify-content: space-around;
+  @include xs {
+    flex-direction: column-reverse;
+    margin-top: 0;
+  }
+
+  @include sm {
+    flex-direction: column-reverse;
+    margin-top: 0;
+  }
 }
 
 .bio-text {
   width: 30%;
+  text-align: justify;
+
+  @include xs {
+    width: 100%;
+    margin-bottom: 5em;
+    padding: 0 1em;
+  }
+
+  @include sm {
+    width: 100%;
+    margin-bottom: 5em;
+    padding: 0 1em;
+  }
 }
 
 .bio-text p {
   font-size: 1.5em;
 }
+.foetus-portrait {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 3em;
+}
 
 .foetus-portrait img {
   width: 400px !important;
+  border-radius: 20px;
 }
 
 /*
@@ -246,5 +273,5 @@ FOOTER
 
 .social a img {
   width: 30px;
-  margin: 0 15px;
+  margin: 0 9px;
 }

@@ -15,6 +15,14 @@ COLORS
   );
 }
 
+[data-theme="admin"] {
+  --background-color: linear-gradient(
+    90deg,
+    rgb(255, 255, 255) 0%,
+    rgb(198, 213, 240) 100%
+  );
+}
+
 /*
 ***********************************
 GENERAL
@@ -28,8 +36,18 @@ body {
   height: 100vh;
 }
 
-body {
+.body,
+.body-2 {
+  -webkit-transition: ease-in-out .4s;
+  transition: ease-in-out .4s;
+}
+
+.body {
   background: var(--background-color);
+}
+
+.body-2 {
+  background-color: var(--background-color-2);
 }
 
 .center-div {
@@ -416,6 +434,7 @@ GALLERY / FLASHES
 }
 
 .bio-container {
+  margin-top: 8em;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -423,16 +442,64 @@ GALLERY / FLASHES
       justify-content: space-around;
 }
 
+@media (min-width: 300px) and (max-width: 576px) {
+  .bio-container {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: reverse;
+        -ms-flex-direction: column-reverse;
+            flex-direction: column-reverse;
+    margin-top: 0;
+  }
+}
+
+@media (min-width: 576px) and (max-width: 768px) {
+  .bio-container {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: reverse;
+        -ms-flex-direction: column-reverse;
+            flex-direction: column-reverse;
+    margin-top: 0;
+  }
+}
+
 .bio-text {
   width: 30%;
+  text-align: justify;
+}
+
+@media (min-width: 300px) and (max-width: 576px) {
+  .bio-text {
+    width: 100%;
+    margin-bottom: 5em;
+    padding: 0 1em;
+  }
+}
+
+@media (min-width: 576px) and (max-width: 768px) {
+  .bio-text {
+    width: 100%;
+    margin-bottom: 5em;
+    padding: 0 1em;
+  }
 }
 
 .bio-text p {
   font-size: 1.5em;
 }
 
+.foetus-portrait {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin-bottom: 3em;
+}
+
 .foetus-portrait img {
   width: 400px !important;
+  border-radius: 20px;
 }
 
 /*
@@ -456,6 +523,6 @@ FOOTER
 
 .social a img {
   width: 30px;
-  margin: 0 15px;
+  margin: 0 9px;
 }
 /*# sourceMappingURL=style-foetus.css.map */

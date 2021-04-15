@@ -52,15 +52,15 @@
           >
         </li>
         <li>
-          <a href="#"><span class="ti-info"></span> - Actu</a>
+          <a href="#" class="admin-link">
+            <span class="ti-info"></span> - Actu</a>
         </li>
         <li>
           <a href="#"><span class="ti-email"></span> - Contact</a>
         </li>
         {% if app.user %}
         <li>
-          <a href="{{ path('foetus_admin') }}"
-            ><span class="ti-settings"></span> - Admin</a
+          <a href="{{ path('foetus_admin') }}" class="admin-link"><span class="ti-settings"></span> - Admin</a
           >
         </li>
         <li>

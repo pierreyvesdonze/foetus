@@ -27,13 +27,14 @@
     <div class="offcanvas-body">
 		<ul>
 			<li>
-				<a href="{{ path('foetus_home') }}"><span class="ti-home"></span> - Accueil</a>
+				<a href="{{ path('foetus_home') }}" class="home-link">
+          <span class="ti-home"></span> - Accueil</a>
 			</li>
 		</ul>
 		<hr class="hr">
       <div class="dropdown mt-3">
         <button
-          class="btn btn-secondary dropdown-toggle"
+          class="custom-button-2 dropdown-toggle"
           type="button"
           id="modify"
           data-bs-toggle="dropdown"
@@ -60,7 +61,7 @@
       </div>
       <div class="dropdown mt-3">
         <button
-          class="btn btn-secondary dropdown-toggle"
+          class="custom-button-2 dropdown-toggle"
           type="button"
           id="add-something"
           data-bs-toggle="dropdown"
@@ -82,13 +83,20 @@
               >Des images dans mes flashs</a
             >
           </li>
+           <li>
+            <a
+              class="dropdown-item"
+              href="{{ path('foetus_social_add', { type: 'image' }) }}"
+              >Un réseau social</a
+            >
+          </li>
           <li><a class="dropdown-item" href="#">Une actu</a></li>
           <li><a class="dropdown-item" href="#">Mes autres projets</a></li>
         </ul>
       </div>
       <div class="dropdown mt-3">
         <button
-          class="btn btn-secondary dropdown-toggle"
+          class="custom-button-2 dropdown-toggle"
           type="button"
           id="delete-something"
           data-bs-toggle="dropdown"
@@ -111,7 +119,6 @@
             >
           </li>
           <li><a class="dropdown-item" href="#">Une actu</a></li>
-          <li><a class="dropdown-item" href="#">Mes autres projets</a></li>
         </ul>
       </div>
     </div>
