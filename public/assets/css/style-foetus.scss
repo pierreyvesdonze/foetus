@@ -96,6 +96,35 @@ HOME
   text-shadow: 4px 4px 4px #72046b8c;
 }
 
+/*
+***********************************
+GALLERY / FLASHES
+***********************************
+*/
+
+// Add img form
+#add-file-form {
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.add-img-gallery {
+  opacity: 0;
+}
+
+#add-file-form label {
+  display: block;
+  position: relative;
+  display: flex;
+  transition: transform 0.2s ease-out;
+  width: 500px;
+  height: 280px;
+  background: url("../images/upload.png") center no-repeat;
+}
+
 // Form Delete Img
 .delete-img-form {
   position: relative;
