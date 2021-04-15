@@ -38,6 +38,10 @@ LISTS
   justify-content: flex-end;
 }
 
+.offcanvas {
+  background: rgba(255, 255, 255, 0.7);
+}
+
 .nav {
   background: var(--background-color);
   width: 100%;

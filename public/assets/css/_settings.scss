@@ -6,6 +6,8 @@ COLORS
 :root {
   --primary-color: #222222;
   --secondary-color: #ffffff;
+  --tertiary-color: #d438d4;
+  --tertiary-hover-color: #7a1f7a;
   --background-color: linear-gradient(
     90deg,
     rgb(255, 255, 255) 0%,
@@ -60,6 +62,13 @@ label {
 
 a {
   text-decoration: none;
+  color: var(--tertiary-color) !important;
+  font-weight: 900;
+  text-shadow: 2px 2px 5px var(--tertiary-color);
+  &:hover {
+    color: var(--tertiary-hover-color);
+    text-shadow: 2px 2px 5px var(--tertiary-hover-color);
+  }
 }
 
 /*
@@ -97,22 +106,37 @@ BUTTONS
   margin: 2% !important;
 }
 
-.custom-button {
+.custom-button,
+.custom-button-2 {
   font-size: 2.5em;
-  background: var(--primary-color);
-  color: var(--secondary-color);
   border-radius: 20px;
   padding: 0.5em;
   display: flex;
   align-items: center;
   margin-top: 1.5em;
   transition: ease-in-out 0.2s;
+}
+
+.custom-button {
+  background: var(--primary-color);
+  color: var(--secondary-color);
   &:hover {
     background: var(--secondary-color);
     color: var(--primary-color);
     box-shadow: 0px 0px 4px 5px rgba(0, 0, 0, 0.75);
     -webkit-box-shadow: 0px 0px 4px 5px rgba(0, 0, 0, 0.75);
     -moz-box-shadow: 0px 0px 4px 5px rgba(0, 0, 0, 0.75);
+  }
+}
+
+.custom-button-2 {
+  color: var(--primary-color);
+  &:hover {
+    background: var(--tertiary-color);
+    color: var(--secondary-color);
+    box-shadow: 0px 0px 4px 5px var(--tertiary-hover-color);
+    -webkit-box-shadow: 0px 0px 4px 5px var(--tertiary-hover-color);
+    -moz-box-shadow: 0px 0px 4px 5px var(--tertiary-hover-color);
   }
 }
 
