@@ -1,36 +1,53 @@
-{% extends "base.html.twig" %}
+{% extends "base.html.twig" %} {% block title %}Log in! {% endblock %} {% block
+body %}
 
-{% block title %}Log in!
-{% endblock %}
+<!--***************************MAIN NAV****************************-->
+{% include 'nav/_main.nav.html.twig' %}
 
-{% block body %}
+<div class="main-container">
+  <div class="login-div">
+    <form method="post" class="login-form">
+      {% if error %}
+      <div class="alert alert-danger">{{ "pouet" }}</div>
+      {% endif %}
+      <h1 class="h3 mb-3 font-weight-normal">Se connecter</h1>
+      <label for="inputEmail">Email</label>
+      <input
+        type="email"
+        value="{{ last_username }}"
+        name="email"
+        id="inputEmail"
+        class="form-control"
+        required="required"
+        autofocus="autofocus"
+      />
+      <label for="inputPassword">Mot de passe</label>
+      <input
+        type="password"
+        name="password"
+        id="inputPassword"
+        class="form-control"
+        required="required"
+      />
 
-		<div class="login-div">
-			<form method="post" class="login-form">
-				{% if error %}
-					<div class="alert alert-danger">{{ 'pouet' }}</div>
-				{% endif %}
-				<h1 class="h3 mb-3 font-weight-normal">Se connecter</h1>
-				<label for="inputEmail">Email</label>
-				<input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" required="required" autofocus="autofocus">
-				<label for="inputPassword">Mot de passe</label>
-				<input type="password" name="password" id="inputPassword" class="form-control" required="required">
+      <input
+        type="hidden"
+        name="_csrf_token"
+        value="{{ csrf_token('authenticate') }}"
+      />
 
-				<input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+      <div class="checkbox mb-3">
+        <label>
+          <input type="checkbox" name="_remember_me" />
+          Se souvenir de moi
+        </label>
+      </div>
 
-				<div class="checkbox mb-3">
-					<label>
-						<input type="checkbox" name="_remember_me">
-						Se souvenir de moi
-					</label>
-				</div>
+      <div class="center-element">
+        <button class="custom-button" type="submit">Se connecter</button>
+      </div>
+    </form>
+  </div>
+</div>
 
-				<div class="center-element">
-					<button class="button-save" type="submit">
-						Se connecter
-					</button>
-				</div>
-			</form>
-		</div>
-	
 {% endblock %}

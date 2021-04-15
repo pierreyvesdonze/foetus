@@ -53,7 +53,7 @@ class BioType extends AbstractType
             [
                 "label" => "Enregistrer",
                 'attr' => [
-                    'class' => 'button',
+                    'class' => 'custom-button',
                 ],
             ]
         );

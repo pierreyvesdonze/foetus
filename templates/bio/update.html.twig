@@ -5,22 +5,24 @@ body %}
 
 <h1 class="big-title">Modifier ma bio</h1>
 
-<div class="bio-container">
-  {{ form_start(form, {'attr': {'novalidate': 'novalidate'}}) }}
-  <div class="form-errors">
-    {{ form_errors(form) }}
-  </div>
+<div class="main-container">
 
-  {{ form_row(form.title) }}
+  <div class="bio-container">
+    {{ form_start(form, {'attr': {'novalidate': 'novalidate'}}) }}
+    <div class="form-errors">
+      {{ form_errors(form) }}
+    </div>
+    
+    {{ form_row(form.title) }}
     <hr class="hr">
-  {{ form_row(form.text) }}
+    {{ form_row(form.text) }}
     <hr class="hr">
-  {{ form_row(form.photoPath) }}
+    {{ form_row(form.photoPath) }}
     <hr class="hr">
-    <span class="button">
       {{ form_row(form.save) }}
-    </span>
-  {{ form_end(form) }}
+    {{ form_end(form) }}
+  </div>
 </div>
-
-{% endblock %}
+  
+  {% endblock %}
+  

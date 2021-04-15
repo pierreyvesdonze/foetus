@@ -15,12 +15,12 @@ var appFoetus = {
         //$('.admin-link').on('click', appFoetus.changeBodyColor);
 
         // Constantes
-        appFoetus.currentTheme = localStorage.getItem('theme') ? localStorage.getItem('theme') : null;
+        // appFoetus.currentTheme = localStorage.getItem('theme') ? localStorage.getItem('theme') : null;
 
-        // Application du thème courant
-        if (appFoetus.currentTheme) {
-            document.documentElement.setAttribute('data-theme', appFoetus.currentTheme);
-        }
+        // // Application du thème courant
+        // if (appFoetus.currentTheme) {
+        //     document.documentElement.setAttribute('data-theme', appFoetus.currentTheme);
+        // }
 
     },
 
@@ -28,12 +28,12 @@ var appFoetus = {
         location.reload()
     },
 
-    enterFoetus: function () {
-        $('.foetus-home-img').fadeOut('slow');
-        $('.home-foetus-container').fadeOut('slow');
-        $('.social').css('top', '2%')
-        $('.main-title-logo').css('top', '2%')
-    },
+    // enterFoetus: function () {
+    //     $('.foetus-home-img').fadeOut('slow');
+    //     $('.home-foetus-container').fadeOut('slow');
+    //     $('.social').css('top', '2%')
+    //     $('.main-title-logo').css('top', '2%')
+    // },
 
     deleteImage: function (e) {
         route = "delete_gallery";

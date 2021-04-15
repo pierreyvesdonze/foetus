@@ -31,7 +31,13 @@
     <title>{% block title %} Foetus {% endblock %}</title>
   </head>
 
-  <body class="body" data-theme="home">
+  <body class=
+  {% if app.user %}
+  "body-2"
+  {% else %}
+  "body"
+  {% endif %}
+  >
 
     {# Flash messages #}
     <div class="flash-container">
