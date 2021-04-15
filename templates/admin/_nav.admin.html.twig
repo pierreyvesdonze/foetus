@@ -1,0 +1,119 @@
+<div class="admin-nav">
+  <button
+    class="btn btn-dark main-burger-button"
+    type="button"
+    data-bs-toggle="offcanvas"
+    data-bs-target="#sideMenu"
+    aria-controls="sideMenu"
+  >
+    ☰
+  </button>
+
+  <div
+    class="offcanvas offcanvas-end"
+    tabindex="-1"
+    id="sideMenu"
+    aria-labelledby="sideMenuLabel"
+  >
+    <div class="offcanvas-header">
+      <h3 class="offcanvas-title" id="sideMenuLabel">ADMIN</h3>
+      <button
+        type="button"
+        class="btn-close text-reset"
+        data-bs-dismiss="offcanvas"
+        aria-label="Close"
+      ></button>
+    </div>
+    <div class="offcanvas-body">
+		<ul>
+			<li>
+				<a href="{{ path('foetus_home') }}"><span class="ti-home"></span> - Accueil</a>
+			</li>
+		</ul>
+		<hr class="hr">
+      <div class="dropdown mt-3">
+        <button
+          class="btn btn-secondary dropdown-toggle"
+          type="button"
+          id="modify"
+          data-bs-toggle="dropdown"
+        >
+          Modifier
+        </button>
+    
+        <ul class="dropdown-menu" aria-labelledby="modify">
+          <li>
+            <a
+              class="dropdown-item"
+              href="{{ path('update_bio', { type: 'bio' }) }}"
+              >Ma bio</a
+            >
+          </li>
+          <li>
+            <a class="dropdown-item" href="{{ path('foetus_rates_update') }}"
+              >Mes tarifs</a
+            >
+          </li>
+          <li><a class="dropdown-item" href="#">Une actu</a></li>
+          <li><a class="dropdown-item" href="#">Mes infos</a></li>
+        </ul>
+      </div>
+      <div class="dropdown mt-3">
+        <button
+          class="btn btn-secondary dropdown-toggle"
+          type="button"
+          id="add-something"
+          data-bs-toggle="dropdown"
+        >
+          Ajouter
+        </button>
+        <ul class="dropdown-menu" aria-labelledby="add-something">
+          <li>
+            <a
+              class="dropdown-item"
+              href="{{ path('add_gallery', { type: 'galerie' }) }}"
+              >Des images dans ma galerie</a
+            >
+          </li>
+          <li>
+            <a
+              class="dropdown-item"
+              href="{{ path('add_flash', { type: 'flashes' }) }}"
+              >Des images dans mes flashs</a
+            >
+          </li>
+          <li><a class="dropdown-item" href="#">Une actu</a></li>
+          <li><a class="dropdown-item" href="#">Mes autres projets</a></li>
+        </ul>
+      </div>
+      <div class="dropdown mt-3">
+        <button
+          class="btn btn-secondary dropdown-toggle"
+          type="button"
+          id="delete-something"
+          data-bs-toggle="dropdown"
+        >
+          Supprimer
+        </button>
+        <ul class="dropdown-menu" aria-labelledby="delete-something">
+          <li>
+            <a
+              class="dropdown-item"
+              href="{{ path('delete_gallery', { type: 'galerie' }) }}"
+              >Des images de ma galerie</a
+            >
+          </li>
+          <li>
+            <a
+              class="dropdown-item"
+              href="{{ path('delete_flash', { type: 'flashes' }) }}"
+              >Des images de mes flashs</a
+            >
+          </li>
+          <li><a class="dropdown-item" href="#">Une actu</a></li>
+          <li><a class="dropdown-item" href="#">Mes autres projets</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>

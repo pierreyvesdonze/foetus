@@ -1,31 +1,80 @@
+@import "./settings";
 
-
-.main-right {
+// MAIN CONTAINER
+.main-container {
   display: flex;
   flex-direction: column;
+  height: 76%;
+  overflow: auto;
 }
 
+/*
+***********************************
+LOGO
+***********************************
+*/
 .main-title-logo {
-  position: absolute !important;
   cursor: grabbing;
-  color: #e940de;
-  padding: 1%;
-  font-size: 5rem !important;
-  text-shadow: 4px 4px 2px #72046b8c;
+  transition: ease-in-out 0.5s;
 }
 
+.logo-small {
+  width: 100px;
+}
+
+/*
+***********************************
+LISTS
+***********************************
+*/
+// MAIN NAV
+.main-nav,
+.admin-nav {
+  display: flex;
+  height: 10%;
+}
+
+.admin-nav {
+  justify-content: flex-end;
+}
+
+.nav {
+  background: var(--background-color);
+  width: 100%;
+  position: fixed;
+  z-index: 200;
+}
+
+.main-title-logo img {
+  width: 240px;
+}
+
+// Title big
+.big-title {
+  text-align: center;
+}
+
+/*
+***********************************
+HOME
+***********************************
+*/
 .home-foetus-container {
   display: flex;
   justify-content: center;
+  align-items: center;
   overflow: hidden;
   position: relative;
+  width: 100%;
 }
 
 .home-foetus-container img {
-  height: 100vh;
-  box-shadow: 1px 1px 9px 4px rgba(0, 0, 0, 0.75);
-  -webkit-box-shadow: 1px 1px 9px 4px rgba(0, 0, 0, 0.75);
-  -moz-box-shadow: 0px -2px 9px 4px rgba(0, 0, 0, 0.75);
+  height: 46vh;
+  transition: ease-in-out 0.5s;
+}
+
+.home-foetus-container img:hover {
+  filter: drop-shadow(0 0 0.75rem #d84bd8);
 }
 
 .enter-foetus {
@@ -43,47 +92,126 @@
 }
 
 .enter-foetus a {
-  color: black !important;
+  color: #380234 !important;
+  text-shadow: 4px 4px 4px #72046b8c;
 }
 
-//MENU
-.menu {
-  background: rgb(251, 250, 237);
-  background: linear-gradient(
-    90deg,
-    rgb(255, 255, 255) 0%,
-    rgba(240, 198, 228, 1) 100%
-  );
-  height: 100vh;
-  width: 100%;
-  // position: absolute;
-  transition: ease-in-out 0.2s;
+// Form Delete Img
+.delete-img-form {
+  position: relative;
+}
+
+// Flexbox wrapper
+.flexboxxx {
+  padding: 10%;
+  column-count: 5;
+  column-gap: 1em;
+  // box-shadow: 0px 1px 7px 5px rgba(0, 0, 0, 0.75);
+  // -webkit-box-shadow: 0px 1px 7px 5px rgba(0, 0, 0, 0.75);
+  // -moz-box-shadow: 0px 1px 7px 5px rgba(0, 0, 0, 0.75);
+
+  &:hover {
+    img {
+      opacity: 0.28;
+    }
+  }
+
+  // Each flex item
+  .itemx {
+    position: relative;
+    img {
+      width: 100%;
+      display: block;
+      transition: all 0.8s;
+    }
+    .title {
+      position: absolute;
+      top: 48%;
+      left: 0;
+      width: 100%;
+      padding: 0 3%;
+      font-size: 30px;
+      text-shadow: 0 0 8px rgba(0, 0, 0, 0.42);
+    }
+    &:hover {
+      img {
+        opacity: 1;
+      }
+    }
+  }
+
+  @include xs {
+    column-count: 1;
+    column-gap: 1em;
+    margin: 6%;
+  }
+
+  @include sm {
+    column-count: 2;
+    column-gap: 5em;
+  }
+
+  @include md {
+    column-count: 3;
+    column-gap: 3em;
+  }
+
+  @include lg {
+    column-count: 4;
+    column-gap: 2em;
+  }
+}
+
+.flexboxxx-delete {
   display: flex;
-  flex-direction: column;
-  justify-content: center;
-  left: 33%;
+  flex-wrap: wrap;
+  padding-top: 6%;
 }
 
-.menu a {
-  font-size: 4em !important;
-  transition: ease-in 0.3s;
-}
-
-.menu a:hover {
-  font-size: 5em !important;
-}
-
-//SOCIAL
-.social {
+.delete-image {
+  cursor: pointer !important;
   position: absolute;
-  top: -20%;
-  right: 1%;
-  width: 100px;
+  font-size: 2em;
+  background: red;
+  color: white;
+  border-radius: 20px;
+}
+
+// BIO
+.bio-container {
+  // padding-top: 100px;
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-around;
+}
+
+.bio-text {
+  width: 30%;
+}
+
+.bio-text p {
+  font-size: 1.5em;
+}
+
+.foetus-portrait img {
+  width: 400px !important;
+}
+
+/*
+***********************************
+FOOTER
+***********************************
+*/
+
+.social {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding: 2% 0;
+  height: 10%;
   transition: ease-in-out 0.5s;
 }
 
 .social a img {
   width: 30px;
+  margin: 0 15px;
 }

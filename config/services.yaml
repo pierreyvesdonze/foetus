@@ -4,7 +4,8 @@
 # Put parameters here that don't need to change on each machine where the app is deployed
 # https://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
 parameters:
-
+    brochures_directory: '%kernel.project_dir%/public/assets/images'
+    
 services:
     # default configuration for services in *this* file
     _defaults:
@@ -29,3 +30,9 @@ services:
 
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones
+
+    App\Service\ImageManager:
+        arguments:
+            $imageDirectory: '%kernel.project_dir%/public/assets/images'
+            $galleryDirectory: '%kernel.project_dir%/public/assets/images/galerie'
+            $flashDirectory: '%kernel.project_dir%/public/assets/images/flashes'

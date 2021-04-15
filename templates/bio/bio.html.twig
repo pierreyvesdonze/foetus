@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %} {% block title %}Foetus{% endblock %} {% block
+body %}
+
+<!--***************************MAIN NAV****************************-->
+{% include 'nav/_main.nav.html.twig' %}
+
+<div class="main-container">
+
+<h1 class="big-title">{{ bio.title }}</h1>
+
+<hr class="hr" />
+
+  <div class="bio-container">
+    <div class="bio-text">
+      {{ bio.text | raw }}
+    </div>
+    <div class="foetus-portrait">
+      <img src="{{ asset(bio.photoPath) }}" alt="" class="foetus-home-img" />
+    </div>
+  </div>
+</div>
+
+{% endblock %}
