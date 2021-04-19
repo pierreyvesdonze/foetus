@@ -196,6 +196,7 @@ GALLERY / FLASHES
 
 .flexboxxx-delete {
   display: flex;
+  justify-content: center;
   flex-wrap: wrap;
   padding-top: 6%;
 }
@@ -258,7 +259,7 @@ GALLERY / FLASHES
 
 /*
 ***********************************
-FOOTER
+SOCIAL
 ***********************************
 */
 
@@ -274,4 +275,23 @@ FOOTER
 .social a img {
   width: 30px;
   margin: 0 9px;
+}
+
+.social-img-show {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.social-img {
+  width: 120px;
+}
+
+/*
+***********************************
+CONTROL
+***********************************
+*/
+.control-a {
+  display: flex;
 }

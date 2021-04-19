@@ -412,6 +412,9 @@ GALLERY / FLASHES
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
   padding-top: 6%;
@@ -497,7 +500,7 @@ GALLERY / FLASHES
 
 /*
 ***********************************
-FOOTER
+SOCIAL
 ***********************************
 */
 .social {
@@ -517,5 +520,33 @@ FOOTER
 .social a img {
   width: 30px;
   margin: 0 9px;
+}
+
+.social-img-show {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.social-img {
+  width: 120px;
+}
+
+/*
+***********************************
+CONTROL
+***********************************
+*/
+.control-a {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
 }
 /*# sourceMappingURL=style-foetus.css.map */
