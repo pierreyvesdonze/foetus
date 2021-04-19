@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %} {% block title %}Ajouter un lien{% endblock %} {%
+block body %} {% include 'admin/_nav.admin.html.twig' %}
+
+<div class="main-container">
+  <div class="container-flexboxxx">
+    <div class="flexboxxx-delete">
+      {% for socialLink in socialLinks %}
+      <div class="itemx">
+        {# UPDATE #}
+        <a href="{{ path('foetus_social_update', { id: socialLink.id }) }}">
+          <span class="ti-settings custom-button"></span>
+        </a>
+
+        {# DELETE #}
+
+        <a
+          href="{{ path('delete_social', { id: socialLink.id }) }}"
+          class="custom-button"
+          onclick=' return confirm("Supprimer ce lien ?")'
+          data-id="{{ socialLink.id }}"
+        >
+          ✗
+        </a>
+        <img
+          src="{{ asset(socialLink.iconPath) }}"
+          alt="{{ socialLink.title }}"
+          class="foetus-home-img"
+        />
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+
+{% endblock %}

@@ -57,7 +57,7 @@ class BioController extends AbstractController
 
             $photo = $form->get('photoPath')->getData();
             if ($photo) {
-                $photoFileName = $imageManager->upload($photo, $type, null);
+                $photoFileName = $imageManager->upload($photo, $type);
                 $imageManager->resize($photoFileName);
 
                 $bio->setPhotoPath($photoFileName);

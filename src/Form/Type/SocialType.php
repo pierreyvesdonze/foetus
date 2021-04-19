@@ -24,8 +24,16 @@ class SocialType extends AbstractType
             ]);
 
         $builder
+            ->add('linkPath', TextType::class, [
+                'label' => 'Lien vers le réseau social',
+                'attr' => [
+                    'class' => 'input-link'
+                ]
+            ]);
+
+        $builder
             ->add('iconPath', FileType::class, [
-                'label'    => 'Icône',
+                'label'    => 'Icône à charger',
                 'multiple' => false,
                 'mapped'   => false,
                 'required' => false,
@@ -41,7 +49,6 @@ class SocialType extends AbstractType
                         ],
                     ])
                 ],
-
             ]);
 
         $builder->add(

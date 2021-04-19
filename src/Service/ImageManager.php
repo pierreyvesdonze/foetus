@@ -35,29 +35,26 @@ class ImageManager
         $this->imagine = new Imagine();
     }
 
-    public function upload(UploadedFile $file, $type, $entity)
+    public function upload(UploadedFile $file, $type)
     {
 
         // Répertoire de destination des images
         $imageDirectory = null;
 
-    //    dd($entity);
-        if($type === 'image') {
-            $fileName = $entity->getTitle() . $file->guessExtension();
+        if ($type === 'image') {
+            $fileName = 'assets/images/' . uniqid() . '.' . $file->getClientOriginalExtension();
             $imageDirectory = $this->getImageDirectory();
         }
 
         if ($type === "bio") {
-            
+
             $fileName = 'assets/images/foetus.' . $file->guessExtension();
             $imageDirectory = $this->getImageDirectory();
-
         } elseif ($type === 'galerie') {
 
             $fileName =
-            'assets/images/galerie/' . uniqid() . '.' . $file->guessExtension();
+                'assets/images/galerie/' . uniqid() . '.' . $file->guessExtension();
             $imageDirectory = $this->getGalleryDirectory();
-
         } elseif ($type === 'flashes') {
 
             $fileName =
@@ -134,9 +131,7 @@ class ImageManager
 
     public function deleteImage(string $fileName): void
     {
-
         $fileSystem = new Filesystem();
-        $imgDirectory = $this->imageDirectory;
         $fileSystem->remove($fileName);
     }
 }

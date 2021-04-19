@@ -27,6 +27,11 @@ class SocialLink
      */
     private $iconPath;
 
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $linkPath;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -52,6 +57,18 @@ class SocialLink
     public function setIconPath(string $iconPath): self
     {
         $this->iconPath = $iconPath;
+
+        return $this;
+    }
+
+    public function getLinkPath(): ?string
+    {
+        return $this->linkPath;
+    }
+
+    public function setLinkPath(string $linkPath): self
+    {
+        $this->linkPath = $linkPath;
 
         return $this;
     }

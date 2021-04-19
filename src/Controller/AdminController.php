@@ -14,8 +14,10 @@ use App\Form\Type\SocialType;
 use App\Repository\GalleryRepository;
 use App\Repository\ImageEntityRepository;
 use App\Repository\RateRepository;
+use App\Repository\SocialLinkRepository;
 use App\Service\ImageManager;
 use Symfony\Component\Form\Util\ServerParams;
+use Symfony\Component\HttpFoundation\JsonResponse;
 
 class AdminController extends AbstractController
 {
@@ -145,6 +147,19 @@ class AdminController extends AbstractController
     }
 
     /**
+     * @Route("/social/show/admin", name="foetus_social_show")
+     */
+    public function socialShow(
+        SocialLinkRepository $socialLinkRepository
+    ) {
+        $socialLinks = $socialLinkRepository->findAll();
+
+        return $this->render('social/social.show.html.twig', [
+            'socialLinks' => $socialLinks
+        ]);
+    }
+
+    /**
      * @Route("/social/add/{type}/admin", name="foetus_social_add")
      */
     public function socialAdd(
@@ -160,28 +175,82 @@ class AdminController extends AbstractController
 
             $title = $form->get('title')->getData();
             $icon = $form->get('iconPath')->getData();
+            $linkPath = $form->get('linkPath')->getData();
 
-            dd($icon);
-            $iconName = $imageManager->upload($icon, $type, $newLink);
+            $iconName = $imageManager->upload($icon, $type);
 
             $newLink->setTitle($title);
             $newLink->setIconPath($iconName);
+            $newLink->setLinkPath($linkPath);
 
             $manager = $this->getDoctrine()->getManager();
             $manager->persist($newLink);
             $manager->flush();
-  
-            $iconName = $imageManager->upload($icon, $type, $newLink);
 
-
-
-            //$imageManager->resize($photoFileName);
-
-            $this->addFlash('succes', 'Image uploadée');
+            $this->addFlash('success', 'Image uploadée');
         }
         return $this->render('social/social.add.html.twig', [
             'form' => $form->createView()
         ]);
+    }
+
+    /**
+     * @Route("/admin/social/update/{id}", name="foetus_social_update",  methods={"GET","POST"})
+     */
+    public function socialUpdate(
+        Request $request,
+        SocialLink $socialLink,
+        ImageManager $imageManager
+    ) {
+        $form = $this->createForm(SocialType::class, $socialLink);
+        $form->handleRequest($request);
+
+        $oldImg = $socialLink->getIconPath();
+
+        if ($form->isSubmitted() && $form->isValid()) {
+
+            $title = $form->get('title')->getData();
+            $icon = $form->get('iconPath')->getData();
+            $linkPath = $form->get('linkPath')->getData();
+
+            if (null !== $icon) {
+                $imageManager->deleteImage($oldImg);
+                $type = 'image';
+                $iconName = $imageManager->upload($icon, $type);
+            }
+
+            $socialLink->setTitle($title);
+            $socialLink->setIconPath($iconName);
+            $socialLink->setLinkPath($linkPath);
+
+            $manager = $this->getDoctrine()->getManager();
+            $manager->flush();
+
+            $this->addFlash('success', 'Image uploadée');
+        }
+        return $this->render('social/social.update.html.twig', [
+            'form' => $form->createView()
+        ]);
+    }
+
+
+    /**
+     * @Route("admin/delete/social/{id}", name="delete_social", methods={"GET", "POST"}, options={"expose"=true})
+     */
+    public function deleteSocial(
+        Request $request,
+        ImageManager $imageManager,
+        SocialLink $socialLink
+    ) {
+
+            $manager = $this->getDoctrine()->getManager();
+            $manager->remove($socialLink);
+            $manager->flush();
+
+            $imageManager->deleteImage($socialLink->getIconPath());
+            $this->addFlash('success', "Le lien a bien été supprimé !");
+
+        return $this->redirectToRoute('foetus_social_show');
     }
 
     /**
