@@ -211,7 +211,7 @@ GALLERY / FLASHES
 }
 
 // BIO
-.bio-container {
+.custom-flex-container{
   margin-top: 8em;
   display: flex;
   justify-content: space-around;
@@ -294,4 +294,14 @@ CONTROL
 */
 .control-a {
   display: flex;
+}
+
+/*
+***********************************
+RATES
+***********************************
+*/
+.rates {
+  display: flex;
+  justify-content: center;
 }

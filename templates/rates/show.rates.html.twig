@@ -1,19 +1,21 @@
 {% extends 'base.html.twig' %} {% block title %}Foetus{% endblock %} {% block
-body %}
-<h1 class="big-title">Tarifs</h1>
+body %} {% include 'nav/_main.nav.html.twig' %}
 
-<hr class="hr">
+<div class="main-container">
+  <h1 class="big-title">Tarifs</h1>
+  <hr class="hr" />
 
-<ul>
-    {% for rate in rates %}
-    <li>
+  <div class="rates">
+    <ul>
+      {% for rate in rates %} {% if rate.text %}
+      <li>
         {{ rate.text }}
-    </li>
-    <li>
-        {{ rate.title }} : {{ rate.amount }}
-    </li>
-</ul>
-
-
+      </li>
+      {% endif %}
+      <li>{{ rate.title }} : {{ rate.amount }}</li>
+      {% endfor %}
+    </ul>
+  </div>
+</div>
 
 {% endblock %}

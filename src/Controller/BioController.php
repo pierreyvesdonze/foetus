@@ -7,20 +7,11 @@ use App\Repository\BioRepository;
 use App\Service\ImageManager;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Component\Routing\Annotation\Route;
 
 class BioController extends AbstractController
 {
-    private $session;
-
-    public function __construct(RequestStack $requestStack, SessionInterface $session)
-    {
-
-        $this->session = $session;
-    }
 
     /**
      * @Route("/bio", name="foetus_bio")

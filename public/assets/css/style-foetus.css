@@ -429,7 +429,7 @@ GALLERY / FLASHES
   border-radius: 20px;
 }
 
-.bio-container {
+.custom-flex-container {
   margin-top: 8em;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -439,7 +439,7 @@ GALLERY / FLASHES
 }
 
 @media (min-width: 300px) and (max-width: 576px) {
-  .bio-container {
+  .custom-flex-container {
     -webkit-box-orient: vertical;
     -webkit-box-direction: reverse;
         -ms-flex-direction: column-reverse;
@@ -449,7 +449,7 @@ GALLERY / FLASHES
 }
 
 @media (min-width: 576px) and (max-width: 768px) {
-  .bio-container {
+  .custom-flex-container {
     -webkit-box-orient: vertical;
     -webkit-box-direction: reverse;
         -ms-flex-direction: column-reverse;
@@ -548,5 +548,19 @@ CONTROL
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+}
+
+/*
+***********************************
+RATES
+***********************************
+*/
+.rates {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 /*# sourceMappingURL=style-foetus.css.map */

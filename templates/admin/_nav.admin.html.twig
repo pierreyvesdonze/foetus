@@ -24,13 +24,14 @@
       ></button>
     </div>
     <div class="offcanvas-body">
-		<ul>
-			<li>
-				<a href="{{ path('foetus_home') }}" class="home-link">
-          <span class="ti-home"></span> - Accueil</a>
-			</li>
-		</ul>
-		<hr class="hr">
+      <ul>
+        <li>
+          <a href="{{ path('foetus_home') }}" class="home-link">
+            <span class="ti-home"></span> - Accueil</a
+          >
+        </li>
+      </ul>
+      <hr class="hr" />
       <div class="dropdown mt-3">
         <button
           class="custom-button-2 dropdown-toggle"
@@ -40,7 +41,7 @@
         >
           Modifier
         </button>
-    
+
         <ul class="dropdown-menu" aria-labelledby="modify">
           <li>
             <a
@@ -50,11 +51,15 @@
             >
           </li>
           <li>
-            <a class="dropdown-item" href="{{ path('foetus_rates_update') }}"
+            <a class="dropdown-item" href="{{ path('foetus_list_rates_update') }}"
               >Mes tarifs</a
             >
           </li>
-          <li><a class="dropdown-item" href="{{ path('foetus_social_show') }}">Mes réseaux sociaux</a></li>
+          <li>
+            <a class="dropdown-item" href="{{ path('foetus_social_show') }}"
+              >Mes réseaux sociaux</a
+            >
+          </li>
           <li><a class="dropdown-item" href="#">Une actu</a></li>
           <li><a class="dropdown-item" href="#">Mes infos</a></li>
         </ul>
@@ -83,13 +88,14 @@
               >Des images dans mes flashs</a
             >
           </li>
-           <li>
+          <li>
             <a
               class="dropdown-item"
               href="{{ path('foetus_social_add', { type: 'image' }) }}"
               >Un réseau social</a
             >
           </li>
+          <li><a class="dropdown-item" href="{{ path('foetus_rates_add') }}">Un tarif</a></li>
           <li><a class="dropdown-item" href="#">Une actu</a></li>
           <li><a class="dropdown-item" href="#">Mes autres projets</a></li>
         </ul>
