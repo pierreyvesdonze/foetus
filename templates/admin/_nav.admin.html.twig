@@ -74,6 +74,13 @@
           Ajouter
         </button>
         <ul class="dropdown-menu" aria-labelledby="add-something">
+                    <li>
+            <a
+              class="dropdown-item"
+              href="{{ path('add_tattoo', { type: 'tattoo' }) }}"
+              >Des images dans mes tattoos</a
+            >
+          </li>
           <li>
             <a
               class="dropdown-item"
@@ -110,6 +117,13 @@
           Supprimer
         </button>
         <ul class="dropdown-menu" aria-labelledby="delete-something">
+              <li>
+            <a
+              class="dropdown-item"
+              href="{{ path('delete_gallery', { type: 'tattoo' }) }}"
+              >Des images de mes tattoos</a
+            >
+          </li>
           <li>
             <a
               class="dropdown-item"

@@ -39,8 +39,8 @@ class GalleryController extends AbstractController
     }
 
     /**
+     * @Route("/tattoo/add/{type}/admin", name="add_tattoo")
      * @Route("/gallery/add/{type}/admin", name="add_gallery")
-     * 
      * @Route("/flash/add/{type}/admin", name="add_flash")
      */
     public function addToGaleries(
@@ -105,6 +105,8 @@ class GalleryController extends AbstractController
     /**
      * @Route("/delete/{type}/admin", name="delete_gallery", methods={"GET", "POST"}, options={"expose"=true})
      * 
+     * @Route("/delete/{type}/admin", name="delete_tattoo", methods={"GET", "POST"}, options={"expose"=true})
+     * 
      * @Route("/delete/{type}/admin", name="delete_flash", methods={"GET", "POST"}, options={"expose"=true})
      */
     public function deleteFromGaleries(
@@ -135,7 +137,6 @@ class GalleryController extends AbstractController
 
             return $this->json('ok');
         }
-
 
         return $this->render(
             'admin/delete.gallery.html.twig',

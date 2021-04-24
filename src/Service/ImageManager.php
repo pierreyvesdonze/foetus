@@ -13,6 +13,7 @@ class ImageManager
 {
     private $imageDirectory;
     private $galleryDirectory;
+    private $tattooDirectory;
     private $flashDirectory;
     private $slugger;
     private $imagine;
@@ -25,11 +26,13 @@ class ImageManager
     public function __construct(
         $imageDirectory,
         $galleryDirectory,
+        $tattooDirectory,
         $flashDirectory,
         SluggerInterface $slugger
     ) {
         $this->imageDirectory = $imageDirectory;
         $this->galleryDirectory = $galleryDirectory;
+        $this->tattooDirectory = $tattooDirectory;
         $this->flashDirectory = $flashDirectory;
         $this->slugger = $slugger;
         $this->imagine = new Imagine();
@@ -50,6 +53,10 @@ class ImageManager
 
             $fileName = 'assets/images/foetus.' . $file->guessExtension();
             $imageDirectory = $this->getImageDirectory();
+        } elseif ($type === 'tattoo') {
+            $fileName =
+                'assets/images/tattoos/' . uniqid() . '.' . $file->guessExtension();
+            $imageDirectory = $this->getTattooDirectory();
         } elseif ($type === 'galerie') {
 
             $fileName =
@@ -86,6 +93,11 @@ class ImageManager
         return $this->flashDirectory;
     }
 
+    public function getTattooDirectory()
+    {
+        return $this->tattooDirectory;
+    }
+
     public function resize(string $filename): void
     {
         list($iwidth, $iheight) = getimagesize($filename);
@@ -109,6 +121,8 @@ class ImageManager
 
         if ('galerie' === $type) {
             $thumbName = str_replace("/galerie/", "/thumbs/", $thumbSplit[0]) . '.' . $thumbSplit[1];
+        } elseif ('tattoo' === $type) {
+            $thumbName = str_replace("/tattoos/", "/thumbs/", $thumbSplit[0]) . '.' . $thumbSplit[1];
         } else {
             $thumbName = str_replace("/flashes/", "/thumbs/", $thumbSplit[0]) . '.' . $thumbSplit[1];
         }

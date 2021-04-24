@@ -35,4 +35,5 @@ services:
         arguments:
             $imageDirectory: '%kernel.project_dir%/public/assets/images'
             $galleryDirectory: '%kernel.project_dir%/public/assets/images/galerie'
+            $tattooDirectory: '%kernel.project_dir%/public/assets/images/tattoos'
             $flashDirectory: '%kernel.project_dir%/public/assets/images/flashes'
