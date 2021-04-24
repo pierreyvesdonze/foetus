@@ -9,6 +9,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 
 class BioController extends AbstractController
 {
@@ -16,7 +17,7 @@ class BioController extends AbstractController
     /**
      * @Route("/bio", name="foetus_bio")
      */
-    public function bio(BioRepository $bioRepository, Request $request): Response
+    public function bio(BioRepository $bioRepository): Response
     {
         // Il n'y aura qu'une seule Bio, on la recherche donc simplement par son id : 1
         $bio = $bioRepository->findOneBy([
@@ -30,6 +31,8 @@ class BioController extends AbstractController
 
     /**
      * @Route("/bio/update/{type}", name="update_bio")
+     * 
+     * @IsGranted("ROLE_ADMIN")
      */
     public function updateBio(
         Request $request,
@@ -37,6 +40,8 @@ class BioController extends AbstractController
         ImageManager $imageManager,
         $type
     ) {
+        $this->denyAccessUnlessGranted('ROLE_ADMIN');
+
         $bio = $bioRepository->findOneBy([
             'id' => 1
         ]);

@@ -10,9 +10,14 @@ var appFoetus = {
         * *****************************
         */
         //$('.foetus-enter-link').on('click', appFoetus.enterFoetus);
+        $('.foetus-home-img').on('dblclick', appFoetus.goToAdmin)
         $('.main-title-logo').on('click', appFoetus.reload);
         $('.delete-img-form').on('submit', appFoetus.deleteImage);
-        //$('.delete-social-form').on('submit', appFoetus.deleteSocial);
+    },
+
+    goToAdmin: function () {
+        console.log('dblcclik');
+        window.location.href = Routing.generate('foetus_admin');
     },
 
     reload: function () {

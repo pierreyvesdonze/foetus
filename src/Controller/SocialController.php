@@ -10,6 +10,7 @@ use App\Form\Type\SocialType;
 use App\Repository\SocialLinkRepository;
 use App\Service\ImageManager;
 use Doctrine\ORM\EntityManagerInterface;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 
 class SocialController extends AbstractController
 {
@@ -24,10 +25,14 @@ class SocialController extends AbstractController
 
     /**
      * @Route("/social/show/admin", name="foetus_social_show")
+     * 
+     * @IsGranted("ROLE_ADMIN")
      */
     public function socialShow(
         SocialLinkRepository $socialLinkRepository
     ) {
+        $this->denyAccessUnlessGranted('ROLE_ADMIN');
+
         $socialLinks = $socialLinkRepository->findAll();
 
         return $this->render('social/social.show.html.twig', [
@@ -37,12 +42,16 @@ class SocialController extends AbstractController
 
     /**
      * @Route("/social/add/{type}/admin", name="foetus_social_add")
+     * 
+     * @IsGranted("ROLE_ADMIN")
      */
     public function socialAdd(
         Request $request,
         ImageManager $imageManager,
         $type
     ) {
+        $this->denyAccessUnlessGranted('ROLE_ADMIN');
+
         $form = $this->createForm(SocialType::class);
         $form->handleRequest($request);
         $newLink = new SocialLink;
@@ -71,12 +80,16 @@ class SocialController extends AbstractController
 
     /**
      * @Route("/admin/social/update/{id}", name="foetus_social_update",  methods={"GET","POST"})
+     * 
+     * @IsGranted("ROLE_ADMIN")
      */
     public function socialUpdate(
         Request $request,
         SocialLink $socialLink,
         ImageManager $imageManager
     ) {
+        $this->denyAccessUnlessGranted('ROLE_ADMIN');
+
         $form = $this->createForm(SocialType::class, $socialLink);
         $form->handleRequest($request);
 
@@ -109,6 +122,8 @@ class SocialController extends AbstractController
 
     /**
      * @Route("admin/delete/social/{id}", name="delete_social", methods={"GET", "POST"}, options={"expose"=true})
+     * 
+     * @IsGranted("ROLE_ADMIN")
      */
     public function deleteSocial(
         ImageManager $imageManager,

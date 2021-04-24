@@ -12,6 +12,7 @@ use App\Repository\GalleryRepository;
 use App\Repository\ImageEntityRepository;
 use App\Service\ImageManager;
 use Doctrine\ORM\EntityManagerInterface;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Component\Form\Util\ServerParams;
 
 class GalleryController extends AbstractController
@@ -42,6 +43,8 @@ class GalleryController extends AbstractController
      * @Route("/tattoo/add/{type}/admin", name="add_tattoo")
      * @Route("/gallery/add/{type}/admin", name="add_gallery")
      * @Route("/flash/add/{type}/admin", name="add_flash")
+     * 
+     * @IsGranted("ROLE_ADMIN")
      */
     public function addToGaleries(
         Request $request,
@@ -49,6 +52,8 @@ class GalleryController extends AbstractController
         ImageManager $imageManager,
         $type
     ): Response {
+
+        $this->denyAccessUnlessGranted('ROLE_ADMIN');
 
         // // Utile pour vérifier la config dans php.ini
         // $a = new ServerParams();
@@ -108,6 +113,8 @@ class GalleryController extends AbstractController
      * @Route("/delete/{type}/admin", name="delete_tattoo", methods={"GET", "POST"}, options={"expose"=true})
      * 
      * @Route("/delete/{type}/admin", name="delete_flash", methods={"GET", "POST"}, options={"expose"=true})
+     * 
+     * @IsGranted("ROLE_ADMIN")
      */
     public function deleteFromGaleries(
         ImageEntityRepository $imageEntityRepository,
@@ -115,6 +122,9 @@ class GalleryController extends AbstractController
         Request $request,
         string $type
     ) {
+
+        $this->denyAccessUnlessGranted('ROLE_ADMIN');
+
         $images = $imageEntityRepository->findByType($type);
 
         if ($request->isMethod('POST')) {

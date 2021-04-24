@@ -9,6 +9,7 @@ use Symfony\Component\Routing\Annotation\Route;
 use App\Form\Type\RateType;
 use App\Repository\RateRepository;
 use Doctrine\ORM\EntityManagerInterface;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 
 class RateController extends AbstractController
 {
@@ -34,9 +35,13 @@ class RateController extends AbstractController
 
     /**
      * @Route("/tarifs/add/admin", name="foetus_rates_add")
+     * 
+     * @IsGranted("ROLE_ADMIN")
      */
     public function addRates(Request $request)
     {
+        $this->denyAccessUnlessGranted('ROLE_ADMIN');
+
         $form = $this->createForm(RateType::class);
         $form->handleRequest($request);
 
@@ -62,10 +67,14 @@ class RateController extends AbstractController
 
     /**
      * @Route("/tarifs/list/update/admin", name="foetus_list_rates_update")
+     * 
+     * @IsGranted("ROLE_ADMIN")
      */
     public function listUpdateRates(
         RateRepository $rateRepository
     ) {
+        $this->denyAccessUnlessGranted('ROLE_ADMIN');
+
         $rates = $rateRepository->findAll();
 
         return $this->render('rates/list.rate.html.twig', [
@@ -77,11 +86,14 @@ class RateController extends AbstractController
      * @Route("/tarifs/update/admin/{id}", name="foetus_rates_update",
      * methods={"GET", "POST"},
      * requirements={"id":"\d+"})
+     * 
+     * @IsGranted("ROLE_ADMIN")
      */
     public function updateRate(
         Rate $rate,
         Request $request
     ) {
+        $this->denyAccessUnlessGranted('ROLE_ADMIN');
 
         $form = $this->createForm(RateType::class, $rate);
         $form->handleRequest($request);
@@ -111,10 +123,13 @@ class RateController extends AbstractController
      * @Route("/tarifs/delete/admin/{id}", name="foetus_rates_delete",
      * methods={"GET", "POST"},
      * requirements={"id":"\d+"})
+     * 
+     * @IsGranted("ROLE_ADMIN")
      */
     public function deleteRate(
         Rate $rate
     ) {
+        $this->denyAccessUnlessGranted('ROLE_ADMIN');
         
         $this->entityManager->remove($rate);
         $this->entityManager->flush();
