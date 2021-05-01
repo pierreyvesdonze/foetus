@@ -1,4 +1,7 @@
 <div class="main-container">
+    <a href="{{ path('event_show', {id:event.id}) }}">
+  <span class="ti-back-left custom-button-2"></span>
+</a>
     <div class="custom-flex-container">
         {{ form_start(form, {'attr': {'novalidate': 'novalidate'}}) }}
         <div class="form-errors">

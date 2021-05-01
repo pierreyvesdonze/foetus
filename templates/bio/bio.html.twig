@@ -4,8 +4,17 @@ body %}
 <!--***************************MAIN NAV****************************-->
 {% include 'nav/_main.nav.html.twig' %}
 
-<div class="main-container">
 
+
+<div class="main-container">
+{% if app.user %}
+     {# UPDATE #}
+      <div class="control-a">
+        <a href="{{ path('update_bio', { id:bio.id, type:'bio' }) }}">
+          <span class="ti-settings custom-button-2"></span>
+        </a>
+      </div>
+{% endif %}
 <h1 class="big-title">{{ bio.title }}</h1>
   <div class="custom-flex-container">
     <div class="custom-text">

@@ -127,10 +127,15 @@ class EventController extends AbstractController
             $this->entityManager->flush();
 
             $this->addFlash('success', 'Actu modifiée !');
+
+            return $this->redirectToRoute('event_show', [
+                'id' => $event->getId()
+            ]);
         }
 
         return $this->render('event/event.update.html.twig', [
-            'form' => $form->createView()
+            'form' => $form->createView(),
+            'event' => $event
         ]);
     }
 

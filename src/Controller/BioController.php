@@ -18,7 +18,7 @@ class BioController extends AbstractController
      */
     public function bio(BioRepository $bioRepository): Response
     {
-        // Il n'y aura qu'une seule Bio, on la recherche donc simplement par son id : 1
+        // Il n'y aura qu'une seule Bio, on la recherche    simplement par son id : 1
         $bio = $bioRepository->findOneBy([
             'id' => 1
         ]);
