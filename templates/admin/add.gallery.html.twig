@@ -4,7 +4,10 @@ body %}
 {% include 'admin/_nav.admin.html.twig' %}
 
 <div class="main-container">
-    {{ form(form) }}
+    {{ form_start(form, {'attr': {'id': 'add-file-form'}}) }}
+    {{ form_widget(form.image) }}
+    {{ form_widget(form.save) }}
+    {{ form_end(form) }}
 </div>
 
 {% endblock %}

@@ -16,7 +16,6 @@
     aria-labelledby="sideMenuLabel"
   >
     <div class="offcanvas-header">
-      <h3 class="offcanvas-title" id="sideMenuLabel">ADMIN</h3>
       <button
         type="button"
         class="btn-close text-reset"
@@ -25,22 +24,24 @@
       ></button>
     </div>
     <div class="offcanvas-body">
-		<ul>
-			<li>
-				<a href="{{ path('foetus_home') }}"><span class="ti-home"></span> - Accueil</a>
-			</li>
-		</ul>
-		<hr class="hr">
+      <ul>
+        <li>
+          <a href="{{ path('foetus_home') }}" class="home-link">
+            <span class="ti-home"></span> - Accueil</a
+          >
+        </li>
+      </ul>
+      <hr class="hr" />
       <div class="dropdown mt-3">
         <button
-          class="btn btn-secondary dropdown-toggle"
+          class="custom-button-2 dropdown-toggle"
           type="button"
           id="modify"
           data-bs-toggle="dropdown"
         >
           Modifier
         </button>
-    
+
         <ul class="dropdown-menu" aria-labelledby="modify">
           <li>
             <a
@@ -50,17 +51,22 @@
             >
           </li>
           <li>
-            <a class="dropdown-item" href="{{ path('foetus_rates_update') }}"
+            <a class="dropdown-item" href="{{ path('foetus_list_rates_update') }}"
               >Mes tarifs</a
             >
           </li>
-          <li><a class="dropdown-item" href="#">Une actu</a></li>
+          <li>
+            <a class="dropdown-item" href="{{ path('foetus_social_show') }}"
+              >Mes réseaux sociaux</a
+            >
+          </li>
+          <li><a class="dropdown-item" href="{{ path('foetus_list_events_update') }}">Mes actus</a></li>
           <li><a class="dropdown-item" href="#">Mes infos</a></li>
         </ul>
       </div>
       <div class="dropdown mt-3">
         <button
-          class="btn btn-secondary dropdown-toggle"
+          class="custom-button-2 dropdown-toggle"
           type="button"
           id="add-something"
           data-bs-toggle="dropdown"
@@ -68,6 +74,13 @@
           Ajouter
         </button>
         <ul class="dropdown-menu" aria-labelledby="add-something">
+                    <li>
+            <a
+              class="dropdown-item"
+              href="{{ path('add_tattoo', { type: 'tattoo' }) }}"
+              >Des images dans mes tattoos</a
+            >
+          </li>
           <li>
             <a
               class="dropdown-item"
@@ -82,13 +95,21 @@
               >Des images dans mes flashs</a
             >
           </li>
-          <li><a class="dropdown-item" href="#">Une actu</a></li>
+          <li>
+            <a
+              class="dropdown-item"
+              href="{{ path('foetus_social_add', { type: 'image' }) }}"
+              >Un réseau social</a
+            >
+          </li>
+          <li><a class="dropdown-item" href="{{ path('foetus_rates_add') }}">Un tarif</a></li>
+          <li><a class="dropdown-item" href="{{ path('add_event') }}">Une actu</a></li>
           <li><a class="dropdown-item" href="#">Mes autres projets</a></li>
         </ul>
       </div>
       <div class="dropdown mt-3">
         <button
-          class="btn btn-secondary dropdown-toggle"
+          class="custom-button-2 dropdown-toggle"
           type="button"
           id="delete-something"
           data-bs-toggle="dropdown"
@@ -96,6 +117,13 @@
           Supprimer
         </button>
         <ul class="dropdown-menu" aria-labelledby="delete-something">
+              <li>
+            <a
+              class="dropdown-item"
+              href="{{ path('delete_gallery', { type: 'tattoo' }) }}"
+              >Des images de mes tattoos</a
+            >
+          </li>
           <li>
             <a
               class="dropdown-item"
@@ -111,7 +139,6 @@
             >
           </li>
           <li><a class="dropdown-item" href="#">Une actu</a></li>
-          <li><a class="dropdown-item" href="#">Mes autres projets</a></li>
         </ul>
       </div>
     </div>

@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %} {% block title %}Modifier un tarif{% endblock %}
+{% block body %}
+
+<!--***************************MAIN NAV****************************-->
+{% include 'admin/_nav.admin.html.twig' %}
+
+<div class="main-container">
+  <h1 class="big-title">Modifier mes tarifs</h1>
+  <hr class="hr" />
+
+  <div class="list-update">
+    <ul>
+      {% for rate in rates %}
+      
+      {# UPDATE #}
+      <div class="control-a">
+        <a href="{{ path('foetus_rates_update', { id: rate.id }) }}">
+          <span class="ti-settings custom-button-2"></span>
+        </a>
+
+        {# DELETE #}
+        <a
+          href="{{ path('foetus_rates_delete', { id: rate.id }) }}"
+          class=""
+          onclick=' return confirm("Supprimer ce tarif ?")'
+          data-id="{{ rate.id }}"
+        >
+          <span class="ti-close custom-button-2"></span>
+        </a>
+      </div>
+       {% if rate.text %} 
+      <li>
+        {{ rate.text }}
+      </li>
+      {% endif %}
+      <li>{{ rate.title }} : {{ rate.amount }}</li>
+      {% endfor %}
+    </ul>
+  </div>
+</div>
+
+{% endblock %}

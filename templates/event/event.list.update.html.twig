@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %} {% block title %}Modifier un tarif{% endblock %}
+{% block body %}
+
+<!--***************************MAIN NAV****************************-->
+{% include 'admin/_nav.admin.html.twig' %}
+
+<div class="main-container">
+  <h1 class="big-title">Modifier mes actus</h1>
+  <hr class="hr" />
+
+  <div class="list-update">
+    <ul>
+      {% for event in events %}
+      
+      {# UPDATE #}
+      <div class="control-a">
+        <a href="{{ path('update_event', { id: event.id }) }}">
+          <span class="ti-settings custom-button-2"></span>
+        </a>
+
+        {# DELETE #}
+        <a
+          href="{{ path('event_delete', { id: event.id }) }}"
+          class=""
+          onclick=' return confirm("Supprimer cette actu ?")'
+          data-id="{{ event.id }}"
+        >
+          <span class="ti-close custom-button-2"></span>
+        </a>
+      </div>
+      <li>
+        {{ event.title }}
+      </li>
+
+      {% endfor %}
+    </ul>
+  </div>
+</div>
+
+{% endblock %}

@@ -13,7 +13,9 @@ class ImageManager
 {
     private $imageDirectory;
     private $galleryDirectory;
+    private $tattooDirectory;
     private $flashDirectory;
+    private $eventDirectory;
     private $slugger;
     private $imagine;
 
@@ -25,12 +27,16 @@ class ImageManager
     public function __construct(
         $imageDirectory,
         $galleryDirectory,
+        $tattooDirectory,
         $flashDirectory,
+        $eventDirectory,
         SluggerInterface $slugger
     ) {
         $this->imageDirectory = $imageDirectory;
         $this->galleryDirectory = $galleryDirectory;
+        $this->tattooDirectory = $tattooDirectory;
         $this->flashDirectory = $flashDirectory;
+        $this->eventDirectory = $eventDirectory;
         $this->slugger = $slugger;
         $this->imagine = new Imagine();
     }
@@ -41,19 +47,28 @@ class ImageManager
         // Répertoire de destination des images
         $imageDirectory = null;
 
-        if ($type === "bio") {
-            
+        if ($type === 'image') {
+            $fileName = 'assets/images/' . uniqid() . '.' . $file->getClientOriginalExtension();
+            $imageDirectory = $this->getImageDirectory();
+        } elseif ($type === "bio") {
             $fileName = 'assets/images/foetus.' . $file->guessExtension();
             $imageDirectory = $this->getImageDirectory();
 
-        } elseif ($type === 'galerie') {
+        } elseif ($type === 'event') {
+            $fileName = 'assets/images/events/' . uniqid() . '.' . $file->getClientOriginalExtension();
+            $imageDirectory = $this->getEventDirectory();
 
+        } elseif ($type === 'tattoo') {
             $fileName =
-            'assets/images/galerie/' . uniqid() . '.' . $file->guessExtension();
+                'assets/images/tattoos/' . uniqid() . '.' . $file->guessExtension();
+            $imageDirectory = $this->getTattooDirectory();
+
+        } elseif ($type === 'galerie') {
+            $fileName =
+                'assets/images/galerie/' . uniqid() . '.' . $file->guessExtension();
             $imageDirectory = $this->getGalleryDirectory();
 
         } elseif ($type === 'flashes') {
-
             $fileName =
                 'assets/images/flashes/' . uniqid() . '.' . $file->guessExtension();
             $imageDirectory = $this->getFlashDirectory();
@@ -83,6 +98,16 @@ class ImageManager
         return $this->flashDirectory;
     }
 
+    public function getTattooDirectory()
+    {
+        return $this->tattooDirectory;
+    }
+    
+    public function getEventDirectory()
+    {
+        return $this->eventDirectory;
+    }
+
     public function resize(string $filename): void
     {
         list($iwidth, $iheight) = getimagesize($filename);
@@ -106,6 +131,10 @@ class ImageManager
 
         if ('galerie' === $type) {
             $thumbName = str_replace("/galerie/", "/thumbs/", $thumbSplit[0]) . '.' . $thumbSplit[1];
+        } elseif ('tattoo' === $type) {
+            $thumbName = str_replace("/tattoos/", "/thumbs/", $thumbSplit[0]) . '.' . $thumbSplit[1];
+        } elseif ('event' === $type) {
+            $thumbName = str_replace("/events/", "/thumbs/", $thumbSplit[0]) . '.' . $thumbSplit[1];
         } else {
             $thumbName = str_replace("/flashes/", "/thumbs/", $thumbSplit[0]) . '.' . $thumbSplit[1];
         }
@@ -128,9 +157,7 @@ class ImageManager
 
     public function deleteImage(string $fileName): void
     {
-
         $fileSystem = new Filesystem();
-        $imgDirectory = $this->imageDirectory;
         $fileSystem->remove($fileName);
     }
 }

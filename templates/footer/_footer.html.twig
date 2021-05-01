@@ -1,8 +1,7 @@
 <div class="social">
-    <a href="#"
-    ><img src="{{ asset('assets/images/instagram.png') }}" alt="Instagram"
-    /></a>
-    <a href="#"
-    ><img src="{{ asset('assets/images/facebook.png') }}" alt="Facebook"
-    /></a>
+  {% for social in socials.getSocialLinks %}
+  <a href="{{ social.linkPath }}" target="_blank">
+    <img src="{{ asset(social.iconPath) }}" alt="{{ social.title }}"/>
+  </a>
+    {% endfor %}
 </div>

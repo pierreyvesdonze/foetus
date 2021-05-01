@@ -38,6 +38,10 @@ LISTS
   justify-content: flex-end;
 }
 
+.offcanvas {
+  background: rgba(255, 255, 255, 0.7);
+}
+
 .nav {
   background: var(--background-color);
   width: 100%;
@@ -94,6 +98,34 @@ HOME
 .enter-foetus a {
   color: #380234 !important;
   text-shadow: 4px 4px 4px #72046b8c;
+}
+
+/*
+***********************************
+GALLERY / FLASHES
+***********************************
+*/
+
+// Add img form
+#add-file-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.add-img-gallery {
+  opacity: 0;
+}
+
+#add-file-form label {
+  display: block;
+  position: relative;
+  display: flex;
+  transition: transform 0.2s ease-out;
+  width: 500px;
+  height: 280px;
+  background: url("../images/upload.png") center no-repeat;
 }
 
 // Form Delete Img
@@ -164,6 +196,7 @@ HOME
 
 .flexboxxx-delete {
   display: flex;
+  justify-content: center;
   flex-wrap: wrap;
   padding-top: 6%;
 }
@@ -177,28 +210,99 @@ HOME
   border-radius: 20px;
 }
 
-// BIO
-.bio-container {
-  // padding-top: 100px;
-  display: flex;
-  justify-content: space-around;
-}
-
-.bio-text {
+/*
+***********************************
+BIO // ACTUS
+***********************************
+*/
+.custom-text {
   width: 30%;
+  text-align: justify;
+
+  @include xs {
+    width: 100%;
+    margin-bottom: 5em;
+    padding: 0 1em;
+  }
+
+  @include sm {
+    width: 100%;
+    margin-bottom: 5em;
+    padding: 0 1em;
+  }
 }
 
-.bio-text p {
+.custom-text p {
   font-size: 1.5em;
 }
+.custom-text-image {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 3em;
+}
 
-.foetus-portrait img {
+.custom-text-image img {
   width: 400px !important;
+  border-radius: 20px;
+}
+
+
+/*
+***********************************
+CUSTOM FLEX CONTAINER
+***********************************
+*/
+.custom-flex-container,
+.custom-flex-container-column 
+{
+  margin-top: 8em;
+  display: flex;
+  justify-content: space-around;
+  @include xs {
+    flex-direction: column-reverse;
+    margin-top: 0;
+  }
+
+  @include sm {
+    flex-direction: column-reverse;
+    margin-top: 0;
+  }
+}
+
+.custom-flex-container-column {
+  flex-direction: column;
 }
 
 /*
 ***********************************
-FOOTER
+EVENTS
+***********************************
+*/
+
+.event-text,
+.event-date
+{
+  text-align: center;
+}
+
+.event-date{
+  font-size: 2em;
+}
+
+.event-text {
+  font-size: 1.5em;
+}
+
+.event-image {
+  margin: auto;
+  img {
+    width: 250px;
+  }
+}
+
+/*
+***********************************
+SOCIAL
 ***********************************
 */
 
@@ -213,5 +317,34 @@ FOOTER
 
 .social a img {
   width: 30px;
-  margin: 0 15px;
+  margin: 0 9px;
+}
+
+.social-img-show {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.social-img {
+  width: 120px;
+}
+
+/*
+***********************************
+CONTROL
+***********************************
+*/
+.control-a {
+  display: flex;
+}
+
+/*
+***********************************
+LIST UPDATE
+***********************************
+*/
+.list-update {
+  display: flex;
+  justify-content: center;
 }
