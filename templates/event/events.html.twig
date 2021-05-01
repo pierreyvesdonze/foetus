@@ -6,26 +6,38 @@ body %}
 
 <div class="main-container">
 
-  {% for event in events %}
-	<h1 class="big-title">{{ event.title }}</h1>
+	<h1 class="big-title">Actualités</h1>
 
-	<div class="custom-flex-container">
-		<div class="event-text">
-		{{ event.text | raw }}
-		</div>
+	<div class="custom-flex-container-column">
+	{% for event in events %}
+		<h2 class="big-title">{{ event.title }}</h2>
 
 		{% if null != event.date %}
 			<div class="event-date">
 			{{ event.date|date("d/m/y") }}
 			</div>
 		{% endif %}
+
+		<br><br>
+
+		<div class="event-text">
+			<p>
+				{{ event.text|u.truncate(55,"...", false)|raw }}
+			</p>
+		</div>
 		
 		{% if null != event.image %}
 			<div class="event-image">
 			<img src="{{ event.image }}" alt="" class="event-img" />
 			</div>
 		{% endif %}
-	</div>
+
+		<br>
+
+		<a href="{{ path('event_show', {'id': event.id}) }}" class="event-text">Voir l'actu</a>
+
+		<hr class="hr">
 	{% endfor %}
+	</div>
 </div>
   {% endblock %}

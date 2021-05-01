@@ -210,23 +210,12 @@ GALLERY / FLASHES
   border-radius: 20px;
 }
 
-// BIO
-.custom-flex-container{
-  margin-top: 8em;
-  display: flex;
-  justify-content: space-around;
-  @include xs {
-    flex-direction: column-reverse;
-    margin-top: 0;
-  }
-
-  @include sm {
-    flex-direction: column-reverse;
-    margin-top: 0;
-  }
-}
-
-.bio-text {
+/*
+***********************************
+BIO // ACTUS
+***********************************
+*/
+.custom-text {
   width: 30%;
   text-align: justify;
 
@@ -243,18 +232,72 @@ GALLERY / FLASHES
   }
 }
 
-.bio-text p {
+.custom-text p {
   font-size: 1.5em;
 }
-.foetus-portrait {
+.custom-text-image {
   display: flex;
   justify-content: center;
   margin-bottom: 3em;
 }
 
-.foetus-portrait img {
+.custom-text-image img {
   width: 400px !important;
   border-radius: 20px;
+}
+
+
+/*
+***********************************
+CUSTOM FLEX CONTAINER
+***********************************
+*/
+.custom-flex-container,
+.custom-flex-container-column 
+{
+  margin-top: 8em;
+  display: flex;
+  justify-content: space-around;
+  @include xs {
+    flex-direction: column-reverse;
+    margin-top: 0;
+  }
+
+  @include sm {
+    flex-direction: column-reverse;
+    margin-top: 0;
+  }
+}
+
+.custom-flex-container-column {
+  flex-direction: column;
+}
+
+/*
+***********************************
+EVENTS
+***********************************
+*/
+
+.event-text,
+.event-date
+{
+  text-align: center;
+}
+
+.event-date{
+  font-size: 2em;
+}
+
+.event-text {
+  font-size: 1.5em;
+}
+
+.event-image {
+  margin: auto;
+  img {
+    width: 250px;
+  }
 }
 
 /*

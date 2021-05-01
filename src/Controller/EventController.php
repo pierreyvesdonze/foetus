@@ -153,4 +153,14 @@ class EventController extends AbstractController
 
         return $this->redirectToRoute('foetus_list_events_update');
     }
+
+    /**
+     * @Route("/events/show/{id}", name="event_show")
+     */
+    public function eventShow(Event $event): Response
+    {
+        return $this->render('event/event.show.html.twig', [
+            'event' => $event
+        ]);
+    }
 }

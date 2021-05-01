@@ -1,18 +1,19 @@
-{% extends 'base.html.twig' %} {% block title %}Foetus{% endblock %} {% block
+{% extends 'base.html.twig' %} {% block title %}Actus{% endblock %} {% block
 body %}
 
 <!--***************************MAIN NAV****************************-->
 {% include 'nav/_main.nav.html.twig' %}
 
 <div class="main-container">
-
-<h1 class="big-title">{{ bio.title }}</h1>
+  <h1 class="big-title">
+    {{ event.title }}
+  </h1>
   <div class="custom-flex-container">
     <div class="custom-text">
-      {{ bio.text | raw }}
+      {{ event.text | raw }}
     </div>
     <div class="custom-text-image">
-      <img src="{{ asset(bio.photoPath) }}" alt=""/>
+      <img src="{{ asset(event.image) }}"/>
     </div>
   </div>
 </div>
