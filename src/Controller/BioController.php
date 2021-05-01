@@ -13,7 +13,6 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 
 class BioController extends AbstractController
 {
-
     /**
      * @Route("/bio", name="foetus_bio")
      */
@@ -50,7 +49,6 @@ class BioController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-
             $photo = $form->get('photoPath')->getData();
             if ($photo) {
                 $photoFileName = $imageManager->upload($photo, $type);
@@ -62,8 +60,8 @@ class BioController extends AbstractController
             $manager = $this->getDoctrine()->getManager();
             $manager->flush();
 
-            $this->addFlash('succes', 'Image uploadée');
         }
+        $this->addFlash('success', 'Bio modifiée !');
 
         return $this->render('bio/update.html.twig', [
             'form' => $form->createView()

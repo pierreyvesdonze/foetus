@@ -552,10 +552,10 @@ CONTROL
 
 /*
 ***********************************
-RATES
+LIST UPDATE
 ***********************************
 */
-.rates {
+.list-update {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;

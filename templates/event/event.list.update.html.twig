@@ -5,35 +5,33 @@
 {% include 'admin/_nav.admin.html.twig' %}
 
 <div class="main-container">
-  <h1 class="big-title">Modifier mes tarifs</h1>
+  <h1 class="big-title">Modifier mes actus</h1>
   <hr class="hr" />
 
   <div class="list-update">
     <ul>
-      {% for rate in rates %}
+      {% for event in events %}
       
       {# UPDATE #}
       <div class="control-a">
-        <a href="{{ path('foetus_rates_update', { id: rate.id }) }}">
+        <a href="{{ path('update_event', { id: event.id }) }}">
           <span class="ti-settings custom-button-2"></span>
         </a>
 
         {# DELETE #}
         <a
-          href="{{ path('foetus_rates_delete', { id: rate.id }) }}"
+          href="{{ path('event_delete', { id: event.id }) }}"
           class=""
-          onclick=' return confirm("Supprimer ce tarif ?")'
-          data-id="{{ rate.id }}"
+          onclick=' return confirm("Supprimer cette actu ?")'
+          data-id="{{ event.id }}"
         >
           <span class="ti-close custom-button-2"></span>
         </a>
       </div>
-       {% if rate.text %} 
       <li>
-        {{ rate.text }}
+        {{ event.title }}
       </li>
-      {% endif %}
-      <li>{{ rate.title }} : {{ rate.amount }}</li>
+
       {% endfor %}
     </ul>
   </div>

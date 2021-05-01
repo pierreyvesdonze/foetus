@@ -1,0 +1,19 @@
+<div class="main-container">
+    <div class="custom-flex-container">
+        {{ form_start(form, {'attr': {'novalidate': 'novalidate'}}) }}
+        <div class="form-errors">
+            {{ form_errors(form) }}
+        </div>
+        
+        {{ form_row(form.title) }}
+        <hr class="hr" />
+        {{ form_row(form.text) }}
+        <hr class="hr" />
+        {{ form_row(form.date) }}
+        <hr class="hr" />
+        {{ form_row(form.image) }}
+        <hr class="hr" />
+        {{ form_row(form.save) }}
+        {{ form_end(form) }}
+    </div>
+</div>
