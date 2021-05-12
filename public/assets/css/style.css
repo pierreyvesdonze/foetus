@@ -99,7 +99,7 @@ label {
 }
 
 a {
-  text-decoration: none;
+  text-decoration: none !important;
   color: var(--tertiary-color) !important;
   font-weight: 900;
   text-shadow: 2px 2px 5px var(--tertiary-color);
