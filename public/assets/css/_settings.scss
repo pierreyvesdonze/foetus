@@ -150,35 +150,35 @@ BUTTONS
 
 .custom-button,
 .custom-button-2 {
-  font-size: 2.5em;
-  border-radius: 20px;
-  padding: 0.5em;
-  display: flex;
-  align-items: center;
-  margin-top: 1.5em;
-  transition: ease-in-out 0.2s;
+  font-size: 2.5em !important;
+  border-radius: 20px !important;
+  padding: 0.5em !important;
+  display: flex !important;
+  align-items: center !important;
+  margin-top: 1.5em !important;
+  transition: ease-in-out 0.2s !important;
 }
 
 .custom-button {
-  background: var(--primary-color);
-  color: var(--secondary-color);
+  background: var(--primary-color) !important;
+  color: var(--secondary-color) !important;
   &:hover {
-    background: var(--secondary-color);
-    color: var(--primary-color);
-    box-shadow: 0px 0px 4px 5px rgba(0, 0, 0, 0.75);
-    -webkit-box-shadow: 0px 0px 4px 5px rgba(0, 0, 0, 0.75);
-    -moz-box-shadow: 0px 0px 4px 5px rgba(0, 0, 0, 0.75);
+    background: var(--secondary-color) !important;
+    color: var(--primary-color) !important;
+    box-shadow: 0px 0px 4px 5px rgba(0, 0, 0, 0.75) !important;
+    -webkit-box-shadow: 0px 0px 4px 5px rgba(0, 0, 0, 0.75) !important;
+    -moz-box-shadow: 0px 0px 4px 5px rgba(0, 0, 0, 0.75) !important;
   }
 }
 
 .custom-button-2 {
-  color: var(--primary-color);
+  color: var(--primary-color) !important;
   &:hover {
-    background: var(--tertiary-color);
-    color: var(--secondary-color);
-    box-shadow: 0px 0px 4px 5px var(--tertiary-hover-color);
-    -webkit-box-shadow: 0px 0px 4px 5px var(--tertiary-hover-color);
-    -moz-box-shadow: 0px 0px 4px 5px var(--tertiary-hover-color);
+    background: var(--tertiary-color) !important;
+    color: var(--secondary-color) !important;
+    box-shadow: 0px 0px 4px 5px var(--tertiary-hover-color) !important;
+    -webkit-box-shadow: 0px 0px 4px 5px var(--tertiary-hover-color) !important;
+    -moz-box-shadow: 0px 0px 4px 5px var(--tertiary-hover-color) !important;
   }
 }
 
