@@ -1,4 +1,4 @@
-{% extends 'base.html.twig' %} {% block title %}Foetus{% endblock %} {% block
+{% extends 'base.html.twig' %} {% block title %}Bio{% endblock %} {% block
 body %}
 
 <!--***************************MAIN NAV****************************-->
@@ -10,7 +10,7 @@ body %}
 {% if app.user %}
      {# UPDATE #}
       <div class="control-a">
-        <a href="{{ path('update_bio', { id:bio.id, type:'bio' }) }}">
+        <a href="{{ path('update_bio', { 'id':bio.id, type:'bio' }) }}">
           <span class="ti-settings custom-button-2"></span>
         </a>
       </div>

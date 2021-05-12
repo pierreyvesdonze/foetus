@@ -14,13 +14,13 @@
       
       {# UPDATE #}
       <div class="control-a">
-        <a href="{{ path('foetus_rates_update', { id: rate.id }) }}">
+        <a href="{{ path('rates_update', { id: rate.id }) }}">
           <span class="ti-settings custom-button-2"></span>
         </a>
 
         {# DELETE #}
         <a
-          href="{{ path('foetus_rates_delete', { id: rate.id }) }}"
+          href="{{ path('rates_delete', { id: rate.id }) }}"
           class=""
           onclick=' return confirm("Supprimer ce tarif ?")'
           data-id="{{ rate.id }}"

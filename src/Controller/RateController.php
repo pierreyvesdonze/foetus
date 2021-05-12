@@ -22,7 +22,7 @@ class RateController extends AbstractController
     }
 
     /**
-     * @Route("/tarifs", name="foetus_rates_show")
+     * @Route("/tarifs", name="rates_show")
      */
     public function showRate(RateRepository $rateRepository)
     {
@@ -34,7 +34,7 @@ class RateController extends AbstractController
     }
 
     /**
-     * @Route("/tarifs/add/admin", name="foetus_rates_add")
+     * @Route("/tarifs/add/admin", name="rates_add")
      * 
      * @IsGranted("ROLE_ADMIN")
      */
@@ -66,7 +66,7 @@ class RateController extends AbstractController
     }
 
     /**
-     * @Route("/tarifs/list/update/admin", name="foetus_list_rates_update")
+     * @Route("/tarifs/list/update/admin", name="list_rates_update")
      * 
      * @IsGranted("ROLE_ADMIN")
      */
@@ -83,7 +83,7 @@ class RateController extends AbstractController
     }
 
     /**
-     * @Route("/tarifs/update/admin/{id}", name="foetus_rates_update",
+     * @Route("/tarifs/update/admin/{id}", name="rates_update",
      * methods={"GET", "POST"},
      * requirements={"id":"\d+"})
      * 
@@ -111,7 +111,7 @@ class RateController extends AbstractController
 
             $this->addFlash('success', 'Tarif modifié');
 
-            return $this->redirectToRoute('foetus_list_rates_update');
+            return $this->redirectToRoute('list_rates_update');
         }
         return $this->render('rates/update.rate.html.twig', [
             'form' => $form->createView(),
@@ -120,7 +120,7 @@ class RateController extends AbstractController
     }
 
     /**
-     * @Route("/tarifs/delete/admin/{id}", name="foetus_rates_delete",
+     * @Route("/tarifs/delete/admin/{id}", name="rates_delete",
      * methods={"GET", "POST"},
      * requirements={"id":"\d+"})
      * 
@@ -136,6 +136,6 @@ class RateController extends AbstractController
 
         $this->addFlash('success', 'Le tarif a bien été supprimé !');
 
-        return $this->redirectToRoute('foetus_list_rates_update');
+        return $this->redirectToRoute('list_rates_update');
     }
 }

@@ -1,35 +1,24 @@
-var appFoetus = {
+var app = {
 
-    initFoetus: function () {
-
-        console.log('initFoetus');
+    init: function () {
 
         /**
         * *****************************
         * L I S T E N E R S
         * *****************************
         */
-        //$('.foetus-enter-link').on('click', appFoetus.enterFoetus);
-        $('.foetus-home-img').on('dblclick', appFoetus.goToAdmin)
-        $('.main-title-logo').on('click', appFoetus.reload);
-        $('.delete-img-form').on('submit', appFoetus.deleteImage);
+        $('.home-img').on('dblclick', app.goToAdmin)
+        $('.main-title-logo').on('click', app.reload);
+        $('.delete-img-form').on('submit', app.deleteImage);
     },
 
     goToAdmin: function () {
-        console.log('dblcclik');
-        window.location.href = Routing.generate('foetus_admin');
+        window.location.href = Routing.generate('admin');
     },
 
     reload: function () {
         location.reload()
     },
-
-    // enterFoetus: function () {
-    //     $('.foetus-home-img').fadeOut('slow');
-    //     $('.home-foetus-container').fadeOut('slow');
-    //     $('.social').css('top', '2%')
-    //     $('.main-title-logo').css('top', '2%')
-    // },
 
     deleteImage: function (e) {
         route = "delete_gallery";
@@ -41,7 +30,7 @@ var appFoetus = {
                 e.preventDefault();
                 if (null !== response) {
                     $(e.target).closest('.itemx').remove();
-                    appFoetus.reload();
+                    app.reload();
                 } else {
                     console.log('Problème');
                 }
@@ -55,4 +44,4 @@ var appFoetus = {
 }
 
 // AppWitch Loading
-document.addEventListener('DOMContentLoaded', appFoetus.initFoetus)
+document.addEventListener('DOMContentLoaded', app.init)

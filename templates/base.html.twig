@@ -24,11 +24,11 @@
       integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6"
       crossorigin="anonymous"
     />
-    <link rel="stylesheet" href="{{ asset('assets/css/style-foetus.css') }}" />
+    <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}" />
 
     {% endblock %}
 
-    <title>{% block title %} Foetus {% endblock %}</title>
+    <title>{% block title %} Home {% endblock %}</title>
   </head>
 
   <body class=
@@ -79,7 +79,7 @@
     <script src="{{
         path('fos_js_routing_js', { callback: 'fos.Router.setData' })
       }}"></script>
-    <script src="{{ asset('assets/js/foetus.js') }}"></script>
+    <script src="{{ asset('assets/js/app.js') }}"></script>
 
     {% endblock %}
   </body>

@@ -26,7 +26,7 @@
     <div class="offcanvas-body">
       <ul>
         <li>
-          <a href="{{ path('foetus_home') }}" class="home-link">
+          <a href="{{ path('home') }}" class="home-link">
             <span class="ti-home"></span> - Accueil</a
           >
         </li>
@@ -51,16 +51,16 @@
             >
           </li>
           <li>
-            <a class="dropdown-item" href="{{ path('foetus_list_rates_update') }}"
+            <a class="dropdown-item" href="{{ path('list_rates_update') }}"
               >Mes tarifs</a
             >
           </li>
           <li>
-            <a class="dropdown-item" href="{{ path('foetus_social_show') }}"
+            <a class="dropdown-item" href="{{ path('social_show') }}"
               >Mes réseaux sociaux</a
             >
           </li>
-          <li><a class="dropdown-item" href="{{ path('foetus_list_events_update') }}">Mes actus</a></li>
+          <li><a class="dropdown-item" href="{{ path('list_events_update') }}">Mes actus</a></li>
           <li><a class="dropdown-item" href="#">Mes infos</a></li>
         </ul>
       </div>
@@ -98,11 +98,11 @@
           <li>
             <a
               class="dropdown-item"
-              href="{{ path('foetus_social_add', { type: 'image' }) }}"
+              href="{{ path('social_add', { type: 'image' }) }}"
               >Un réseau social</a
             >
           </li>
-          <li><a class="dropdown-item" href="{{ path('foetus_rates_add') }}">Un tarif</a></li>
+          <li><a class="dropdown-item" href="{{ path('rates_add') }}">Un tarif</a></li>
           <li><a class="dropdown-item" href="{{ path('add_event') }}">Une actu</a></li>
           <li><a class="dropdown-item" href="#">Mes autres projets</a></li>
         </ul>
@@ -138,7 +138,6 @@
               >Des images de mes flashs</a
             >
           </li>
-          <li><a class="dropdown-item" href="#">Une actu</a></li>
         </ul>
       </div>
     </div>

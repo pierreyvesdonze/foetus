@@ -24,7 +24,7 @@ class SocialController extends AbstractController
 
 
     /**
-     * @Route("/social/show/admin", name="foetus_social_show")
+     * @Route("/social/show/admin", name="social_show")
      * 
      * @IsGranted("ROLE_ADMIN")
      */
@@ -41,7 +41,7 @@ class SocialController extends AbstractController
     }
 
     /**
-     * @Route("/social/add/{type}/admin", name="foetus_social_add")
+     * @Route("/social/add/{type}/admin", name="social_add")
      * 
      * @IsGranted("ROLE_ADMIN")
      */
@@ -79,7 +79,7 @@ class SocialController extends AbstractController
     }
 
     /**
-     * @Route("/admin/social/update/{id}", name="foetus_social_update",  methods={"GET","POST"})
+     * @Route("/admin/social/update/{id}", name="social_update",  methods={"GET","POST"})
      * 
      * @IsGranted("ROLE_ADMIN")
      */
@@ -135,6 +135,6 @@ class SocialController extends AbstractController
         $imageManager->deleteImage($socialLink->getIconPath());
         $this->addFlash('success', "Le lien a bien été supprimé !");
 
-        return $this->redirectToRoute('foetus_social_show');
+        return $this->redirectToRoute('social_show');
     }
 }

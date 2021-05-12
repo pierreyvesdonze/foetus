@@ -1,6 +1,8 @@
 <div class="main-container">
-    <a href="{{ path('event_show', {id:event.id}) }}">
-  <span class="ti-back-left custom-button-2"></span>
+    {% if event is defined %}
+        <a href="{{ path('event_show', {id:event.id}) }}">
+        <span class="ti-back-left custom-button-2"></span>
+  {% endif %}
 </a>
     <div class="custom-flex-container">
         {{ form_start(form, {'attr': {'novalidate': 'novalidate'}}) }}

@@ -3,7 +3,6 @@
 namespace App\Controller;
 
 use App\Entity\Event;
-use App\Entity\ImageEntity;
 use App\Form\Type\EventType;
 use App\Repository\EventRepository;
 use App\Service\ImageManager;
@@ -25,12 +24,16 @@ class EventController extends AbstractController
     }
 
     /**
-     * @Route("/event", name="foetus_events")
+     * @Route("/event", name="events")
      */
     public function events(EventRepository $eventRepository): Response
     {
         
-        $events = $eventRepository->findAll();
+        //$events = $eventRepository->findAll();
+        $events = $eventRepository->findBy(
+            [],
+            ['date' => 'DESC']
+        );
 
         return $this->render('event/events.html.twig', [
             'events' => $events,
@@ -79,7 +82,7 @@ class EventController extends AbstractController
     }
 
     /**
-     * @Route("/events/list/update/admin", name="foetus_list_events_update")
+     * @Route("/events/list/update/admin", name="list_events_update")
      * 
      * @IsGranted("ROLE_ADMIN")
      */
@@ -156,7 +159,7 @@ class EventController extends AbstractController
 
         $this->addFlash('success', "L'actu a bien été supprimée");
 
-        return $this->redirectToRoute('foetus_list_events_update');
+        return $this->redirectToRoute('list_events_update');
     }
 
     /**

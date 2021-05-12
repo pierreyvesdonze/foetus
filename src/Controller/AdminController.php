@@ -10,7 +10,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 class AdminController extends AbstractController
 {
     /**
-     * @Route("/admin", name="foetus_admin", options={"expose"=true})
+     * @Route("/admin", name="admin", options={"expose"=true})
      */
     public function homeAdmin(): Response
     {

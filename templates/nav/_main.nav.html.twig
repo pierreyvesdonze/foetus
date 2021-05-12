@@ -27,37 +27,37 @@
     <div class="offcanvas-body">
       <ul>
         <li>
-          <a href="{{ path('foetus_home') }}"
+          <a href="{{ path('home') }}"
             ><span class="ti-home"></span> - Accueil</a
           >
         </li>
         <li>
-          <a href="{{ path('foetus_bio') }}"
+          <a href="{{ path('bio') }}"
             ><span class="ti-id-badge"></span> - Bio</a
           >
         </li>
                 <li>
-          <a href="{{ path('foetus_galeries', { type: 'tattoo' }) }}"
+          <a href="{{ path('galeries', { type: 'tattoo' }) }}"
             ><span class="ti-image"></span> - Tatouages</a
           >
         </li>
         <li>
-          <a href="{{ path('foetus_galeries', { type: 'flashes' }) }}"
+          <a href="{{ path('galeries', { type: 'flashes' }) }}"
             ><span class="ti-image"></span> - Flashes</a
           >
         </li>
         <li>
-          <a href="{{ path('foetus_galeries', { type: 'galerie' }) }}"
+          <a href="{{ path('galeries', { type: 'galerie' }) }}"
             ><span class="ti-image"></span> - Galerie</a
           >
         </li>
         <li>
-          <a href="{{ path('foetus_rates_show') }}"
+          <a href="{{ path('rates_show') }}"
             ><span class="ti-money"></span> - Tarifs</a
           >
         </li>
         <li>
-          <a href="{{ path('foetus_events') }}" class="admin-link">
+          <a href="{{ path('events') }}" class="admin-link">
             <span class="ti-info"></span> - Actus</a>
         </li>
         <li>
@@ -65,7 +65,7 @@
         </li>
         {% if app.user %}
         <li>
-          <a href="{{ path('foetus_admin') }}" class="admin-link"><span class="ti-settings"></span> - Admin</a
+          <a href="{{ path('admin') }}" class="admin-link"><span class="ti-settings"></span> - Admin</a
           >
         </li>
         <li>
