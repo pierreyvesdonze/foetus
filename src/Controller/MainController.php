@@ -30,16 +30,17 @@ class MainController extends AbstractController
 
         $form = $this->createForm(ContactType::class);
         $form->handleRequest($request);
+        $email = $this->getParameter('app.mail');
 
         if ($form->isSubmitted() && $form->isValid()) {
         
             $sender = $form->get('email')->getData();
             $text = $form->get('text')->getData();
-
+           
             $message = (new TemplatedEmail())
-                ->from('pyd3.14@gmail.com')
+                ->from($sender)
                 ->to(
-                    'pyd3.14@gmail.com',
+                    $email,
                 )
                 ->subject('De la part de '.$sender.' !')
                 ->htmlTemplate('email/contact.notification.html.twig')
