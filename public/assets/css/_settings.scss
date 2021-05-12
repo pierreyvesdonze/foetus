@@ -19,9 +19,40 @@ COLORS
 
 /*
 ***********************************
+Filtre +18
+***********************************
+*/
+.parental-advisory {
+  margin-top: 25%;
+}
+
+.modal-title
+{
+  margin: auto;
+}
+
+.parental-advisory-text {
+  font-size: 2em;
+  text-align: center;
+}
+
+.modal-footer {
+  justify-content: center !important;
+}
+
+/*
+***********************************
 GENERAL
 ***********************************
 */
+
+.hidden {
+  display: none !important;
+}
+
+.opacity {
+  opacity: 0.1 !important;
+}
 
 html,
 body {

@@ -18,9 +18,41 @@ COLORS
 
 /*
 ***********************************
+Filtre +18
+***********************************
+*/
+.parental-advisory {
+  margin-top: 25%;
+}
+
+.modal-title {
+  margin: auto;
+}
+
+.parental-advisory-text {
+  font-size: 2em;
+  text-align: center;
+}
+
+.modal-footer {
+  -webkit-box-pack: center !important;
+      -ms-flex-pack: center !important;
+          justify-content: center !important;
+}
+
+/*
+***********************************
 GENERAL
 ***********************************
 */
+.hidden {
+  display: none !important;
+}
+
+.opacity {
+  opacity: 0.1 !important;
+}
+
 html,
 body {
   overflow: hidden;

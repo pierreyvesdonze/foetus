@@ -30,12 +30,19 @@ class GalleryController extends AbstractController
      * @Route("/galeries/{type}", name="galeries")
      * 
      */
-    public function galeries(ImageEntityRepository $imageEntityRepository, string $type): Response
+    public function galeries(
+        ImageEntityRepository $imageEntityRepository,
+        string $type,
+        Request $request
+        ): Response
     {
+        $routeType = $request->attributes->get('_route_params');
+       
         $images = $imageEntityRepository->findByType($type);
 
         return $this->render('galerie/galerie.html.twig', [
             'images' => $images,
+            'route' => $routeType['type']
         ]);
     }
 
@@ -124,7 +131,7 @@ class GalleryController extends AbstractController
     ) {
 
         $this->denyAccessUnlessGranted('ROLE_ADMIN');
-
+       
         $images = $imageEntityRepository->findByType($type);
 
         if ($request->isMethod('POST')) {
