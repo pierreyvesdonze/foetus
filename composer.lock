@@ -603,8 +603,7 @@
                 "twig/twig": "^1.34|^2.12|^3.0"
             },
             "suggest": {
-                "doctrine/orm": "The Doctrine ORM integration is optional in the bundle.",
-                "symfony/web-profiler-bundle": "To use the data collector."
+                "doctrine/orm": "The Doctrine ORM integration is optional in the bundle."
             },
             "type": "symfony-bundle",
             "extra": {
