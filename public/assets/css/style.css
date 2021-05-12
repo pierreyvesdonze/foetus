@@ -245,7 +245,7 @@ LISTS
 HOME
 ***********************************
 */
-.home-foetus-container {
+.home-container {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -260,18 +260,18 @@ HOME
   width: 100%;
 }
 
-.home-foetus-container img {
+.home-container img {
   height: 46vh;
   -webkit-transition: ease-in-out 0.5s;
   transition: ease-in-out 0.5s;
 }
 
-.home-foetus-container img:hover {
+.home-container img:hover {
   -webkit-filter: drop-shadow(0 0 0.75rem #d84bd8);
           filter: drop-shadow(0 0 0.75rem #d84bd8);
 }
 
-.enter-foetus {
+.enter- {
   position: absolute;
   top: 50;
   font-size: 2em;
@@ -285,7 +285,7 @@ HOME
   -moz-box-shadow: 0px -2px 9px 4px rgba(0, 0, 0, 0.75) inset;
 }
 
-.enter-foetus a {
+.enter-a {
   color: #380234 !important;
   text-shadow: 4px 4px 4px #72046b8c;
 }
@@ -609,4 +609,4 @@ LIST UPDATE
       -ms-flex-pack: center;
           justify-content: center;
 }
-/*# sourceMappingURL=style-foetus.css.map */
+/*# sourceMappingURL=style.css.map */

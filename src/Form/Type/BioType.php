@@ -18,12 +18,14 @@ class BioType extends AbstractType
     {
         $builder
             ->add('title', TextType::class, [
+                'empty_data' => 'Titre',
                 'label' => 'Titre de la bio',
                 'attr' => [
                     'class' => 'input-title',
                 ],
             ])
             ->add('text', CKEditorType::class, [
+                'empty_data' => 'Texte',
                 'config' => ['uiColor' => '#fffffff']
             ]);
 

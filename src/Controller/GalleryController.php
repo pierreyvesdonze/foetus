@@ -27,7 +27,7 @@ class GalleryController extends AbstractController
     }
 
     /**
-     * @Route("/galeries/{type}", name="foetus_galeries")
+     * @Route("/galeries/{type}", name="galeries")
      * 
      */
     public function galeries(ImageEntityRepository $imageEntityRepository, string $type): Response

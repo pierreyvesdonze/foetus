@@ -14,7 +14,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 class BioController extends AbstractController
 {
     /**
-     * @Route("/bio", name="foetus_bio")
+     * @Route("/bio", name="bio")
      */
     public function bio(BioRepository $bioRepository): Response
     {
@@ -59,9 +59,8 @@ class BioController extends AbstractController
 
             $manager = $this->getDoctrine()->getManager();
             $manager->flush();
-
+            $this->addFlash('success', 'Bio modifiée !');
         }
-        $this->addFlash('success', 'Bio modifiée !');
 
         return $this->render('bio/update.html.twig', [
             'form' => $form->createView()

@@ -51,7 +51,7 @@ class ImageManager
             $fileName = 'assets/images/' . uniqid() . '.' . $file->getClientOriginalExtension();
             $imageDirectory = $this->getImageDirectory();
         } elseif ($type === "bio") {
-            $fileName = 'assets/images/foetus.' . $file->guessExtension();
+            $fileName = 'assets/images/bio.' . $file->guessExtension();
             $imageDirectory = $this->getImageDirectory();
 
         } elseif ($type === 'event') {

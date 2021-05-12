@@ -7,7 +7,7 @@ use FOS\CKEditorBundle\Form\Type\CKEditorType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
-use Symfony\Component\Form\Extension\Core\Type\TextType as TypeTextType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -18,13 +18,17 @@ class EventType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('title', TypeTextType::class, [
+            ->add('title', TextType::class, [
                 'label' => "Titre de l'actu",
+                'required' => true,
+                'empty_data' => 'Titre',
                 'attr' => [
                     'class' => 'input-title'
                 ]
             ])
             ->add('text', CKEditorType::class, [
+                'required' => true,
+                'empty_data' => 'Texte',
                 'config' => ['uiColor' => '#ffffff']
             ])
             ->add('date', DateType::class, [
