@@ -50,6 +50,10 @@ class MainController extends AbstractController
                 ]);
 
             $mailer->send($message);
+
+            $this->addFlash('success', 'Votre email a bien été envoyé !');
+
+            return $this->redirectToRoute('home');
         }
         return $this->render('email/contact.form.html.twig', [
             'form' => $form->createView()
