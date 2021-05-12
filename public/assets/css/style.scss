@@ -107,7 +107,7 @@ GALLERY / FLASHES
 */
 
 // Add img form
-#add-file-form {
+.add-file-form {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -118,7 +118,7 @@ GALLERY / FLASHES
   opacity: 0;
 }
 
-#add-file-form label {
+.add-file-form label {
   display: block;
   position: relative;
   display: flex;
