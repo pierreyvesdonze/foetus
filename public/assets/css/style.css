@@ -295,7 +295,7 @@ HOME
 GALLERY / FLASHES
 ***********************************
 */
-#add-file-form {
+.add-file-form {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -315,7 +315,7 @@ GALLERY / FLASHES
   opacity: 0;
 }
 
-#add-file-form label {
+.add-file-form label {
   display: block;
   position: relative;
   display: -webkit-box;

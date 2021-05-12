@@ -46,6 +46,13 @@
           <li>
             <a
               class="dropdown-item"
+              href="{{ path('update_logo') }}"
+              >Mon logo</a
+            >
+          </li>
+          <li>
+            <a
+              class="dropdown-item"
               href="{{ path('update_bio', { type: 'bio' }) }}"
               >Ma bio</a
             >
@@ -60,7 +67,11 @@
               >Mes réseaux sociaux</a
             >
           </li>
-          <li><a class="dropdown-item" href="{{ path('list_events_update') }}">Mes actus</a></li>
+          <li>
+            <a class="dropdown-item" href="{{ path('list_events_update') }}"
+              >Mes actus</a
+            >
+          </li>
           <li><a class="dropdown-item" href="#">Mes infos</a></li>
         </ul>
       </div>
@@ -74,7 +85,7 @@
           Ajouter
         </button>
         <ul class="dropdown-menu" aria-labelledby="add-something">
-                    <li>
+          <li>
             <a
               class="dropdown-item"
               href="{{ path('add_tattoo', { type: 'tattoo' }) }}"
@@ -102,8 +113,12 @@
               >Un réseau social</a
             >
           </li>
-          <li><a class="dropdown-item" href="{{ path('rates_add') }}">Un tarif</a></li>
-          <li><a class="dropdown-item" href="{{ path('add_event') }}">Une actu</a></li>
+          <li>
+            <a class="dropdown-item" href="{{ path('rates_add') }}">Un tarif</a>
+          </li>
+          <li>
+            <a class="dropdown-item" href="{{ path('add_event') }}">Une actu</a>
+          </li>
           <li><a class="dropdown-item" href="#">Mes autres projets</a></li>
         </ul>
       </div>
@@ -117,7 +132,7 @@
           Supprimer
         </button>
         <ul class="dropdown-menu" aria-labelledby="delete-something">
-              <li>
+          <li>
             <a
               class="dropdown-item"
               href="{{ path('delete_gallery', { type: 'tattoo' }) }}"

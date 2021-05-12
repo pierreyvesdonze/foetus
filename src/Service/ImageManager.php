@@ -50,7 +50,11 @@ class ImageManager
         if ($type === 'image') {
             $fileName = 'assets/images/' . uniqid() . '.' . $file->getClientOriginalExtension();
             $imageDirectory = $this->getImageDirectory();
-        } elseif ($type === "bio") {
+        } elseif ($type === "logo") {
+            $fileName = 'assets/images/main-logo.png';
+            $imageDirectory = $this->getImageDirectory();
+        } 
+        elseif ($type === "bio") {
             $fileName = 'assets/images/bio.' . $file->guessExtension();
             $imageDirectory = $this->getImageDirectory();
 

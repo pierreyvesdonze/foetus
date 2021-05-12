@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %} {% block title %}Modifier le logo{% endblock %}
+{% block body %}
+
+<!--***************************ADMIN NAV****************************-->
+{% include 'admin/_nav.admin.html.twig' %}
+
+<div class="main-container">
+  <div class="custom-flex-container">
+    {{ form_start(form, {'attr': {'novalidate': 'novalidate'}}) }}
+    <div class="form-errors">
+      {{ form_errors(form) }}
+    </div>
+
+    {{ form_row(form.logo) }}
+    <hr class="hr" />
+    {{ form_row(form.save) }}
+    {{ form_end(form) }}
+  </div>
+</div>
+
+{% endblock %}
