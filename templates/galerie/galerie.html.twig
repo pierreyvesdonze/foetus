@@ -1,21 +1,58 @@
 {% extends 'base.html.twig' %} {% block title %}Galerie{% endblock %} {% block
-body %}
+body %} {% include 'nav/_main.nav.html.twig' %}
 
-{% include 'nav/_main.nav.html.twig' %}
+<!-- Button trigger modal -->
+<button
+  type="button"
+  class="parental-button hidden"
+  data-bs-toggle="modal"
+  data-bs-target="#staticBackdrop"
+>
+  Launch static backdrop modal
+</button>
 
-<main class="main-container">
-	<div class="container-flexboxxx">
-		<div class="flexboxxx">
-			{% for image in images %}
-			<div class="itemx">
-				<a href="{{ asset(image.pathName) }}">
-					<img src="{{ asset( image.thumbPathName  ) }}"
-					alt="" class="home-img"/>
-				</a>
-			</div>
-			{% endfor %}
-		</div>
-	</div>
+<!-- Modal +18 -->
+<div
+  class="modal fade parental-advisory"
+  id="staticBackdrop"
+  data-bs-backdrop="static"
+  data-bs-keyboard="false"
+  tabindex="-1"
+  aria-labelledby="staticBackdropLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title" id="staticBackdropLabel">
+          Avez-vous plus de 18 ans ?
+        </h1>
+      </div>
+      <div class="modal-body">
+        <p class="parental-advisory-text">Cette galerie offre du contenu réservé aux adultes</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary enter-parental-button" data-bs-dismiss="modal">
+          J'ai plus de 18 ans
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<main class="main-container {% if route == 'galerie' %}opacity{% endif %}" data-route="{{ route }}">
+  <div class="container-flexboxxx">
+    <div class="flexboxxx">
+      {% for image in images %}
+      <div class="itemx">
+        <a href="{{ asset(image.pathName) }}">
+          <img src="{{ asset(image.thumbPathName) }}" alt="" class="home-img" />
+        </a>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
 </main>
 
 {% endblock %}

@@ -10,6 +10,16 @@ var app = {
         $('.home-img').on('dblclick', app.goToAdmin)
         $('.main-title-logo').on('click', app.reload);
         $('.delete-img-form').on('submit', app.deleteImage);
+
+        /* PARENTAL ADVISORY */
+        $('.main-container').data('route') === 'galerie' ? app.parentalAdvisory() : console.log('Coucou');
+    },
+
+    parentalAdvisory: function () {
+        $('.parental-button').trigger('click');
+        $('.enter-parental-button').on('click', function () {
+            $('.main-container').removeClass('opacity');
+        })
     },
 
     goToAdmin: function () {
@@ -40,7 +50,6 @@ var app = {
                 console.log(error);
             });
     },
-
 }
 
 // AppWitch Loading
