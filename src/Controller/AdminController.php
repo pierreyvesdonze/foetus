@@ -14,6 +14,10 @@ class AdminController extends AbstractController
 {
     /**
      * @Route("/admin", name="admin", options={"expose"=true})
+     * 
+     * @IsGranted("ROLE_ADMIN")
+     * 
+     * @return Response
      */
     public function homeAdmin(): Response
     {
@@ -31,11 +35,13 @@ class AdminController extends AbstractController
      * @Route("/admin/update/logo", name="update_logo")
      * 
      * @IsGranted("ROLE_ADMIN")
+     * 
+     * @return Reponse
      */
     public function updateLogo(
         Request $request,
         ImageManager $imageManager
-        )
+        ): Response
     {
         $this->denyAccessUnlessGranted('ROLE_ADMIN');
 

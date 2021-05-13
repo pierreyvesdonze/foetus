@@ -5,35 +5,34 @@ body %}
 {% include 'nav/_main.nav.html.twig' %}
 
 <div class="main-container">
-
-{% if app.user %}
-     {# UPDATE #}
-      <div class="control-a">
-        <a href="{{ path('update_event', { id: event.id }) }}">
-          <span class="ti-settings custom-button-2"></span>
-        </a>
-
-        {# DELETE #}
-        <a
-          href="{{ path('event_delete', { id: event.id }) }}"
-          class=""
-          onclick=' return confirm("Supprimer cette actu ?")'
-          data-id="{{ event.id }}"
-        >
-          <span class="ti-close custom-button-2"></span>
-        </a>
-      </div>
-{% endif %}
-
   <h1 class="big-title">
     {{ event.title }}
   </h1>
+
+  {% if app.user %} {# UPDATE #}
+  <div class="control-a">
+    <a href="{{ path('update_event', { id: event.id }) }}">
+      <span class="ti-settings custom-button-2"></span>
+    </a>
+
+    {# DELETE #}
+    <a
+      href="{{ path('event_delete', { id: event.id }) }}"
+      class=""
+      onclick=' return confirm("Supprimer cette actu ?")'
+      data-id="{{ event.id }}"
+    >
+      <span class="ti-close custom-button-2"></span>
+    </a>
+  </div>
+  {% endif %}
+
   <div class="custom-flex-container">
     <div class="custom-text">
       {{ event.text | raw }}
     </div>
     <div class="custom-text-image">
-      <img src="{{ asset(event.image) }}"/>
+      <img src="{{ asset(event.image) }}" />
     </div>
   </div>
 </div>

@@ -1,14 +1,24 @@
-<div class="custom-flex-container">
-  {{ form_start(form, {'attr': {'novalidate': 'novalidate'}}) }}
-  <div class="form-errors">
-    {{ form_errors(form) }}
-  </div>
 
-  {{ form_row(form.title) }}
-  <hr class="hr" />
-  {{ form_row(form.amount) }}
-  {{ form_row(form.text) }}
-  <hr class="hr" />
-  {{ form_row(form.save) }}
-  {{ form_end(form) }}
+<div class="main-container">
+  {% set currentRoute = app.request.get('_route') %}
+  {% if 'rates_add' == currentRoute %}
+  {% set title = "Ajouter un tarif" %}
+  {% else %}
+  {% set title = "Modifier un tarif" %}
+  {% endif %}
+  <h1 class="big-title">{{ title }}</h1>
+  <div class="custom-flex-container">
+    {{ form_start(form, {'attr': {'novalidate': 'novalidate'}}) }}
+    <div class="form-errors">
+      {{ form_errors(form) }}
+    </div>
+    
+    {{ form_row(form.title) }}
+    <hr class="hr" />
+    {{ form_row(form.amount) }}
+    {{ form_row(form.text) }}
+    <hr class="hr" />
+    {{ form_row(form.save) }}
+    {{ form_end(form) }}
+  </div>
 </div>

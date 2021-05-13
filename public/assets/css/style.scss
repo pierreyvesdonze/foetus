@@ -211,6 +211,10 @@ GALLERY / FLASHES
   border-radius: 20px;
 }
 
+.thumb-img {
+  width: 280px;
+}
+
 /*
 ***********************************
 BIO // ACTUS
@@ -239,6 +243,7 @@ BIO // ACTUS
 .custom-text-image {
   display: flex;
   justify-content: center;
+  height: max-content;
   margin-bottom: 3em;
 }
 
@@ -337,6 +342,7 @@ CONTROL
 ***********************************
 */
 .control-a {
+  margin: 0 auto;
   display: flex;
 }
 

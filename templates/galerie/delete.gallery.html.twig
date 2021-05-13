@@ -1,5 +1,6 @@
-{% extends 'base.html.twig' %} {% block title %}Supprimer une image{% endblock %} {% block
-body %} 
+{% extends 'base.html.twig' %} 
+{% block title %}Supprimer une image{% endblock %} 
+{% block body %} 
 
 {% include 'admin/_nav.admin.html.twig' %}
 
@@ -15,7 +16,7 @@ body %}
           <img
           src="{{ asset(image.thumbPathName) }}"
           alt=""
-          class="home-img"
+          class="thumb-img"
           data-id="{{ image.id }}"
           />
         </form>

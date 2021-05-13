@@ -29,6 +29,9 @@ class GalleryController extends AbstractController
     /**
      * @Route("/galeries/{type}", name="galeries")
      * 
+     * @param mixed $imageEntityRepository
+     * 
+     * @return Reponse
      */
     public function galeries(
         ImageEntityRepository $imageEntityRepository,
@@ -38,6 +41,9 @@ class GalleryController extends AbstractController
     {
         $routeType = $request->attributes->get('_route_params');
        
+        /**
+         * @var ImageEntity $images
+         */
         $images = $imageEntityRepository->findByType($type);
 
         return $this->render('galerie/galerie.html.twig', [
@@ -52,6 +58,11 @@ class GalleryController extends AbstractController
      * @Route("/flash/add/{type}/admin", name="add_flash")
      * 
      * @IsGranted("ROLE_ADMIN")
+     * 
+     * @param mixed $galleryRepository
+     * @param mixed $type
+     *
+     * @return Response
      */
     public function addToGaleries(
         Request $request,
@@ -67,6 +78,9 @@ class GalleryController extends AbstractController
         // echo ini_get('post_max_size') . "\n";
         // echo $a->getPostMaxSize() . "\n";
 
+        /**
+         * @var Gallery $gallery
+         */
         $gallery = $galleryRepository->findOneBy([
             'name' => 'Gallery'
         ]);
@@ -84,6 +98,9 @@ class GalleryController extends AbstractController
                 $imageManager->resize($photoFileName);
                 $imageManager->createThumb($photoFileName, $type);
 
+                /**
+                 * @var ImageEntity $newImage
+                 */
                 $newImage = new ImageEntity;
                 $newImage->setPathName($photoFileName);
 
@@ -95,9 +112,7 @@ class GalleryController extends AbstractController
                 }
 
                 $newImage->setThumbPathName($thumbName);
-
                 $this->entityManager->persist($newImage);
-
                 $gallery->addFile($newImage);
             }
 
@@ -107,7 +122,7 @@ class GalleryController extends AbstractController
         }
 
         return $this->render(
-            'admin/add.gallery.html.twig',
+            'galerie/add.gallery.html.twig',
             [
                 'form' => $form->createView()
             ]
@@ -122,6 +137,8 @@ class GalleryController extends AbstractController
      * @Route("/delete/{type}/admin", name="delete_flash", methods={"GET", "POST"}, options={"expose"=true})
      * 
      * @IsGranted("ROLE_ADMIN")
+     * 
+     * @return void
      */
     public function deleteFromGaleries(
         ImageEntityRepository $imageEntityRepository,
@@ -132,12 +149,13 @@ class GalleryController extends AbstractController
 
         $this->denyAccessUnlessGranted('ROLE_ADMIN');
        
+        /**
+         * @var ImageEntity $images
+         */
         $images = $imageEntityRepository->findByType($type);
 
         if ($request->isMethod('POST')) {
-
             if (isset($_POST['deleteImg'])) {
-
                 $imgToDelete = $imageEntityRepository->findOneBy(
                     [
                         'id' => $_POST['deleteImg']
@@ -156,7 +174,7 @@ class GalleryController extends AbstractController
         }
 
         return $this->render(
-            'admin/delete.gallery.html.twig',
+            'galerie/delete.gallery.html.twig',
             [
                 'images' => $images,
                 'type' => $type

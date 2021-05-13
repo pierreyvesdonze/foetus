@@ -3,21 +3,29 @@ body %}
 
 {% include 'admin/_nav.admin.html.twig' %}
 
-<h1 class="big-title">Modifier un lien réseau social</h1>
-
-<div class="custom-flex-container">
-  {{ form_start(form, {'attr': {'novalidate': 'novalidate'}}) }}
-  <div class="form-errors">
-    {{ form_errors(form) }}
+<div class="main-container">
+  <h1 class="big-title">Modifier un réseau social</h1>
+  <div class="control-a">
+    <a href="{{ path('social_show') }}">
+      <span class="ti-back-left custom-button-2"></span>
+    </a>
   </div>
-
-  {{ form_row(form.title) }}
+  
+  <div class="custom-flex-container">
+    {{ form_start(form, {'attr': {'novalidate': 'novalidate'}}) }}
+    <div class="form-errors">
+      {{ form_errors(form) }}
+    </div>
+    
+    {{ form_row(form.title) }}
     <hr class="hr">
-  {{ form_row(form.linkPath) }}
-  {{ form_row(form.iconPath) }}
+    {{ form_row(form.linkPath) }}
+    {{ form_row(form.iconPath) }}
     <hr class="hr">
-  {{ form_row(form.save) }}
-  {{ form_end(form) }}
+    {{ form_row(form.save) }}
+    {{ form_end(form) }}
+  </div>
 </div>
-
-{% endblock %}
+  
+  {% endblock %}
+  
