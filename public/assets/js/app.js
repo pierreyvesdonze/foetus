@@ -34,7 +34,7 @@ var app = {
         route = "delete_gallery";
         $.ajax(
             {
-                url: Routing.generate(route, {'type': 'pouet'}),
+                url: Routing.generate(route, { 'type': 'pouet' }),
                 method: "POST",
             }).done(function (response) {
                 e.preventDefault();
@@ -51,6 +51,21 @@ var app = {
             });
     },
 }
+
+// Joue une animation sur les routes Home et Admin uniquement
+$(document).ready(function () {
+
+    let url = $(location).attr("href").split('/').pop();
+
+    if ('home' == url || 'admin' == url) {
+        function animate() {
+            console.log(url)
+            $('.home-img').toggleClass('home-img-anim');
+        }
+        animate();
+        setInterval(animate, 1000);
+    }
+})
 
 // AppWitch Loading
 document.addEventListener('DOMContentLoaded', app.init)

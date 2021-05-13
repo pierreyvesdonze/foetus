@@ -1,7 +1,7 @@
-{% extends 'base.html.twig' %} {% block title %}Ajouter un lien{% endblock %} {%
-block body %} {% include 'admin/_nav.admin.html.twig' %}
+{% extends 'base.html.twig' %} {% block title %}Ajouter un lien externe{%
+endblock %} {% block body %} {% include 'admin/_nav.admin.html.twig' %}
 
-<h1 class="big-title">Ajouter un lien réseau social</h1>
+<h1 class="big-title">Ajouter un réseau social</h1>
 
 <div class="main-container">
   <div class="custom-flex-container">
@@ -9,11 +9,11 @@ block body %} {% include 'admin/_nav.admin.html.twig' %}
     <div class="form-errors">
       {{ form_errors(form) }}
     </div>
-    
+
     {{ form_row(form.title) }}
     <hr class="hr" />
     {{ form_row(form.linkPath) }}
-    <hr class="hr">
+    <hr class="hr" />
     {{ form_row(form.iconPath) }}
     <hr class="hr" />
     {{ form_row(form.save) }}

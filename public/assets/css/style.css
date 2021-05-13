@@ -295,13 +295,14 @@ HOME
 
 .home-container img {
   height: 46vh;
-  -webkit-transition: ease-in-out 0.5s;
-  transition: ease-in-out 0.5s;
+  -webkit-transition: ease-in-out 1s;
+  transition: ease-in-out 1s;
 }
 
-.home-container img:hover {
-  -webkit-filter: drop-shadow(0 0 0.75rem #d84bd8);
-          filter: drop-shadow(0 0 0.75rem #d84bd8);
+.home-container img:hover,
+.home-img-anim {
+  -webkit-filter: drop-shadow(0 0 0.75rem #d84bd8) !important;
+          filter: drop-shadow(0 0 0.75rem #d84bd8) !important;
 }
 
 .enter- {
