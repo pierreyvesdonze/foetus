@@ -74,11 +74,12 @@ HOME
 
 .home-container img {
   height: 46vh;
-  transition: ease-in-out 0.5s;
+  transition: ease-in-out 1s;
 }
 
-.home-container img:hover {
-  filter: drop-shadow(0 0 0.75rem #d84bd8);
+.home-container img:hover,
+.home-img-anim {
+  filter: drop-shadow(0 0 0.75rem #d84bd8) !important;
 }
 
 .enter-{
