@@ -10,6 +10,7 @@ use App\Form\Type\RateType;
 use App\Repository\RateRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
+use Symfony\Component\HttpFoundation\Response;
 
 class RateController extends AbstractController
 {
@@ -23,9 +24,16 @@ class RateController extends AbstractController
 
     /**
      * @Route("/tarifs", name="rates_show")
+     *
+     * @param mixed $rateRepository
+     * 
+     * @return Response
      */
-    public function showRate(RateRepository $rateRepository)
+    public function showRate(RateRepository $rateRepository): Response
     {
+        /**
+         * @var Rate $ates
+         */
         $rates = $rateRepository->findAll();
 
         return $this->render('rates/show.rates.html.twig', [
@@ -37,8 +45,12 @@ class RateController extends AbstractController
      * @Route("/tarifs/add/admin", name="rates_add")
      * 
      * @IsGranted("ROLE_ADMIN")
+     * 
+     * @param mixed $request
+     * 
+     * @return Response
      */
-    public function addRates(Request $request)
+    public function addRates(Request $request): Response
     {
         $this->denyAccessUnlessGranted('ROLE_ADMIN');
 
@@ -46,6 +58,10 @@ class RateController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            
+            /**
+             * @var Rate $rate
+             */
             $newRate = new Rate;
             $newRate->setTitle($form->get('title')->getData());
             $newRate->setAmount($form->get('amount')->getData());
@@ -69,12 +85,19 @@ class RateController extends AbstractController
      * @Route("/tarifs/list/update/admin", name="list_rates_update")
      * 
      * @IsGranted("ROLE_ADMIN")
+     * 
+     * @param mixed $rateRepository
+     * 
+     * @return Response
      */
     public function listUpdateRates(
         RateRepository $rateRepository
-    ) {
+    ): Response {
         $this->denyAccessUnlessGranted('ROLE_ADMIN');
 
+        /**
+         * @var Rate $rates
+         */
         $rates = $rateRepository->findAll();
 
         return $this->render('rates/list.rate.html.twig', [
@@ -88,11 +111,15 @@ class RateController extends AbstractController
      * requirements={"id":"\d+"})
      * 
      * @IsGranted("ROLE_ADMIN")
+     * 
+     * @param object $rate
+     *
+     * @return Response
      */
     public function updateRate(
         Rate $rate,
         Request $request
-    ) {
+    ): Response {
         $this->denyAccessUnlessGranted('ROLE_ADMIN');
 
         $form = $this->createForm(RateType::class, $rate);
@@ -108,7 +135,6 @@ class RateController extends AbstractController
             }
 
             $this->entityManager->flush();
-
             $this->addFlash('success', 'Tarif modifié');
 
             return $this->redirectToRoute('list_rates_update');
@@ -125,6 +151,10 @@ class RateController extends AbstractController
      * requirements={"id":"\d+"})
      * 
      * @IsGranted("ROLE_ADMIN")
+     * 
+     * @param object $rate
+     * 
+     * @return void
      */
     public function deleteRate(
         Rate $rate

@@ -54,12 +54,9 @@ var app = {
 
 // Joue une animation sur les routes Home et Admin uniquement
 $(document).ready(function () {
-
     let url = $(location).attr("href").split('/').pop();
-
     if ('home' == url || 'admin' == url) {
         function animate() {
-            console.log(url)
             $('.home-img').toggleClass('home-img-anim');
         }
         animate();

@@ -3,18 +3,24 @@ body %} {% include 'nav/_main.nav.html.twig' %}
 
 <div class="main-container">
   <h1 class="big-title">Tarifs</h1>
+  <div class="control-a">
+    <a href="{{ path('list_rates_update') }}">
+      <span class="ti-settings custom-button-2"></span>
+    </a>
+  </div>
   <hr class="hr" />
-
-  <div class="rates">
-    <ul>
-      {% for rate in rates %} {% if rate.text %}
-      <li>
-        {{ rate.text }}
-      </li>
-      {% endif %}
-      <li>{{ rate.title }} : {{ rate.amount }}</li>
-      {% endfor %}
-    </ul>
+  <div class="custom-flex-container">
+    <div class="rates">
+      <ul>
+        {% for rate in rates %} {% if rate.text %}
+        <li>
+          {{ rate.text }}
+        </li>
+        {% endif %}
+        <li>{{ rate.title }} : {{ rate.amount }}</li>
+        {% endfor %}
+      </ul>
+    </div>
   </div>
 </div>
 

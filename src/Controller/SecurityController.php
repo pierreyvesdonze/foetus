@@ -20,6 +20,10 @@ class SecurityController extends AbstractController
 
     /**
      * @Route("/login", name="login")
+     * 
+     * @param  mixed $authenticationUtils
+     * 
+     * @return Response
      */
     public function login(AuthenticationUtils $authenticationUtils): Response
     {
@@ -37,6 +41,8 @@ class SecurityController extends AbstractController
 
     /**
      * @Route("/logout", name="logout")
+     * 
+     * @return void
      */
     public function logout()
     {
@@ -47,6 +53,11 @@ class SecurityController extends AbstractController
      * @Route("/reset-pwd", name="reset_pwd")
      * 
      * @IsGranted("ROLE_ADMIN")
+     * 
+     * @param  mixed $request
+     * @param  mixed $passwordEncoder
+     * 
+     * @return void
      */
     public function resetPwd(Request $request, UserPasswordEncoderInterface $passwordEncoder)
     {

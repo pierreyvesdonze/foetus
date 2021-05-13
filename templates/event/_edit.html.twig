@@ -1,7 +1,10 @@
 <div class="main-container">
+    <h1 class="big-title">Modifier cette actu</h1>
     {% if event is defined %}
+    <div class="control-a">
         <a href="{{ path('event_show', {id:event.id}) }}">
-        <span class="ti-back-left custom-button-2"></span>
+            <span class="ti-back-left custom-button-2"></span>
+    </div>
   {% endif %}
 </a>
     <div class="custom-flex-container">

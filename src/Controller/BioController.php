@@ -15,10 +15,17 @@ class BioController extends AbstractController
 {
     /**
      * @Route("/bio", name="bio")
+     * 
+     * @param mixed $bioRepository
+     * 
+     * @return Response
      */
     public function bio(BioRepository $bioRepository): Response
     {
         // Il n'y aura qu'une seule Bio, on la recherche    simplement par son id : 1
+        /**
+         * @var Bio $bio
+         */
         $bio = $bioRepository->findOneBy([
             'id' => 1
         ]);
@@ -32,6 +39,10 @@ class BioController extends AbstractController
      * @Route("/bio/update/{type}", name="update_bio")
      * 
      * @IsGranted("ROLE_ADMIN")
+     * 
+     * @param mixed $bioRepository
+     * 
+     * @return Response
      */
     public function updateBio(
         Request $request,
@@ -41,6 +52,9 @@ class BioController extends AbstractController
     ) {
         $this->denyAccessUnlessGranted('ROLE_ADMIN');
 
+        /**
+         * @var Bio $bio
+         */
         $bio = $bioRepository->findOneBy([
             'id' => 1
         ]);

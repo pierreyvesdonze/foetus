@@ -15,6 +15,11 @@ use Symfony\Component\HttpFoundation\Request;
 
 class EventController extends AbstractController
 {
+    /**
+     * entityManager
+     *
+     * @var mixed
+     */
     private $entityManager;
 
     public function __construct(
@@ -25,11 +30,16 @@ class EventController extends AbstractController
 
     /**
      * @Route("/event", name="events")
+     *
+     * @param mixed $eventRepository
+     * 
+     * @return Response
      */
     public function events(EventRepository $eventRepository): Response
     {
-        
-        //$events = $eventRepository->findAll();
+        /**
+         * @var Event $event
+         */
         $events = $eventRepository->findBy(
             [],
             ['date' => 'DESC']
@@ -44,18 +54,23 @@ class EventController extends AbstractController
      * @Route("/event/add", name="add_event")
      * 
      * @IsGranted("ROLE_ADMIN")
+     * 
+     * @return Reponse
      */
     public function eventAdd(
         ImageManager $imageManager,
         Request $request
-        ): Response
-    {
+    ): Response {
         $this->denyAccessUnlessGranted('ROLE_ADMIN');
 
         $form = $this->createForm(EventType::class);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+
+            /**
+             * @var Event $newEvent
+             */
             $newEvent = new Event;
             $newEvent->setTitle($form->get('title')->getData());
             $newEvent->setText($form->get('text')->getData());
@@ -75,21 +90,30 @@ class EventController extends AbstractController
             $this->addFlash('success', 'Actu ajoutée !');
         }
 
-        return $this->render('event/event.add.html.twig',
-        [
-            'form' => $form->createView()
-        ]);
+        return $this->render(
+            'event/event.add.html.twig',
+            [
+                'form' => $form->createView()
+            ]
+        );
     }
 
     /**
      * @Route("/events/list/update/admin", name="list_events_update")
      * 
      * @IsGranted("ROLE_ADMIN")
+     * 
+     * @param mixed $eventRepository
+     * 
+     * @return Response
      */
-    public function listUpdateEvents(EventRepository $eventRepository)
+    public function listUpdateEvents(EventRepository $eventRepository): Response
     {
         $this->denyAccessUnlessGranted('ROLE_ADMIN');
 
+        /**
+         * @var Event $events
+         */
         $events = $eventRepository->findAll();
 
         return $this->render('event/event.list.update.html.twig', [
@@ -99,8 +123,11 @@ class EventController extends AbstractController
 
     /**
      * @Route("/event/update/{id}", name="update_event")
-     * 
      * @IsGranted("ROLE_ADMIN")
+     * 
+     * @param mixed $event
+     * 
+     * @return Response
      */
     public function eventUpdate(
         ImageManager $imageManager,
@@ -123,12 +150,10 @@ class EventController extends AbstractController
             if ($eventImage) {
                 $imgName = $imageManager->upload($eventImage, 'event');
                 $imageManager->resize($imgName);
-
                 $event->setImage($imgName);
             }
-   
-            $this->entityManager->flush();
 
+            $this->entityManager->flush();
             $this->addFlash('success', 'Actu modifiée !');
 
             return $this->redirectToRoute('event_show', [
@@ -148,6 +173,10 @@ class EventController extends AbstractController
      * requirements={"id":"\d+"})
      * 
      * @IsGranted("ROLE_ADMIN")
+     * 
+     * @param mixed $event
+     * 
+     * @return void
      */
     public function deleteEvent(
         Event $event
@@ -164,6 +193,10 @@ class EventController extends AbstractController
 
     /**
      * @Route("/events/show/{id}", name="event_show")
+     *      
+     * @param mixed $event
+     * 
+     * @return Response
      */
     public function eventShow(Event $event): Response
     {

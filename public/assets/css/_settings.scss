@@ -63,7 +63,7 @@ body {
 }
 
 .body,
-.body-2 {
+.body-admin {
   transition: ease-in-out 0.4s;
 }
 
@@ -71,7 +71,7 @@ body {
   background: var(--background-color);
 }
 
-.body-2 {
+.body-admin {
   background-color: var(--background-color-2);
 }
 
@@ -192,70 +192,6 @@ ul li,
 li {
   list-style-type: none !important;
 }
-
-
-/*
-***********************************
-FLASH MESSAGES / CUSTOM ALERT
-***********************************
-*/
-
-//
-// .alert {
-//   height: auto;
-//   width: 500px;
-//   -webkit-box-shadow: 8px 8px 7px -2px rgba(0, 0, 0, 0.911);
-//   -moz-box-shadow: 8px 8px 7px -2px rgba(0, 0, 0, 0.932);
-//   box-shadow: 8px 8px 7px -2px rgba(0, 0, 0, 0.938);
-//   align-self: center;
-//   background-color: var(--primary-color);
-//   color: var(--secondary-color);
-//   border: none;
-//   outline: none;
-//   text-align: center;
-//   opacity: 0.8;
-//   font-size: 1.3em;
-//   padding: 0.2em;
-//   border-radius: 9px;
-// }
-
-// .alert::after {
-//   opacity: 0;
-//   transition: ease;
-// }
-
-// .close {
-//   position: absolute;
-//   right: 385px;
-//   top: -10px;
-//   z-index: 8;
-//   color: rgb(255, 0, 0) !important;
-//   text-shadow: 0 1px 0 #000 !important;
-//   opacity: 1;
-//   background: none;
-//   border: none;
-//   font-size: 3.5em;
-//   font-weight: 100;
-// }
-
-// .close:focus {
-//   outline: none;
-// }
-
-// .close:hover {
-//   color: green !important;
-// }
-
-// .custom-alert {
-//   padding: 1em;
-//   font-size: 1.1em;
-//   color: var(--secondary-color);
-//   text-align: center;
-//   position: absolute;
-//   width: 80%;
-//   height: auto;
-//   background-color: var(--primary-color);
-// }
 
 /*
 ***********************************

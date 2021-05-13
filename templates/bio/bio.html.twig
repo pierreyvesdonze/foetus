@@ -5,8 +5,8 @@ body %}
 {% include 'nav/_main.nav.html.twig' %}
 
 
-
 <div class="main-container">
+<h1 class="big-title">{{ bio.title }}</h1>
 {% if app.user %}
      {# UPDATE #}
       <div class="control-a">
@@ -15,7 +15,6 @@ body %}
         </a>
       </div>
 {% endif %}
-<h1 class="big-title">{{ bio.title }}</h1>
   <div class="custom-flex-container">
     <div class="custom-text">
       {{ bio.text | raw }}

@@ -14,6 +14,8 @@ class MainController extends AbstractController
 {
     /**
      * @Route("/home", name="home")
+     *
+     * @return Response
      */
     public function index(): Response
     {
@@ -22,6 +24,10 @@ class MainController extends AbstractController
 
     /**
      * @Route("/contact", name="contact")
+     * 
+     * @param mixed $mailer
+     *
+     * @return Response
      */
     public function contact(
         MailerInterface $mailer,

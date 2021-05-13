@@ -62,7 +62,7 @@ body {
 }
 
 .body,
-.body-2 {
+.body-admin {
   -webkit-transition: ease-in-out 0.4s;
   transition: ease-in-out 0.4s;
 }
@@ -71,7 +71,7 @@ body {
   background: var(--background-color);
 }
 
-.body-2 {
+.body-admin {
   background-color: var(--background-color-2);
 }
 
@@ -197,11 +197,6 @@ li {
   list-style-type: none !important;
 }
 
-/*
-***********************************
-FLASH MESSAGES / CUSTOM ALERT
-***********************************
-*/
 /*
 ***********************************
 MEDIA QUERIES
@@ -463,6 +458,10 @@ GALLERY / FLASHES
   border-radius: 20px;
 }
 
+.thumb-img {
+  width: 280px;
+}
+
 /*
 ***********************************
 BIO // ACTUS
@@ -500,6 +499,9 @@ BIO // ACTUS
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  height: -webkit-max-content;
+  height: -moz-max-content;
+  height: max-content;
   margin-bottom: 3em;
 }
 
@@ -625,6 +627,7 @@ CONTROL
 ***********************************
 */
 .control-a {
+  margin: 0 auto;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
