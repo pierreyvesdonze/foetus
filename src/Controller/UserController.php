@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\User;
+use App\Form\Type\UpdateUserType;
 use App\Form\UserType;
 use App\Repository\RoleRepository;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
@@ -60,10 +61,12 @@ class UserController extends AbstractController
 
     /**
      * @Route("/myprofile", name="user_profile", methods={"GET"})
-     * @IsGranted("ROLE_USER")
+     * @IsGranted("ROLE_ADMIN")
      */
     public function myProfile(): Response
     {
+        $this->denyAccessUnlessGranted('ROLE_ADMIN');
+
         $user = $this->getUser();
 
         return $this->render('user/show.html.twig', [
@@ -79,33 +82,17 @@ class UserController extends AbstractController
         $this->denyAccessUnlessGranted('ROLE_ADMIN');
 
         $user = $this->getUser();
-        $form = $this->createForm(UserType::class, $user);
+        $form = $this->createForm(UpdateUserType::class, $user);
 
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $brochureFile = $form->get('brochure')->getData();
+            
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($user);
+            $em->flush();
 
-            if ($brochureFile) {
-                $originalFilename = pathinfo($brochureFile->getClientOriginalName(), PATHINFO_FILENAME);
-                // this is needed to safely include the file name as part of the URL
-                $safeFilename = $originalFilename;
-                $newFilename = $safeFilename.'-'.uniqid().'.'.$brochureFile->guessExtension();
-
-                // Move the file to the directory where brochures are stored
-                try {
-                    $brochureFile->move(
-                        $this->getParameter('brochures_directory'),
-                        $newFilename
-                    );
-                } catch (FileException $e) {
-                    echo "L'image n'a pas été chargée";
-                }
-
-                $user->setBrochureFilename($newFilename);
-            }
-
-            $this->getDoctrine()->getManager()->flush();
+            $this->addFlash('success', 'Informations modifiées !');
 
             return $this->redirectToRoute('user_profile');
         }

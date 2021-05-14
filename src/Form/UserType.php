@@ -5,6 +5,7 @@ namespace App\Form;
 use App\Entity\User;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
+use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -25,6 +26,47 @@ class UserType extends AbstractType
                 ],
             ]
         );
+
+        $builder->add(
+            'phone',
+            TextType::class,
+            [
+                'label' => false,
+                'attr' => [
+                    'placeholder' => 'Numéro de téléphone',
+                ],
+            ]
+        );
+
+        $builder
+            ->add('addressNumber', IntegerType::class, 
+            [
+                'label' => false,
+                'attr' => [
+                    'placeholder' => 'N° de la voie'
+                ]
+            ])
+            ->add('addressStreet', TextType::class, 
+            [
+                'label '=> false,
+                'attr' => [
+                    'placeholder' => 'Voie'
+                ]
+            ])
+            ->add('addressPostal', IntegerType::class,
+            [
+                'label' => false,
+                'attr' => [
+                    'placeholder' => 'Code postal'
+                ]
+            ])
+            ->add('addressTown', TextType::class,
+            [
+                'label' => false,
+                'attr' => [
+                    'placeholder' => 'Ville'
+                ]
+            ]);
 
         $builder->add('password', RepeatedType::class, [
             'type' => PasswordType::class,

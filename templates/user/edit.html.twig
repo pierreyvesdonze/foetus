@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %} {% block title %}Modifier mon profil{% endblock
+%} {% block body %}
+
+<!--***************************MAIN NAV****************************-->
+{% include 'admin/_nav.admin.html.twig' %}
+
+<div class="main-container">
+    <div class="custom-flex-container">
+        {{ form(form) }}
+    </div>
+</div>
+
+
+{% endblock %}
