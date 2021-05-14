@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %} {% block title %}Modifier mon profil{% endblock
+%} {% block body %}
+
+<!--***************************MAIN NAV****************************-->
+{% include 'admin/_nav.admin.html.twig' %}
+
+<div class="main-container">
+  <h1 class="big-title">Mes infos</h1>
+  <div class="control-a">
+    <a href="{{ path('user_edit_profile') }}">
+      <span class="ti-settings custom-button-2"></span>
+    </a>
+  </div>
+  <div class="custom-flex-container">
+    <table>
+      <thead>
+        <tr>
+          <td>
+            <span class="ti ti-email"></span>
+          </td>
+          <td>
+            {{ user.email }}
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <span class="ti ti-mobile"></span>
+          </td>
+          <td>
+            {{ user.phoneNumber }}
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <span class="ti-location-pin"></span>
+          </td>
+          <td>
+            {{ user.addressNumber }} {{ user.addressStreet }} <br />
+            {{ user.addressPostal }} {{ user.addressTown }}
+          </td>
+        </tr>
+      </thead>
+    </table>
+  </div>
+</div>
+
+{% endblock %}

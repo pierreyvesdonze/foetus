@@ -189,12 +189,16 @@ BUTTONS
 
 /*
 ***********************************
-LISTS
+LISTS & TABLE
 ***********************************
 */
 ul li,
 li {
   list-style-type: none !important;
+}
+
+table thead tr td {
+  font-size: 2em;
 }
 
 /*

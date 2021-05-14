@@ -35,6 +35,31 @@ class User implements UserInterface
      */
     private $password;
 
+    /**
+     * @ORM\Column(type="string", length=20, nullable=true)
+     */
+    private $phoneNumber;
+
+    /**
+     * @ORM\Column(type="text", nullable=true)
+     */
+    private $addressStreet;
+
+    /**
+     * @ORM\Column(type="smallint", nullable=true)
+     */
+    private $addressNumber;
+
+    /**
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    private $addressPostal;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $addressTown;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -121,5 +146,65 @@ class User implements UserInterface
     {
         // If you store any temporary, sensitive data on the user, clear it here
         // $this->plainPassword = null;
+    }
+
+    public function getPhoneNumber(): ?string
+    {
+        return $this->phoneNumber;
+    }
+
+    public function setPhoneNumber(?string $phoneNumber): self
+    {
+        $this->phoneNumber = $phoneNumber;
+
+        return $this;
+    }
+
+    public function getAddressStreet(): ?string
+    {
+        return $this->addressStreet;
+    }
+
+    public function setAddressStreet(?string $addressStreet): self
+    {
+        $this->addressStreet = $addressStreet;
+
+        return $this;
+    }
+
+    public function getAddressNumber(): ?int
+    {
+        return $this->addressNumber;
+    }
+
+    public function setAddressNumber(?int $addressNumber): self
+    {
+        $this->addressNumber = $addressNumber;
+
+        return $this;
+    }
+
+    public function getAddressPostal(): ?int
+    {
+        return $this->addressPostal;
+    }
+
+    public function setAddressPostal(?int $addressPostal): self
+    {
+        $this->addressPostal = $addressPostal;
+
+        return $this;
+    }
+
+    public function getAddressTown(): ?string
+    {
+        return $this->addressTown;
+    }
+
+    public function setAddressTown(?string $addressTown): self
+    {
+        $this->addressTown = $addressTown;
+
+        return $this;
     }
 }
