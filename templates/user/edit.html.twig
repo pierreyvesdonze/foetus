@@ -5,6 +5,11 @@
 {% include 'admin/_nav.admin.html.twig' %}
 
 <div class="main-container">
+    <h1 class="big-title">Modifier mes infos</h1>
+        <div class="control-a">
+            <a href="{{ path('user_profile') }}">
+            <span class="ti-back-left custom-button-2"></span>
+        </div>
     <div class="custom-flex-container">
         {{ form(form) }}
     </div>
