@@ -46,7 +46,7 @@ body %} {% include 'nav/_main.nav.html.twig' %}
     <div class="flexboxxx">
       {% for image in images %}
       <div class="itemx">
-        <a href="{{ asset(image.pathName) }}">
+        <a href="{{ asset(image.pathName) }}" target="_blank">
           <img src="{{ asset(image.thumbPathName) }}" alt="" class="home-img" />
         </a>
       </div>

@@ -79,7 +79,6 @@ class UpdateUserType extends AbstractType
                 ]
             );
 
-
         $builder->add(
             'save',
             SubmitType::class,
